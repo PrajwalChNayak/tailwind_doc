@@ -50,18 +50,20 @@ There are three ways to link CSS to HTML:
 1.  **Inline CSS**: Styles applied directly to HTML elements using the
     > style attribute.
 
-2.  Example: 
+   Example: 
 >\<h1 style=\"color: blue;\"\>Heading\</h1\>
 
 3.  **Internal CSS**: Styles defined within the HTML document using the
     > \<style\> tag.
 
-4.  Example: \<style\>h1 { color: blue; }\</style\>
+    Example:
+    > \<style\>h1 { color: blue; }\</style\>
 
 5.  **External CSS**: Styles defined in a separate CSS file linked to
     > the HTML document using the \<link\> tag.
 
-6.  Example: \<link rel=\"stylesheet\" href=\"styles.css\"\>
+    Example:
+    > \<link rel=\"stylesheet\" href=\"styles.css\"\>
 
 **CSS Comments**
 
@@ -88,9 +90,11 @@ Targets elements by their HTML tag name.
 
 Example:
 
-HTML: \<p\>This is a paragraph.\</p\>
+HTML:
+> \<p\>This is a paragraph.\</p\>
 
-CSS: p { color: blue; }
+CSS:
+> p { color: blue; }
 
 2\. Class Selector
 
@@ -98,9 +102,11 @@ Targets elements with a specific class attribute.
 
 Example:
 
-HTML: \<p class=\"highlight\"\>This is a highlighted paragraph.\</p\>
+HTML:
+> \<p class=\"highlight\"\>This is a highlighted paragraph.\</p\>
 
-CSS: .highlight { background-color: yellow; }
+CSS: 
+>.highlight { background-color: yellow; }
 
 3\. ID Selector
 
