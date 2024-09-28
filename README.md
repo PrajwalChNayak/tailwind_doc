@@ -50,7 +50,8 @@ There are three ways to link CSS to HTML:
 1.  **Inline CSS**: Styles applied directly to HTML elements using the
     > style attribute.
 
-2.  Example: \<h1 style=\"color: blue;\"\>Heading\</h1\>
+2.  Example: 
+>\<h1 style=\"color: blue;\"\>Heading\</h1\>
 
 3.  **Internal CSS**: Styles defined within the HTML document using the
     > \<style\> tag.
