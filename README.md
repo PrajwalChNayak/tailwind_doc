@@ -1,293 +1,110 @@
-CSS
+# Tailwind CSS Documentation & Examples
 
-Module 1: Introduction to CSS:
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-**What is CSS?**
+A comprehensive guide to Tailwind CSS with practical examples and explanations.
 
-CSS stands for Cascading Style Sheets. It\'s a styling language used to
-control the layout and appearance of web pages written in HTML or XML.
+## Overview
 
-**Overview of CSS**
+Tailwind CSS is a utility-first CSS framework that allows you to build modern websites without ever leaving your HTML. This documentation provides examples and explanations for all Tailwind CSS features.
 
-CSS is used to separate presentation from structure, making web pages
-more visually appealing, user-friendly, and accessible. It allows
-developers to:
+## Features Covered
 
--   Control typography, colors, and backgrounds
+- **Utility-First Approach**: Learn how Tailwind's utility classes work
+- **Colors**: Explore Tailwind's color palette system
+- **Container & Spacing**: Master layout spacing and containers
+- **Typography**: Text styling and formatting
+- **Sizing**: Control element dimensions with ease
+- **Layout & Position**: Positioning and layout utilities
+- **Backgrounds & Shadows**: Apply backgrounds and drop shadows
+- **Borders**: Border styling and border radius
+- **Filters**: Visual filters for images and elements
+- **Interactivity**: Hover, focus, and other interactive states
+- **Responsive Design**: Breakpoint system for responsive layouts
+- **Column Layouts**: Multi-column layout techniques
+- **Flexbox**: Flexible box layout system
+- **Grid**: CSS Grid implementation
+- **Transforms & Transitions**: Element transformations and transitions
+- **Animation**: Built-in animation utilities
+- **Customization**: Configure and extend Tailwind
+- **Dark Mode**: Implement dark mode with Tailwind
 
--   Create layouts and positioning
+## Getting Started
 
--   Add visual effects and animations
+Each section contains practical examples showing Tailwind classes in action. To get started:
 
--   Enhance user experience and accessibility
+1. Browse the individual sections in the `/01-utility-first/` through `/18-dark-mode/` directories
+2. View the examples in your browser to see how they work
+3. Examine the HTML to understand how the classes are applied
 
-**How CSS works with HTML**
+## Installation
 
-HTML provides the structure, while CSS provides the visual style:
+For this project, we're using the CDN version of Tailwind CSS:
 
-1.  HTML files provide the content and structure.
+```html
+<script src="https://cdn.tailwindcss.com"></script>
+```
 
-2.  CSS files provide the layout and visual styling.
+For production projects, consider using npm:
 
-3.  Web browsers combine HTML and CSS to render the final web page.
+```bash
+npm install -D tailwindcss
+npx tailwindcss init
+```
 
-**CSS Syntax**
+## Tailwind CSS vs Traditional CSS
 
-CSS syntax consists of:
+### Traditional CSS Approach
 
--   **Selectors**: Target HTML elements (.class, #id, tag)
+Using traditional CSS requires defining styles separately:
 
--   **Properties**: Define styles (color, font-size, background-color)
-
--   **Values**: Assign values to properties (red, 18px, #fff)
-
-Example: h1 { color: blue; font-size: 36px; }
-
-**Inline, Internal, and External CSS**
-
-There are three ways to link CSS to HTML:
-
-1.  **Inline CSS**: Styles applied directly to HTML elements using the
-    > style attribute.
-
-   Example: 
->\<h1 style=\"color: blue;\"\>Heading\</h1\>
-
-3.  **Internal CSS**: Styles defined within the HTML document using the
-    > \<style\> tag.
-
-    Example:
-    > \<style\>h1 { color: blue; }\</style\>
-
-5.  **External CSS**: Styles defined in a separate CSS file linked to
-    > the HTML document using the \<link\> tag.
-
-    Example:
-    > \<link rel=\"stylesheet\" href=\"styles.css\"\>
-
-**CSS Comments**
-
-CSS comments are used to add notes or explanations:
-
--   Start with /\*
-
--   End with \*/
-
--   Comments are ignored by web browsers
-
-Example: /\* This is a CSS comment \*/
-
-Module 2: Basic Selectors and Properties,
-
-**CSS Selectors**
-
-CSS selectors target HTML elements to apply styles. There are three
-basic selectors:
-
-1\. Type Selector (Tag Selector)
-
-Targets elements by their HTML tag name.
-
-Example:
-
-HTML:
-> \<p\>This is a paragraph.\</p\>
-
-CSS:
-> p { color: blue; }
-
-2\. Class Selector
-
-Targets elements with a specific class attribute.
-
-Example:
-
-HTML:
-> \<p class=\"highlight\"\>This is a highlighted paragraph.\</p\>
-
-CSS: 
->.highlight { background-color: yellow; }
-
-3\. ID Selector
-
-Targets a single element with a unique ID attribute.
-
-Example:
-
-HTML: \<p id=\"intro\"\>This is the introduction.\</p\>
-
-CSS: #intro { font-size: 24px; }
-
-**Combining Selectors**
-
-You can combine selectors to target specific elements:
-
-Type and Class
-
-HTML:
-
-\<p class=\"highlight\"\>This is a highlighted paragraph.\</p\>
-
-\<span class=\"highlight\"\>This is highlighted text.\</span\>
-
-CSS:
-
-p.highlight {
-
-background-color: lightblue;
-
+```css
+/* CSS file */
+.button {
+  background-color: blue;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
 }
+```
 
-**Result**: Only paragraphs with the class \"highlight\" will have a
-light blue background.
+```html
+<!-- HTML file -->
+<button class="button">Click Me</button>
+```
 
-ID and Class
+### Tailwind Approach
 
-HTML:
+With Tailwind, you apply utility classes directly in HTML:
 
-\<p id=\"intro\" class=\"highlight\"\>This is the introduction.\</p\>
+```html
+<button class="bg-blue-500 text-white py-2 px-4 rounded">
+  Click Me
+</button>
+```
 
-CSS:
+### Benefits of Tailwind's Approach
 
-#intro.highlight {
+- **No naming conventions to invent** - Focus on building components, not naming CSS classes
+- **Faster development** - Make changes directly in your HTML without switching to CSS files
+- **Smaller CSS bundle** - Ship only the CSS you're actually using
+- **Responsive design made simple** - Use responsive modifiers like `md:` or `lg:` directly in your HTML
 
-font-size: 36px;
+## Example Sections
 
-}
+Browse the following sections to learn more:
 
-**Result**: Only the paragraph with both ID \"intro\" and class
-\"highlight\" will have a font size of 36px.
+- [01-utility-first](./01-utility-first/index.html)
+- [02-colors](./02-colors/index.html)
+- [03-container-spacing](./03-container-spacing/index.html)
+- ...and many more!
 
-**Best Practices**
+## Resources
 
--   Use meaningful class names and IDs.
+- [Tailwind CSS Official Documentation](https://tailwindcss.com/docs)
+- [Tailwind CSS GitHub Repository](https://github.com/tailwindlabs/tailwindcss)
+- [Tailwind UI Components](https://tailwindui.com/)
 
--   Avoid using generic class names like .red or .big.
+---
 
--   Use IDs sparingly, as they must be unique.
-
-**Additional Basic Selectors**
-
--   Universal Selector (\*): Targets all elements.
-
--   Group Selector (,): Targets multiple elements.
-
-Example
-
-\<h1\>This is a heading.\</h1\>
-
-\<h2\>This is a subheading.\</h2\>
-
-\<p\>This is a paragraph.\</p\>
-
-h1, h2, p {
-
-color: green;
-
-}
-
-Attribute selectors in CSS allow you to target HTML elements based on
-their attributes and attribute values. Here\'s a comprehensive overview:
-
-**Attribute Selectors**
-
-1\. \[attribute\]
-
-Targets elements with the specified attribute.
-
-Example:
-
-HTML: \<input type=\"text\" name=\"username\"\>
-
-CSS: input\[type\] { width: 200px; }
-
-2\. \[attribute=\"value\"\]
-
-Targets elements with the specified attribute and exact value.
-
-Example:
-
-HTML: \<input type=\"text\" name=\"username\"\>
-
-CSS: input\[type=\"text\"\] { width: 200px; }
-
-3\. \[attribute\~=\"value\"\]
-
-Targets elements with the specified attribute and value containing the
-specified word.
-
-Example:
-
-HTML: \<p class=\"main header\"\>This is a header.\</p\>
-
-CSS: p\[class\~=\"header\"\] { font-size: 24px; }
-
-4\. \[attribute\|=\"value\"\]
-
-Targets elements with the specified attribute and value starting with
-the specified string.
-
-Example:
-
-HTML: \<p lang=\"en-US\"\>This is a paragraph.\</p\>
-
-CSS: p\[lang\|=\"en\"\] { font-family: Arial; }
-
-5\. \[attribute\^=\"value\"\]
-
-Targets elements with the specified attribute and value starting with
-the specified string.
-
-Example:
-
-HTML: \<img src=\"image1.jpg\"\>
-
-CSS: img\[src\^=\"image\"\] { border: 1px solid black; }
-
-6\. \[attribute\$=\"value\"\]
-
-Targets elements with the specified attribute and value ending with the
-specified string.
-
-Example:
-
-HTML: \<img src=\"image1.jpg\"\>
-
-CSS: img\[src\$=\".jpg\"\] { border: 1px solid black; }
-
-7\. \[attribute\*=\"value\"\]
-
-Targets elements with the specified attribute and value containing the
-specified string.
-
-Example:
-
-HTML: \<p class=\"main-image\"\>This is a paragraph.\</p\>
-
-CSS: p\[class\*=\"image\"\] { font-size: 18px; }
-
-**Examples and Use Cases**:
-
--   Form styling: input\[type=\"radio\"\], input\[type=\"checkbox\"\] {
-    > /\* styles \*/ }
-
--   Language-specific styling: p\[lang\|=\"en\"\] { /\* styles \*/ }
-
--   Image styling: img\[src\$=\".jpg\"\] { /\* styles \*/ }
-
-**Browser Support**:
-
-Attribute selectors are supported in:
-
--   Chrome 1+
-
--   Firefox 2+
-
--   Safari 3+
-
--   Edge 6+
-
--   IE 7+ (partial support)
-
-Note: Older browsers may have partial or no support for attribute
-selectors.
+Created by [Prajwal Chandra Nayak](https://github.com/PrajwalChNayak)
