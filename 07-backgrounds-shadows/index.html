@@ -7,60 +7,228 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Backgrounds & Shadows</title>
   </head>
-  <body>
-    <!-- Background Classes -->
-    <div
-      class="h-64 w-72 bg-blue-500 bg-cover bg-no-repeat bg-center"
-      style="background-image: url('../assets/img/img1.jpg')"
-    ></div>
+  <body class="bg-gray-50">
+    <div class="max-w-5xl mx-auto p-6">
+      <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Tailwind CSS: Background & Shadow Examples</h1>
+      
+      <!-- Background Classes - With better presentation -->
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4 border-b pb-2">Background Images</h2>
+        <div class="flex flex-wrap gap-6">
+          <div>
+            <div
+              class="h-64 w-72 bg-blue-500 bg-cover bg-no-repeat bg-center rounded-lg shadow-md transform hover:scale-105 transition-transform"
+              style="background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&h=300&fit=crop')"
+            ></div>
+            <p class="text-sm text-gray-600 mt-2">bg-cover bg-no-repeat bg-center</p>
+          </div>
+        </div>
+      </section>
 
-    <!-- Gradients -->
-    <div class="h-24 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
-    <div
-      class="h-24 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-    ></div>
+      <!-- Gradients - With better presentation -->
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4 border-b pb-2">Gradient Backgrounds</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <div class="h-24 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg"></div>
+            <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">bg-gradient-to-r from-cyan-500 to-blue-500</code>
+          </div>
+          <div>
+            <div class="h-24 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg"></div>
+            <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500</code>
+          </div>
+        </div>
+      </section>
 
-    <!-- Shadows -->
-    <div class="w-96 mt-6 ml-4 p-3 shadow-md">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia minus
-      deleniti iusto delectus alias natus quam dolor explicabo quas eius!
-    </div>
-    <div class="w-96 mt-6 ml-4 p-3 shadow-lg">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia minus
-      deleniti iusto delectus alias natus quam dolor explicabo quas eius!
-    </div>
-    <div class="w-96 mt-6 ml-4 p-3 shadow-xl">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia minus
-      deleniti iusto delectus alias natus quam dolor explicabo quas eius!
-    </div>
-    <div class="w-96 mt-6 ml-4 p-3 shadow-2xl">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia minus
-      deleniti iusto delectus alias natus quam dolor explicabo quas eius!
-    </div>
-    <div class="w-96 mt-6 ml-4 p-3 shadow-inner">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia minus
-      deleniti iusto delectus alias natus quam dolor explicabo quas eius!
-    </div>
-    <!-- Shadow Colors -->
-    <div class="w-96 mt-6 ml-4 p-3 shadow-xl shadow-blue-500/50">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia minus
-      deleniti iusto delectus alias natus quam dolor explicabo quas eius!
-    </div>
-    <div class="w-96 mt-6 ml-4 p-3 shadow-xl shadow-red-500/100">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia minus
-      deleniti iusto delectus alias natus quam dolor explicabo quas eius!
-    </div>
+      <!-- Shadows - With better presentation -->
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4 border-b pb-2">Shadow Examples</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Shadow Examples with labels -->
+          <div class="bg-white p-4 shadow-sm rounded-lg">
+            <p class="font-medium mb-2">Shadow SM</p>
+            <code class="bg-gray-100 text-sm p-1 rounded">shadow-sm</code>
+          </div>
+          <div class="bg-white p-4 shadow rounded-lg">
+            <p class="font-medium mb-2">Shadow (Default)</p>
+            <code class="bg-gray-100 text-sm p-1 rounded">shadow</code>
+          </div>
+          <div class="bg-white p-4 shadow-md rounded-lg">
+            <p class="font-medium mb-2">Shadow MD</p>
+            <code class="bg-gray-100 text-sm p-1 rounded">shadow-md</code>
+          </div>
+          <div class="bg-white p-4 shadow-lg rounded-lg">
+            <p class="font-medium mb-2">Shadow LG</p>
+            <code class="bg-gray-100 text-sm p-1 rounded">shadow-lg</code>
+          </div>
+          <div class="bg-white p-4 shadow-xl rounded-lg">
+            <p class="font-medium mb-2">Shadow XL</p>
+            <code class="bg-gray-100 text-sm p-1 rounded">shadow-xl</code>
+          </div>
+          <div class="bg-white p-4 shadow-2xl rounded-lg">
+            <p class="font-medium mb-2">Shadow 2XL</p>
+            <code class="bg-gray-100 text-sm p-1 rounded">shadow-2xl</code>
+          </div>
+        </div>
+        
+        <h3 class="text-xl font-medium mb-3 text-gray-800">Colored Shadows</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-white p-4 shadow-xl shadow-blue-500/50 rounded-lg">
+            <p class="font-medium mb-2">Blue Shadow (50% opacity)</p>
+            <code class="bg-gray-100 text-sm p-1 rounded">shadow-xl shadow-blue-500/50</code>
+          </div>
+          <div class="bg-white p-4 shadow-xl shadow-red-500/100 rounded-lg">
+            <p class="font-medium mb-2">Red Shadow (100% opacity)</p>
+            <code class="bg-gray-100 text-sm p-1 rounded">shadow-xl shadow-red-500/100</code>
+          </div>
+        </div>
+        
+        <div class="bg-white p-4 shadow-inner rounded-lg mb-6">
+          <p class="font-medium mb-2">Inner Shadow</p>
+          <code class="bg-gray-100 text-sm p-1 rounded">shadow-inner</code>
+          <p class="text-sm mt-2 text-gray-600">Creates the appearance of being inset or depressed</p>
+        </div>
+      </section>
 
-    <!-- Mix Blend -->
-    <div class="flex justify-center -space-x-24">
-      <div class="mix-blend-multiply bg-blue-400 ...">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia minus
-        deleniti iusto delectus alias natus quam dolor explicabo quas eius!
-      </div>
-      <div class="mix-blend-multiply bg-pink-400 ...">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia minus
-        deleniti iusto delectus alias natus quam dolor explicabo quas eius!
-      </div>
+      <!-- Mix Blend Section -->
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">Mix Blend Modes</h2>
+        <p class="mb-4 text-gray-700">Mix blend modes determine how elements blend with what's behind them. They can create interesting visual effects when elements overlap.</p>
+        
+        <div class="p-8 bg-gray-100 rounded-lg">
+          <div class="flex justify-center -space-x-24">
+            <div class="mix-blend-multiply bg-blue-400 p-8 rounded-lg">
+              <p class="font-medium">Mix Blend Multiply</p>
+              <code class="bg-white text-sm p-1 rounded mt-2 inline-block">mix-blend-multiply</code>
+            </div>
+            <div class="mix-blend-multiply bg-pink-400 p-8 rounded-lg">
+              <p class="font-medium">Mix Blend Multiply</p>
+              <code class="bg-white text-sm p-1 rounded mt-2 inline-block">mix-blend-multiply</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Use Cases Section -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">Common Use Cases & Best Practices</h2>
+        
+        <div class="mb-10">
+          <h3 class="text-xl font-medium mb-3 text-gray-800">Cards & Containers</h3>
+          <p class="text-gray-700 mb-4">Use shadow utilities to create card-like elements that appear to float above the surface. Stronger shadows indicate higher elevation.</p>
+          
+          <!-- Interactive card examples -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="p-5 bg-white shadow-md rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+              <div class="h-24 bg-blue-500 -m-5 mb-4 rounded-t-lg flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                </svg>
+              </div>
+              <h4 class="font-bold">Interactive Card</h4>
+              <p class="text-sm text-gray-600 mt-2">Uses shadow-md and transforms on hover for a more interactive feel</p>
+              <code class="text-xs bg-gray-100 px-2 py-1 mt-3 rounded inline-block">hover:shadow-xl hover:-translate-y-1</code>
+            </div>
+            
+            <div class="p-5 bg-white shadow-lg rounded-lg border border-gray-100 relative overflow-hidden">
+              <div class="absolute -right-4 -top-4 bg-yellow-300 w-16 h-16 rounded-full opacity-30"></div>
+              <div class="relative">
+                <h4 class="font-bold">Card with Multiple Effects</h4>
+                <p class="text-sm text-gray-600 mt-2">Combines medium shadow with subtle border and background elements</p>
+                <div class="mt-4 flex gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Design</span>
+                  <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">UI</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-5 bg-gradient-to-br from-white to-gray-100 shadow-md rounded-lg border-t-4 border-indigo-500">
+              <h4 class="font-bold">Gradient Card with Accent</h4>
+              <p class="text-sm text-gray-600 mt-2">Combines shadow with gradient background and colored accent border</p>
+              <div class="mt-4 h-2 bg-gray-200 rounded-full">
+                <div class="h-2 bg-indigo-500 rounded-full w-3/4"></div>
+              </div>
+              <p class="text-xs text-right mt-1 text-gray-500">75% Complete</p>
+            </div>
+          </div>
+
+          <!-- Card implementation examples -->
+          <div class="bg-gray-800 text-gray-300 p-4 rounded-lg mb-2 mt-6 overflow-auto">
+            <pre><code>&lt;div class="p-5 bg-white shadow-md rounded-lg hover:shadow-xl transition-all duration-300"&gt;
+  &lt;h4 class="font-bold"&gt;Card Title&lt;/h4&gt;
+  &lt;p class="text-gray-600"&gt;Card content goes here...&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">This basic card pattern can be customized with different shadows, borders, and background effects.</p>
+          
+          <!-- More advanced card examples -->
+          <h4 class="font-medium text-lg mt-6 mb-3">Layer Effects for Depth</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="p-6 bg-white rounded-lg shadow-lg relative">
+              <div class="absolute inset-x-4 top-0 h-1 bg-gradient-to-r from-green-400 to-blue-500 transform -translate-y-1/2 rounded-full"></div>
+              <h4 class="font-medium mb-1">Layered Shadows</h4>
+              <p class="text-sm text-gray-500">Combines multiple effects for greater depth perception</p>
+              <div class="flex items-center justify-between mt-4">
+                <button class="text-sm px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded transition-colors">Details</button>
+                <span class="text-sm text-green-600">Active</span>
+              </div>
+            </div>
+            
+            <div class="group">
+              <div class="p-6 bg-white rounded-lg shadow-md group-hover:shadow-xl transition-all duration-300 relative">
+                <div class="absolute -right-2 -top-2 w-8 h-8 bg-red-500 group-hover:bg-red-600 rounded-full flex items-center justify-center text-white text-xs transition-colors">New</div>
+                <h4 class="font-medium mb-1">Interactive Group Hover</h4>
+                <p class="text-sm text-gray-500">Using group hover to affect multiple elements</p>
+                <div class="mt-4 flex justify-end">
+                  <button class="text-sm px-3 py-1 bg-gray-100 text-gray-600 group-hover:bg-blue-500 group-hover:text-white rounded transition-all">View</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <h3 class="text-xl font-medium mb-2 text-gray-800">Buttons & Interactive Elements</h3>
+          <p class="text-gray-700 mb-4">Gradients and shadows can enhance buttons and interactive elements, providing visual feedback and emphasizing their function.</p>
+          <div class="flex flex-wrap gap-4">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:shadow-lg transition-all">
+              Gradient Button
+            </button>
+            <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow hover:shadow-md transition-all">
+              Light Button
+            </button>
+            <button class="px-4 py-2 bg-gray-800 text-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+              Dark Elevated Button
+            </button>
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <h3 class="text-xl font-medium mb-2 text-gray-800">Page Sections & Headers</h3>
+          <p class="text-gray-700 mb-4">Use background images, gradients, and shadows to create visually distinct page sections.</p>
+          <div class="rounded-lg overflow-hidden shadow-md mb-4">
+            <div class="h-32 bg-gradient-to-r from-purple-600 to-blue-500 flex items-end">
+              <div class="p-4 text-white">
+                <p class="font-bold text-xl">Gradient Header</p>
+              </div>
+            </div>
+            <div class="bg-white p-4">
+              <p class="text-gray-700">Content area with white background</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Performance Tips -->
+      <section class="bg-gray-100 p-6 rounded-lg">
+        <h2 class="text-2xl font-semibold mb-3 text-gray-800">Performance Tips</h2>
+        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+          <li>Use box-shadows sparingly, especially on elements that animate, as they can affect performance</li>
+          <li>Gradient backgrounds are generally more performant than background images</li>
+          <li>Consider using smaller, optimized images when background images are necessary</li>
+          <li>For complex shadows, consider using pre-rendered images instead of CSS shadows</li>
+        </ul>
+      </section>
     </div>
   </body>
 </html>
@@ -109,3 +277,493 @@
   shadow-inner	box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
   shadow-none	  box-shadow: 0 0 #0000;
  -->
+
+<!-- Enhanced Reference Guide & Interactive Examples -->
+<div class="bg-gradient-to-b from-gray-50 to-white pt-16 pb-20">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500">Complete Reference Guide</h2>
+      <p class="mt-3 text-lg text-gray-600">Comprehensive examples of Tailwind CSS background and shadow utilities</p>
+    </div>
+
+    <!-- Interactive Background Gallery -->
+    <section class="mb-16">
+      <h3 class="text-2xl font-bold mb-6 border-b border-gray-200 pb-2">Background Property Showcase</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <!-- Background Size Examples - Enhanced -->
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <h4 class="font-bold text-lg mb-4 text-gray-800 flex items-center">
+            <span class="inline-block w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
+            Background Size
+          </h4>
+          
+          <div class="space-y-8">
+            <!-- Interactive example with hover state -->
+            <div class="relative">
+              <div class="absolute top-2 right-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                Original Image
+              </div>
+              <div class="mb-6 border border-dashed border-gray-300 p-2 rounded">
+                <img src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?w=200&h=200&fit=crop" 
+                     alt="Original image" class="mx-auto h-32 w-auto">
+              </div>
+              
+              <div class="space-y-6">
+                <div>
+                  <div class="group relative">
+                    <div class="h-32 bg-auto bg-no-repeat bg-center border border-gray-200 rounded overflow-hidden transition-all" 
+                       style="background-image: url('https://images.unsplash.com/photo-1554629947-334ff61d85dc?w=200&h=200&fit=crop')">
+                      <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <p class="text-white text-sm font-medium">Original size, may tile or not fill container</p>
+                      </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                      <code class="text-sm bg-blue-50 text-blue-700 px-2 py-1 rounded">bg-auto</code>
+                      <span class="text-xs text-gray-500">Hover to see details</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <div class="group relative">
+                    <div class="h-32 bg-cover bg-no-repeat bg-center border border-gray-200 rounded overflow-hidden transition-all" 
+                       style="background-image: url('https://images.unsplash.com/photo-1554629947-334ff61d85dc?w=200&h=200&fit=crop')">
+                      <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <p class="text-white text-sm font-medium">Covers entire container, maintains aspect ratio</p>
+                      </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                      <code class="text-sm bg-blue-50 text-blue-700 px-2 py-1 rounded">bg-cover</code>
+                      <span class="text-xs text-gray-500">Hover to see details</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <div class="group relative">
+                    <div class="h-32 bg-contain bg-no-repeat bg-center border border-gray-200 rounded overflow-hidden transition-all" 
+                       style="background-image: url('https://images.unsplash.com/photo-1554629947-334ff61d85dc?w=200&h=200&fit=crop')">
+                      <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <p class="text-white text-sm font-medium">Fits within container, maintains aspect ratio</p>
+                      </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                      <code class="text-sm bg-blue-50 text-blue-700 px-2 py-1 rounded">bg-contain</code>
+                      <span class="text-xs text-gray-500">Hover to see details</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Real-world comparison -->
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <h5 class="font-medium text-sm mb-3 text-gray-700">When to use each option:</h5>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-start">
+                  <span class="bg-blue-100 text-blue-800 rounded-full h-5 w-5 flex items-center justify-center text-xs font-bold mr-2 mt-0.5">1</span>
+                  <span><strong>bg-auto</strong>: Use when the original image size is important or when tiling</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-blue-100 text-blue-800 rounded-full h-5 w-5 flex items-center justify-center text-xs font-bold mr-2 mt-0.5">2</span>
+                  <span><strong>bg-cover</strong>: Hero images, cards, or when the image must fill its container completely</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-blue-100 text-blue-800 rounded-full h-5 w-5 flex items-center justify-center text-xs font-bold mr-2 mt-0.5">3</span>
+                  <span><strong>bg-contain</strong>: Icons, logos, or when the entire image must be visible</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Creative Gradient Examples -->
+    <section class="mb-16">
+      <h3 class="text-2xl font-bold mb-6 border-b border-gray-200 pb-2">Advanced Gradient Techniques</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div>
+          <div class="h-40 bg-gradient-to-tr from-yellow-400 via-red-500 to-pink-500 rounded-lg"></div>
+          <code class="block mt-2 text-sm bg-gray-100 px-2 py-1 rounded">bg-gradient-to-tr from-yellow-400 via-red-500 to-pink-500</code>
+          <p class="text-sm mt-1 text-gray-600">Top-left to bottom-right with three colors</p>
+        </div>
+        
+        <div>
+          <div class="h-40 bg-gradient-to-bl from-green-300 via-blue-500 to-purple-600 rounded-lg"></div>
+          <code class="block mt-2 text-sm bg-gray-100 px-2 py-1 rounded">bg-gradient-to-bl from-green-300 via-blue-500 to-purple-600</code>
+          <p class="text-sm mt-1 text-gray-600">Top-right to bottom-left with three colors</p>
+        </div>
+      </div>
+      
+      <!-- Practical Gradient Applications -->
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <h4 class="font-bold text-lg mb-4 text-gray-800">Practical Gradient Applications</h4>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Call-to-action button -->
+          <div class="flex flex-col items-center justify-center p-4 rounded-lg border border-gray-200">
+            <button class="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white font-bold rounded-full shadow-lg transform transition-all hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+              Subscribe Now
+            </button>
+            <p class="text-sm mt-3 text-gray-600">Call-to-action button with gradient</p>
+          </div>
+          
+          <!-- Text with gradient background -->
+          <div class="flex flex-col items-center justify-center p-4 rounded-lg border border-gray-200">
+            <div class="py-3 px-6 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg">
+              <p class="font-bold text-white">Notification</p>
+              <p class="text-white/90 text-sm">New features available!</p>
+            </div>
+            <p class="text-sm mt-3 text-gray-600">Alert/notification with gradient background</p>
+          </div>
+          
+          <!-- Gradient text -->
+          <div class="flex flex-col items-center justify-center p-4 rounded-lg border border-gray-200">
+            <h5 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+              Premium
+            </h5>
+            <p class="text-sm mt-3 text-gray-600">Gradient text using bg-clip-text</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shadow Combinations & Techniques -->
+    <section class="mb-16">
+      <h3 class="text-2xl font-bold mb-6 border-b border-gray-200 pb-2">Advanced Shadow Techniques</h3>
+      
+      <!-- Interactive Shadow Playground -->
+      <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+        <h4 class="font-bold text-lg mb-4 text-gray-800">Interactive Elements with Shadows</h4>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Card with hover effects -->
+          <div class="group">
+            <div class="bg-white p-6 rounded-lg shadow-md group-hover:shadow-xl group-hover:shadow-blue-200/50 transition-all duration-300 border border-gray-100 group-hover:border-blue-100">
+              <h5 class="font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Interactive Card</h5>
+              <p class="mt-2 text-gray-600">Card with shadow, border and text color transitions</p>
+              <div class="mt-4 flex justify-end">
+                <button class="px-4 py-2 bg-gray-100 text-gray-700 group-hover:bg-blue-500 group-hover:text-white rounded transition-colors">
+                  Learn More
+                </button>
+              </div>
+            </div>
+            <p class="text-sm mt-3 text-gray-600">Hover over this card to see all effects</p>
+          </div>
+          
+          <!-- Form input with focus shadow -->
+          <div>
+            <div class="relative">
+              <input type="text" placeholder="Enter email..." 
+                     class="w-full p-3 border border-gray-300 rounded-lg focus:ring-4 focus:ring-blue-300/40 focus:border-blue-400 focus:outline-none shadow-sm transition-all">
+              <button class="absolute right-2 top-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+                Subscribe
+              </button>
+            </div>
+            <p class="text-sm mt-3 text-gray-600">Click on the input field to see focus effect</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Shadow with borders and other techniques -->
+      <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+        <h4 class="font-bold text-lg mb-4 text-gray-800">Combining Shadows with Other Effects</h4>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Shadow + Border -->
+          <div>
+            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-blue-500">
+              <h5 class="font-medium">Left Border Accent</h5>
+              <p class="text-sm text-gray-600 mt-1">Combining shadow with a colored border accent</p>
+            </div>
+            <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded">shadow-md border-l-4 border-blue-500</code>
+          </div>
+          
+          <!-- Shadow + Gradient Border -->
+          <div>
+            <div class="bg-white p-1 rounded-lg shadow-lg" style="background: linear-gradient(to right, #3b82f6, #8b5cf6)">
+              <div class="bg-white p-4 rounded-lg">
+                <h5 class="font-medium">Gradient Border</h5>
+                <p class="text-sm text-gray-600 mt-1">Gradient border illusion using padding</p>
+              </div>
+            </div>
+            <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded truncate">bg with gradient, inner div with bg-white</code>
+          </div>
+          
+          <!-- Inner + Outer Shadow -->
+          <div>
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md">
+              <div class="bg-white p-4 rounded shadow-inner">
+                <h5 class="font-medium">Nested Shadows</h5>
+                <p class="text-sm text-gray-600 mt-1">Outer shadow + inner shadow effect</p>
+              </div>
+            </div>
+            <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded">Outer: shadow-md, Inner: shadow-inner</code>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Real-world UI Components -->
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <h4 class="font-bold text-lg mb-4 text-gray-800">Real-World UI Components</h4>
+        
+        <div class="space-y-8">
+          <!-- Modal example -->
+          <div class="relative">
+            <div class="bg-gray-800/50 p-8 rounded-lg">
+              <div class="bg-white p-6 rounded-lg shadow-2xl max-w-md mx-auto">
+                <h5 class="font-bold text-lg mb-2">Modal Dialog</h5>
+                <p class="text-gray-600 mb-4">Strong shadows help modals stand out from the background, creating a clear visual hierarchy.</p>
+                <div class="flex justify-end space-x-2">
+                  <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition-colors">
+                    Cancel
+                  </button>
+                  <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+                    Confirm
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm mt-3 text-gray-600">Modal with shadow-2xl to create significant elevation</p>
+          </div>
+          
+          <!-- Toast notification -->
+          <div class="max-w-md mx-auto">
+            <div class="bg-white p-4 rounded-lg shadow-lg border-l-4 border-green-500 flex items-center">
+              <div class="bg-green-100 p-2 rounded-full mr-3">
+                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium">Success!</p>
+                <p class="text-sm text-gray-600">Your changes have been saved.</p>
+              </div>
+              <button class="ml-auto text-gray-400 hover:text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <p class="text-sm mt-3 text-gray-600">Toast notification with shadow and left border accent</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Interactive Playground -->
+    <section>
+      <h3 class="text-2xl font-bold mb-6 border-b border-gray-200 pb-2">Mix Blend Mode Playground</h3>
+      
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <p class="mb-4 text-gray-700">Experiment with different mix blend modes to create unique visual effects:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Multiple blend modes -->
+          <div>
+            <div class="bg-gray-100 p-6 rounded-lg relative h-60 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-pink-500 to-transparent mix-blend-multiply"></div>
+              <div class="absolute inset-0 bg-gradient-to-b from-yellow-500 to-transparent mix-blend-screen"></div>
+              <div class="relative text-center mt-16">
+                <h4 class="text-white font-bold text-xl mb-2 drop-shadow-md">Layered Gradients</h4>
+                <p class="text-white text-sm drop-shadow-md">Using multiple blend modes</p>
+              </div>
+            </div>
+            <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded">mix-blend-multiply & mix-blend-screen</code>
+          </div>
+          
+          <!-- Text with blend mode -->
+          <div>
+            <div class="bg-gradient-to-r from-blue-400 to-purple-500 p-6 rounded-lg relative h-60 flex items-center justify-center">
+              <h3 class="text-6xl font-extrabold text-white mix-blend-overlay">BLEND</h3>
+              <div class="absolute inset-0 bg-gradient-to-tr from-black/30 to-transparent mix-blend-multiply"></div>
+            </div>
+            <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded">mix-blend-overlay (text) & mix-blend-multiply (overlay)</code>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Code Reference Card -->
+    <div class="mt-16 bg-gray-900 text-white rounded-xl overflow-hidden shadow-2xl">
+      <div class="bg-gradient-to-r from-blue-600 to-purple-600 py-4 px-6">
+        <h3 class="font-bold text-xl">Quick Reference</h3>
+      </div>
+      <div class="p-6 space-y-6">
+        <div>
+          <h4 class="text-lg font-bold mb-2 text-blue-400">Background Size</h4>
+          <pre class="bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+bg-auto
+bg-cover     <span class="text-gray-500">// Scale to cover entire container</span>
+bg-contain   <span class="text-gray-500">// Scale to fit within container</span></pre>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-2 text-blue-400">Background Position</h4>
+          <pre class="bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+bg-bottom       bg-center       bg-left
+bg-left-bottom  bg-left-top     bg-right
+bg-right-bottom bg-right-top    bg-top</pre>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-2 text-blue-400">Background Attachment</h4>
+          <pre class="bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+bg-fixed    <span class="text-gray-500">// Fixed relative to viewport</span>
+bg-local    <span class="text-gray-500">// Scrolls with content</span>
+bg-scroll   <span class="text-gray-500">// Scrolls with element</span></pre>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-2 text-blue-400">Shadow Sizes</h4>
+          <pre class="bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+shadow-sm   <span class="text-gray-500">// Smallest shadow</span>
+shadow      <span class="text-gray-500">// Default shadow</span>
+shadow-md   shadow-lg   shadow-xl   shadow-2xl
+shadow-inner <span class="text-gray-500">// Inset shadow</span>
+shadow-none <span class="text-gray-500">// No shadow</span></pre>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-2 text-blue-400">Colored Shadows</h4>
+          <pre class="bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+shadow-red-500/50    <span class="text-gray-500">// Red shadow at 50% opacity</span>
+shadow-blue-500/75   <span class="text-gray-500">// Blue shadow at 75% opacity</span>
+shadow-green-500/100 <span class="text-gray-500">// Green shadow at 100% opacity</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Conclusion and Additional Resources -->
+<div class="max-w-5xl mx-auto px-6 py-16 bg-gradient-to-b from-white to-gray-50">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold text-gray-800">Summary & Best Practices</h2>
+      <p class="mt-3 text-gray-600">Key takeaways for using backgrounds and shadows effectively</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="font-bold text-xl mb-4 text-gray-800 flex items-center">
+          <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+          Backgrounds Best Practices
+        </h3>
+        
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Choose <strong>bg-cover</strong> for most hero images and card backgrounds</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Use <strong>bg-contain</strong> for logos and icons when the entire image must be visible</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Consider gradients instead of images for better performance and responsive design</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Use <strong>bg-fixed</strong> sparingly as it can cause performance issues on mobile devices</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="font-bold text-xl mb-4 text-gray-800 flex items-center">
+          <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+          </svg>
+          Shadows Best Practices
+        </h3>
+        
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Use shadow intensity to indicate elevation in your interface hierarchy</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Apply <strong>shadow-lg</strong> or <strong>shadow-xl</strong> for floating elements like modals and popovers</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Combine shadows with hover states to create interactive elements</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Use colored shadows to match your brand colors or create special effects</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Additional Resources -->
+    <div class="bg-white p-6 rounded-xl shadow-md mb-12">
+      <h3 class="font-bold text-xl mb-4 text-gray-800">Try it Yourself</h3>
+      <p class="mb-4 text-gray-700">Experiment with these code snippets in your own projects:</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gray-800 text-gray-300 p-4 rounded-lg overflow-x-auto">
+          <pre><code>// Hero image with overlay text
+&lt;div class="relative"&gt;
+  &lt;div 
+    class="h-64 bg-cover bg-center" 
+    style="background-image: url('image.jpg')"&gt;
+    &lt;div class="absolute inset-0 bg-black opacity-50"&gt;&lt;/div&gt;
+    &lt;div class="relative z-10 p-6 text-white"&gt;
+      &lt;h2 class="text-2xl font-bold"&gt;Title Here&lt;/h2&gt;
+      &lt;p&gt;Description text&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="bg-gray-800 text-gray-300 p-4 rounded-lg overflow-x-auto">
+          <pre><code>// Interactive card with hover effects
+&lt;div class="group"&gt;
+  &lt;div class="p-6 bg-white rounded-lg shadow-md 
+              group-hover:shadow-xl 
+              transition-all duration-300"&gt;
+    &lt;h3 class="font-bold text-gray-800 
+               group-hover:text-blue-500"&gt;Card Title&lt;/h3&gt;
+    &lt;p class="text-gray-600 mt-2"&gt;Card content&lt;/p&gt;
+    &lt;button class="mt-4 px-4 py-2 bg-gray-100 rounded 
+                   group-hover:bg-blue-500 
+                   group-hover:text-white"&gt;
+      Learn More
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-12 text-center text-gray-500 text-sm">
+      <p>Created with Tailwind CSS • Learn more at <a href="https://tailwindcss.com" class="text-blue-500 hover:underline">tailwindcss.com</a></p>
+    </div>
+  </div>
+</div>

@@ -4,71 +4,395 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS typography utilities for frontend developers" />
+    <meta name="author" content="Tailwind CSS Documentation" />
+    <meta property="og:title" content="Tailwind CSS Typography Documentation" />
+    <meta property="og:description" content="Learn how to use Tailwind CSS typography utilities to create beautiful text styles" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#3B82F6" />
+    <meta name="color-scheme" content="light" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'%3E%3Cpath d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'%3E%3C/path%3E%3C/svg%3E" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'%3E%3Cpath d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'%3E%3C/path%3E%3C/svg%3E" />
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Typography</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            heading: ['Poppins', 'ui-sans-serif', 'system-ui'],
+          },
+          extend: {
+            animation: {
+              'gradient': 'gradient 8s ease infinite',
+              'float': 'float 3s ease-in-out infinite',
+            },
+            keyframes: {
+              gradient: {
+                '0%, 100%': { backgroundPosition: '0% 50%' },
+                '50%': { backgroundPosition: '100% 50%' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            },
+            boxShadow: {
+              'inner-lg': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+              'soft': '0 4px 20px rgba(0, 0, 0, 0.08)',
+            },
+            colors: {
+              'primary': {
+                light: '#93C5FD',
+                DEFAULT: '#3B82F6', 
+                dark: '#1D4ED8',
+              },
+            },
+            typography: {
+              DEFAULT: {
+                css: {
+                  maxWidth: '65ch',
+                  color: 'inherit',
+                  a: {
+                    color: '#3B82F6',
+                    textDecoration: 'none',
+                    '&:hover': {
+                      color: '#1D4ED8',
+                    },
+                  },
+                },
+              },
+            },
+          }
+        }
+      }
+    </script>
+    
+    <!-- Custom inline styles for additional features -->
+    <style type="text/css">
+      .code-highlight {
+        background: rgb(224, 242, 254);
+        border-radius: 0.25rem;
+        padding: 0.125rem 0.25rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      
+      .section-fade-in {
+        animation: fadeIn 0.8s ease-in-out;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      ::selection {
+        background-color: #93C5FD;
+        color: #1E3A8A;
+      }
+    </style>
+    
+    <title>Tailwind CSS Typography Documentation</title>
   </head>
-  <body>
-    <!-- Font Family -->
-    <p class="font-sans">Tailwind is awesome</p>
-    <p class="font-serif">Tailwind is awesome</p>
-    <p class="font-mono">Tailwind is awesome</p>
+  <body class="p-8 bg-gradient-to-br from-gray-50 to-gray-100">
+    <!-- Documentation Header -->
+    <header class="mb-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 shadow-lg animate-gradient bg-[length:200%_200%]">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl font-extrabold text-white mb-4 tracking-tight">
+          <span class="inline-block transform hover:scale-105 transition-transform duration-300">Tailwind CSS</span>
+          <span class="block text-yellow-300 mt-2">Typography</span>
+        </h1>
+        <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+          A comprehensive guide to Tailwind CSS typography utilities for creating visually appealing and readable text content.
+        </p>
+        <div class="mt-6 flex justify-center space-x-4">
+          <a href="#examples" class="px-6 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 rounded-full text-white font-medium backdrop-blur-sm">View Examples</a>
+          <a href="#practices" class="px-6 py-2 bg-white bg-opacity-10 hover:bg-opacity-20 transition-all duration-300 rounded-full text-white font-medium backdrop-blur-sm">Best Practices</a>
+        </div>
+      </div>
+    </header>
 
-    <!-- Font Size -->
-    <p class="text-xs">Tailwind is awesome</p>
-    <p class="text-sm">Tailwind is awesome</p>
-    <p class="text-base">Tailwind is awesome</p>
-    <p class="text-lg">Tailwind is awesome</p>
-    <p class="text-xl">Tailwind is awesome</p>
-    <p class="text-2xl">Tailwind is awesome</p>
-    <p class="text-3xl">Tailwind is awesome</p>
-    <p class="text-4xl">Tailwind is awesome</p>
-    <p class="text-5xl">Tailwind is awesome</p>
-    <p class="text-6xl">Tailwind is awesome</p>
-    <p class="text-7xl">Tailwind is awesome</p>
-    <p class="text-8xl">Tailwind is awesome</p>
-    <p class="text-9xl">Tailwind is awesome</p>
+    <!-- Technical Documentation -->
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-xl mb-10 border border-gray-100">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 pb-3 border-b border-gray-200 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Introduction
+      </h2>
+      <p class="mb-4 text-gray-700 leading-relaxed">
+        Typography is a fundamental aspect of web design that affects readability, accessibility, and overall user experience. 
+        Tailwind CSS provides a wide range of utility classes to control text appearance without writing custom CSS.
+      </p>
+      <p class="mb-8 text-gray-700 leading-relaxed">
+        This documentation demonstrates the key typography features in Tailwind CSS and how they can be applied to create 
+        professional and consistent text styles across your projects.
+      </p>
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r-md">
+        <p class="text-blue-700">
+          <strong>Pro Tip:</strong> Combine typography utilities with responsive prefixes (like <code class="bg-blue-100 px-1 py-0.5 rounded">md:text-lg</code>) to create designs that adapt perfectly to different screen sizes.
+        </p>
+      </div>
 
-    <!-- Font Weight -->
-    <p class="font-light">Tailwind is awesome</p>
-    <p class="font-normal">Tailwind is awesome</p>
-    <p class="font-medium">Tailwind is awesome</p>
-    <p class="font-semibold">Tailwind is awesome</p>
-    <p class="font-bold">Tailwind is awesome</p>
+      <!-- Font Family Section -->
+      <section class="mb-10">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Font Family</h3>
+        <p class="mb-3">
+          Font families define the overall character of your text. Tailwind provides three base font family utilities:
+        </p>
+        <div class="bg-gray-100 p-4 rounded-md mb-4">
+          <p class="font-sans mb-2"><span class="font-semibold">font-sans:</span> Modern, clean UI font (default)</p>
+          <p class="font-serif mb-2"><span class="font-semibold">font-serif:</span> Traditional, authoritative look</p>
+          <p class="font-mono"><span class="font-semibold">font-mono:</span> Monospaced for code displays</p>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p><strong>Use cases:</strong> Use sans-serif for UI elements and body text, serif for headings or formal content, and monospace for code snippets or technical documentation.</p>
+        </div>
+      </section>
 
-    <!-- Letter Spacing -->
-    <p class="tracking-tight">Tailwind is awesome</p>
-    <p class="tracking-normal">Tailwind is awesome</p>
-    <p class="tracking-wide">Tailwind is awesome</p>
+      <!-- Font Size Section -->
+      <section class="mb-10">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Font Size</h3>
+        <p class="mb-3">
+          Control text size with responsive utilities ranging from tiny to extra large:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-gray-100 p-4 rounded-md mb-4">
+          <p class="text-xs">text-xs (12px)</p>
+          <p class="text-sm">text-sm (14px)</p>
+          <p class="text-base">text-base (16px)</p>
+          <p class="text-lg">text-lg (18px)</p>
+          <p class="text-xl">text-xl (20px)</p>
+          <p class="text-2xl">text-2xl (24px)</p>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p><strong>Use cases:</strong> Establish visual hierarchy with larger sizes for headings and smaller sizes for captions or secondary information. The responsive variants allow text to adapt to different screen sizes.</p>
+        </div>
+      </section>
 
-    <!-- Text Alignment -->
-    <p class="text-left">Tailwind is awesome</p>
-    <p class="text-center">Tailwind is awesome</p>
-    <p class="text-right">Tailwind is awesome</p>
+      <!-- Font Weight Section -->
+      <section class="mb-10">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Font Weight</h3>
+        <p class="mb-3">
+          Adjust text thickness to create emphasis or reduce visual prominence:
+        </p>
+        <div class="bg-gray-100 p-4 rounded-md mb-4">
+          <p class="font-light mb-2">font-light: Lighter than normal text</p>
+          <p class="font-normal mb-2">font-normal: Default text weight</p>
+          <p class="font-medium mb-2">font-medium: Slightly bolder than normal</p>
+          <p class="font-semibold mb-2">font-semibold: Semi-bold emphasis</p>
+          <p class="font-bold">font-bold: Strong emphasis</p>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p><strong>Use cases:</strong> Use font weights to create visual hierarchy without changing font size. Bold and semibold weights are excellent for headings or to highlight important information.</p>
+        </div>
+      </section>
 
-    <!-- Text Decoration -->
-    <p class="underline decoration-4">Tailwind is awesome</p>
-    <p class="line-through">Tailwind is awesome</p>
-    <p class="overline">Tailwind is awesome</p>
-    <p class="no-underline">Tailwind is awesome</p>
+      <!-- Letter Spacing Section -->
+      <section class="mb-10">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Letter Spacing</h3>
+        <p class="mb-3">
+          Control the space between characters for improved readability or style:
+        </p>
+        <div class="bg-gray-100 p-4 rounded-md mb-4">
+          <p class="tracking-tight mb-2">tracking-tight: Closer letter spacing</p>
+          <p class="tracking-normal mb-2">tracking-normal: Default letter spacing</p>
+          <p class="tracking-wide">tracking-wide: Wider letter spacing</p>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p><strong>Use cases:</strong> Tighter tracking works well for large headlines, while wider tracking can improve readability for all-caps text and improve the appearance of sparse characters.</p>
+        </div>
+      </section>
 
-    <!-- Decoration Style -->
-    <p class="underline decoration-solid">Tailwind is awesome</p>
-    <p class="underline decoration-double">Tailwind is awesome</p>
-    <p class="underline decoration-dotted">Tailwind is awesome</p>
-    <p class="underline decoration-dashed">Tailwind is awesome</p>
-    <p class="underline decoration-wavy">Tailwind is awesome</p>
+      <!-- Text Alignment Section -->
+      <section class="mb-10">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Text Alignment</h3>
+        <p class="mb-3">
+          Control how text aligns horizontally within its container:
+        </p>
+        <div class="bg-gray-100 p-4 rounded-md mb-4">
+          <p class="text-left mb-2 border-b pb-2">text-left: Align text to the left (default)</p>
+          <p class="text-center mb-2 border-b pb-2">text-center: Center align text</p>
+          <p class="text-right">text-right: Align text to the right</p>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p><strong>Use cases:</strong> Left alignment is best for most paragraph text, center alignment works well for headings or short pieces of text, and right alignment can be useful for timestamps or secondary information.</p>
+        </div>
+      </section>
 
-    <!-- Decoration Offset -->
-    <p class="underline underline-offset-1">Tailwind is awesome</p>
-    <p class="underline underline-offset-2">Tailwind is awesome</p>
-    <p class="underline underline-offset-4">Tailwind is awesome</p>
-    <p class="underline underline-offset-8">Tailwind is awesome</p>
+      <!-- Text Decoration Section -->
+      <section class="mb-10">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Text Decoration</h3>
+        <p class="mb-3">
+          Add lines to text for emphasis or style:
+        </p>
+        <div class="bg-gray-100 p-4 rounded-md mb-4">
+          <p class="underline mb-2">underline: Underlined text</p>
+          <p class="line-through mb-2">line-through: Strikethrough text</p>
+          <p class="overline mb-2">overline: Line above text</p>
+          <p class="no-underline">no-underline: Remove text decoration</p>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p><strong>Use cases:</strong> Use underline for links (though this is often handled by link styling), strikethrough for deleted content or discounted prices, and no-underline to remove default underlines from links.</p>
+        </div>
+      </section>
 
-    <!-- Text Transform -->
-    <p class="normal-case">Tailwind is awesome</p>
-    <p class="uppercase">Tailwind is awesome</p>
-    <p class="lowercase">Tailwind is awesome</p>
-    <p class="capitalize">Tailwind is awesome</p>
+      <!-- Decoration Style & Offset Section -->
+      <section class="mb-10">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Decoration Style & Offset</h3>
+        <p class="mb-3">
+          Customize the appearance and position of text decorations:
+        </p>
+        <div class="bg-gray-100 p-4 rounded-md mb-4">
+          <p class="underline decoration-solid mb-2">decoration-solid</p>
+          <p class="underline decoration-dotted mb-2">decoration-dotted</p>
+          <p class="underline decoration-dashed mb-2">decoration-dashed</p>
+          <p class="underline decoration-wavy mb-2">decoration-wavy</p>
+          <p class="underline underline-offset-4">underline-offset-4</p>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p><strong>Use cases:</strong> Different decoration styles can enhance the visual appeal of links or headings. Adjusting offset can improve readability by preventing decorations from overlapping with descenders in text.</p>
+        </div>
+      </section>
+
+      <!-- Text Transform Section -->
+      <section class="mb-10">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Text Transform</h3>
+        <p class="mb-3">
+          Control the capitalization of text:
+        </p>
+        <div class="bg-gray-100 p-4 rounded-md mb-4">
+          <p class="normal-case mb-2">normal-case: Text as entered</p>
+          <p class="uppercase mb-2">uppercase: ALL CAPS</p>
+          <p class="lowercase mb-2">lowercase: all lowercase</p>
+          <p class="capitalize">capitalize: First Letter Of Each Word</p>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p><strong>Use cases:</strong> Use uppercase for headings, buttons, or labels to create visual impact. Lowercase can soften text, while capitalize works well for titles and proper nouns.</p>
+        </div>
+      </section>
+
+      <!-- Best Practices Section -->
+      <section class="mb-10">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Typography Best Practices</h3>
+        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+          <li><strong>Readability:</strong> Prioritize readability over aesthetics. Use appropriate font sizes and line heights.</li>
+          <li><strong>Contrast:</strong> Ensure sufficient contrast between text and background colors.</li>
+          <li><strong>Consistency:</strong> Maintain consistent typography across your application.</li>
+          <li><strong>Hierarchy:</strong> Establish clear visual hierarchy using font size, weight, and color.</li>
+          <li><strong>Responsive design:</strong> Use Tailwind's responsive prefixes (sm:, md:, lg:) to adjust typography for different screen sizes.</li>
+        </ul>
+      </section>
+      
+      <div class="border-t pt-6 mt-6">
+        <p class="text-gray-600">Typography is both an art and a science—these utilities provide the technical tools, but thoughtful application is what creates truly effective designs.</p>
+      </div>
+    </div>
+
+    <!-- Original Examples Below -->
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Typography Examples</h2>
+      
+      <!-- Font Family -->
+      <h3 class="text-lg font-medium text-gray-700 mb-2">Font Family</h3>
+      <div class="mb-6">
+        <p class="font-sans mb-1">Tailwind is awesome (font-sans)</p>
+        <p class="font-serif mb-1">Tailwind is awesome (font-serif)</p>
+        <p class="font-mono">Tailwind is awesome (font-mono)</p>
+      </div>
+
+      <!-- Font Size -->
+      <h3 class="text-lg font-medium text-gray-700 mb-2">Font Size</h3>
+      <div class="mb-6">
+        <p class="text-xs">Tailwind is awesome</p>
+        <p class="text-sm">Tailwind is awesome</p>
+        <p class="text-base">Tailwind is awesome</p>
+        <p class="text-lg">Tailwind is awesome</p>
+        <p class="text-xl">Tailwind is awesome</p>
+        <p class="text-2xl">Tailwind is awesome</p>
+        <p class="text-3xl">Tailwind is awesome</p>
+        <p class="text-4xl">Tailwind is awesome</p>
+        <p class="text-5xl">Tailwind is awesome</p>
+        <p class="text-6xl">Tailwind is awesome</p>
+        <p class="text-7xl">Tailwind is awesome</p>
+        <p class="text-8xl">Tailwind is awesome</p>
+        <p class="text-9xl">Tailwind is awesome</p>
+      </div>
+
+      <!-- Font Weight -->
+      <h3 class="text-lg font-medium text-gray-700 mb-2">Font Weight</h3>
+      <div class="mb-6">
+        <p class="font-light">Tailwind is awesome</p>
+        <p class="font-normal">Tailwind is awesome</p>
+        <p class="font-medium">Tailwind is awesome</p>
+        <p class="font-semibold">Tailwind is awesome</p>
+        <p class="font-bold">Tailwind is awesome</p>
+      </div>
+
+      <!-- Letter Spacing -->
+      <h3 class="text-lg font-medium text-gray-700 mb-2">Letter Spacing</h3>
+      <div class="mb-6">
+        <p class="tracking-tight">Tailwind is awesome</p>
+        <p class="tracking-normal">Tailwind is awesome</p>
+        <p class="tracking-wide">Tailwind is awesome</p>
+      </div>
+
+      <!-- Text Alignment -->
+      <h3 class="text-lg font-medium text-gray-700 mb-2">Text Alignment</h3>
+      <div class="mb-6">
+        <p class="text-left">Tailwind is awesome</p>
+        <p class="text-center">Tailwind is awesome</p>
+        <p class="text-right">Tailwind is awesome</p>
+      </div>
+
+      <!-- Text Decoration -->
+      <h3 class="text-lg font-medium text-gray-700 mb-2">Text Decoration</h3>
+      <div class="mb-6">
+        <p class="underline decoration-4">Tailwind is awesome</p>
+        <p class="line-through">Tailwind is awesome</p>
+        <p class="overline">Tailwind is awesome</p>
+        <p class="no-underline">Tailwind is awesome</p>
+      </div>
+
+      <!-- Decoration Style -->
+      <h3 class="text-lg font-medium text-gray-700 mb-2">Decoration Style</h3>
+      <div class="mb-6">
+        <p class="underline decoration-solid">Tailwind is awesome</p>
+        <p class="underline decoration-double">Tailwind is awesome</p>
+        <p class="underline decoration-dotted">Tailwind is awesome</p>
+        <p class="underline decoration-dashed">Tailwind is awesome</p>
+        <p class="underline decoration-wavy">Tailwind is awesome</p>
+      </div>
+
+      <!-- Decoration Offset -->
+      <h3 class="text-lg font-medium text-gray-700 mb-2">Decoration Offset</h3>
+      <div class="mb-6">
+        <p class="underline underline-offset-1">Tailwind is awesome</p>
+        <p class="underline underline-offset-2">Tailwind is awesome</p>
+        <p class="underline underline-offset-4">Tailwind is awesome</p>
+        <p class="underline underline-offset-8">Tailwind is awesome</p>
+      </div>
+
+      <!-- Text Transform -->
+      <h3 class="text-lg font-medium text-gray-700 mb-2">Text Transform</h3>
+      <div class="mb-6">
+        <p class="normal-case">Tailwind is awesome</p>
+        <p class="uppercase">Tailwind is awesome</p>
+        <p class="lowercase">Tailwind is awesome</p>
+        <p class="capitalize">Tailwind is awesome</p>
+      </div>
+    </div>
+
+    <footer class="max-w-4xl mx-auto mt-8 text-center text-gray-600 text-sm">
+      <p>This documentation showcases Tailwind CSS typography utilities for frontend developers.</p>
+    </footer>
   </body>
 </html>
 

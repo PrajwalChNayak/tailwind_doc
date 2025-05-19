@@ -4,177 +4,564 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS borders - learn about border width, color, radius, and outline properties with interactive examples" />
+    <meta name="author" content="Tailwind Documentation" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M6 5H18V19H6V5ZM4 3V21H20V3H4Z'/%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Borders</title>
+    <title>Tailwind CSS Borders | Interactive Documentation</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4F46E5',
+              secondary: '#8B5CF6'
+            },
+            borderWidth: {
+              '3': '3px',
+              '6': '6px',
+              '10': '10px',
+              '12': '12px',
+              '16': '16px'
+            },
+            borderRadius: {
+              '4xl': '2rem',
+              '5xl': '2.5rem',
+              'special': '0.375rem 1.5rem 0.375rem 1.5rem',
+              'diagonal': '2rem 0 2rem 0'
+            }
+          },
+          borderStyles: {
+            DEFAULT: 'solid',
+            'none': 'none',
+            'solid': 'solid',
+            'dashed': 'dashed',
+            'dotted': 'dotted',
+            'double': 'double',
+            'groove': 'groove',
+            'ridge': 'ridge',
+            'inset': 'inset',
+            'outset': 'outset'
+          }
+        },
+        plugins: [
+          function({ addUtilities }) {
+            const newUtilities = {
+              '.border-gradient-primary': {
+                borderWidth: '4px',
+                borderStyle: 'solid',
+                borderImage: 'linear-gradient(to right, #4F46E5, #8B5CF6) 1'
+              },
+              '.border-gradient-rainbow': {
+                borderWidth: '4px',
+                borderStyle: 'solid',
+                borderImage: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1'
+              },
+              '.border-dashed-fancy': {
+                borderWidth: '3px',
+                borderStyle: 'dashed',
+                borderColor: '#4F46E5'
+              },
+              '.border-double-fancy': {
+                borderWidth: '4px',
+                borderStyle: 'double',
+                borderColor: '#8B5CF6'
+              }
+            }
+            addUtilities(newUtilities)
+          }
+        ]
+      }
+    </script>
+    <style>
+      @keyframes border-pulse {
+        0% { border-color: rgba(79, 70, 229, 1); }
+        50% { border-color: rgba(79, 70, 229, 0.5); }
+        100% { border-color: rgba(79, 70, 229, 1); }
+      }
+      
+      .border-pulse {
+        animation: border-pulse 2s infinite ease-in-out;
+      }
+      
+      @keyframes border-rotate {
+        0% { border-image: linear-gradient(0deg, #4F46E5, #8B5CF6) 1; }
+        100% { border-image: linear-gradient(360deg, #4F46E5, #8B5CF6) 1; }
+      }
+      
+      .border-rotate {
+        border-width: 4px;
+        border-style: solid;
+        animation: border-rotate 3s infinite linear;
+      }
+      
+      @keyframes border-dash {
+        to { background-position: 100% 0; }
+      }
+      
+      .border-animated-dash {
+        background-image: linear-gradient(to right, #4F46E5 50%, transparent 50%);
+        background-size: 20px 2px;
+        background-repeat: repeat-x;
+        background-position: 0 bottom;
+        animation: border-dash 20s infinite linear;
+      }
+      
+      .border-style-demo {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        background-color: #f3f4f6;
+      }
+      
+      .border-style-solid { border-style: solid; border-width: 4px; border-color: #4F46E5; }
+      .border-style-dashed { border-style: dashed; border-width: 4px; border-color: #8B5CF6; }
+      .border-style-dotted { border-style: dotted; border-width: 4px; border-color: #06b6d4; }
+      .border-style-double { border-style: double; border-width: 4px; border-color: #f472b6; }
+      .border-style-groove { border-style: groove; border-width: 4px; border-color: #a855f7; }
+      .border-style-ridge { border-style: ridge; border-width: 4px; border-color: #65a30d; }
+      .border-style-inset { border-style: inset; border-width: 4px; }
+      .border-style-outset { border-style: outset; border-width: 4px; }
+    </style>
+    <!-- Live Border Style Editor -->
+    <script>
+      // Update border preview function
+      function updateBorderPreview() {
+        const width = document.getElementById('border-width').value;
+        const style = document.getElementById('border-style').value;
+        const color = document.getElementById('border-color').value;
+        const radius = document.getElementById('border-radius').value;
+        
+        const preview = document.getElementById('border-preview');
+        preview.style.borderWidth = width + 'px';
+        preview.style.borderStyle = style;
+        preview.style.borderColor = color;
+        preview.style.borderRadius = radius + 'px';
+        
+        document.getElementById('border-code').textContent = 
+          `border-[${width}px] border-[${style}] border-[${color}] rounded-[${radius}px]`;
+      }
+      
+      // Initialize after page load
+      document.addEventListener('DOMContentLoaded', function() {
+        if(document.getElementById('border-width')) {
+          updateBorderPreview();
+          
+          // Add event listeners to all controls
+          document.getElementById('border-width').addEventListener('input', updateBorderPreview);
+          document.getElementById('border-style').addEventListener('change', updateBorderPreview);
+          document.getElementById('border-color').addEventListener('input', updateBorderPreview);
+          document.getElementById('border-radius').addEventListener('input', updateBorderPreview);
+        }
+      });
+    </script>
   </head>
-  <body>
-    <!-- Border Width & Colors -->
-    <div class="w-96 m-3 p-5 border">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 border-2 border-blue-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 border-4 border-red-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 border-x-2 border-zinc-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 border-x-2 border-zinc-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 border-y-2 border-zinc-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 border-r-2 border-zinc-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 border-l-2 border-zinc-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 border-b-2 border-zinc-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 border-t-2 border-zinc-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-
-    <!-- Border Radius -->
-    <div class="w-96 m-3 p-5 bg-gray-300 rounded">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 bg-gray-300 rounded-lg">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 bg-gray-300 rounded-xl">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 bg-gray-300 rounded-2xl">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 bg-gray-300 rounded-3xl">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
-    </div>
-    <div class="w-96 m-3 p-5 bg-gray-300 rounded-full">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
+  <body class="bg-gray-50 p-8 font-sans">
+    <!-- Documentation Section -->
+    <div class="max-w-5xl mx-auto mb-12">
+      <h1 class="text-4xl font-bold text-gray-800 mb-6">Tailwind CSS Borders</h1>
+      
+      <div class="bg-white p-8 rounded-lg shadow-md mb-10">
+        <p class="text-lg text-gray-700 mb-6">
+          Borders in Tailwind CSS provide a flexible way to define edges around elements, improving visual hierarchy and separation in your UI. They're essential for creating cards, buttons, inputs, and other components that need clear boundaries.
+        </p>
+        
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Border Properties</h2>
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="font-bold text-xl mb-3 text-indigo-700">Border Width</h3>
+            <p class="mb-3">Control the thickness of borders with utility classes like <code class="bg-gray-100 px-1 py-0.5 rounded">border</code>, <code class="bg-gray-100 px-1 py-0.5 rounded">border-2</code>, and <code class="bg-gray-100 px-1 py-0.5 rounded">border-4</code>.</p>
+            <div class="flex flex-col gap-3">
+              <div class="border p-3 rounded bg-white">border</div>
+              <div class="border-2 p-3 rounded bg-white">border-2</div>
+              <div class="border-4 p-3 rounded bg-white">border-4</div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-xl mb-3 text-indigo-700">Border Color</h3>
+            <p class="mb-3">Apply colors with <code class="bg-gray-100 px-1 py-0.5 rounded">border-{color}-{shade}</code> utilities.</p>
+            <div class="flex flex-col gap-3">
+              <div class="border-2 border-blue-500 p-3 rounded bg-white">border-blue-500</div>
+              <div class="border-2 border-red-500 p-3 rounded bg-white">border-red-500</div>
+              <div class="border-2 border-green-500 p-3 rounded bg-white">border-green-500</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="font-bold text-xl mb-3 text-indigo-700">Border Sides</h3>
+            <p class="mb-3">Target specific sides with <code class="bg-gray-100 px-1 py-0.5 rounded">border-{side}-{width}</code> utilities.</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="border-t-4 border-indigo-500 p-3 bg-white rounded">border-t-4</div>
+              <div class="border-r-4 border-pink-500 p-3 bg-white rounded">border-r-4</div>
+              <div class="border-b-4 border-yellow-500 p-3 bg-white rounded">border-b-4</div>
+              <div class="border-l-4 border-green-500 p-3 bg-white rounded">border-l-4</div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-xl mb-3 text-indigo-700">Border Radius</h3>
+            <p class="mb-3">Round corners with <code class="bg-gray-100 px-1 py-0.5 rounded">rounded-{size}</code> utilities.</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-white border p-3 rounded-none">rounded-none</div>
+              <div class="bg-white border p-3 rounded">rounded</div>
+              <div class="bg-white border p-3 rounded-lg">rounded-lg</div>
+              <div class="bg-white border p-3 rounded-full">rounded-full</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-8">
+          <h3 class="font-bold text-xl mb-3 text-indigo-700">Outline</h3>
+          <p class="mb-3">Use <code class="bg-gray-100 px-1 py-0.5 rounded">outline</code> for borders that don't affect layout.</p>
+          <div class="flex gap-4 flex-wrap">
+            <button class="outline outline-2 outline-blue-500 outline-offset-2 px-4 py-2 rounded">Outline Button</button>
+            <button class="outline outline-4 outline-red-500 outline-offset-2 px-4 py-2 rounded">Thicker Outline</button>
+          </div>
+        </div>
+        
+        <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+          <h3 class="font-bold text-lg mb-2 text-indigo-800">Use Cases</h3>
+          <ul class="list-disc pl-5 space-y-2 text-gray-700">
+            <li><strong>UI Components</strong> - Define boundaries for cards, panels, and modals</li>
+            <li><strong>Form Elements</strong> - Style inputs, textareas, and select menus</li>
+            <li><strong>Interactive States</strong> - Highlight focus, hover, and active states</li>
+            <li><strong>Data Tables</strong> - Create cell borders and table outlines</li>
+            <li><strong>Content Separation</strong> - Visually divide sections of content</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <!-- Specific Sides -->
-    <div class="w-96 m-3 p-5 bg-gray-300 rounded-t-xl">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
+    <!-- Enhanced Border Examples Section -->
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Border Examples</h2>
+      
+      <!-- Tabs for Examples -->
+      <div class="mb-8 border-b border-gray-200">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
+          <li class="mr-2">
+            <a href="#border-width" class="inline-block p-4 border-b-2 border-primary text-primary rounded-t-lg active">Border Width</a>
+          </li>
+          <li class="mr-2">
+            <a href="#border-sides" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:border-gray-300">Border Sides</a>
+          </li>
+          <li class="mr-2">
+            <a href="#border-radius" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:border-gray-300">Border Radius</a>
+          </li>
+          <li>
+            <a href="#border-outline" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:border-gray-300">Outline</a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Interactive Examples -->
+      <div class="bg-white p-8 rounded-lg shadow-md mb-10">
+        <h3 id="border-width" class="text-xl font-bold text-indigo-700 mb-4">Border Width & Colors</h3>
+        
+        <!-- Border Width Examples -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div class="border p-5 rounded hover:border-blue-500 transition-colors duration-300">
+            <code class="text-sm font-mono bg-gray-100 px-2 py-1 rounded">border</code>
+            <p class="mt-2 text-gray-600">Default 1px border</p>
+          </div>
+          
+          <div class="border-2 p-5 rounded border-blue-500 hover:border-purple-500 transition-colors duration-300">
+            <code class="text-sm font-mono bg-gray-100 px-2 py-1 rounded">border-2 border-blue-500</code>
+            <p class="mt-2 text-gray-600">2px blue border</p>
+          </div>
+          
+          <div class="border-4 p-5 rounded border-red-500 hover:border-orange-500 transition-colors duration-300">
+            <code class="text-sm font-mono bg-gray-100 px-2 py-1 rounded">border-4 border-red-500</code>
+            <p class="mt-2 text-gray-600">4px red border</p>
+          </div>
+        </div>
+        
+        <h3 id="border-sides" class="text-xl font-bold text-indigo-700 mb-4">Border Sides</h3>
+        
+        <!-- Border Sides Examples -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div class="p-5 rounded bg-white border-x-2 border-zinc-500 hover:border-indigo-500 transition-colors duration-300">
+            <code class="text-sm font-mono bg-gray-100 px-2 py-1 rounded">border-x-2</code>
+            <p class="mt-2 text-gray-600">Left & Right borders</p>
+          </div>
+          
+          <div class="p-5 rounded bg-white border-y-2 border-zinc-500 hover:border-indigo-500 transition-colors duration-300">
+            <code class="text-sm font-mono bg-gray-100 px-2 py-1 rounded">border-y-2</code>
+            <p class="mt-2 text-gray-600">Top & Bottom borders</p>
+          </div>
+          
+          <div class="p-5 rounded bg-white border-t-2 border-zinc-500 hover:border-indigo-500 transition-colors duration-300">
+            <code class="text-sm font-mono bg-gray-100 px-2 py-1 rounded">border-t-2</code>
+            <p class="mt-2 text-gray-600">Top border only</p>
+          </div>
+          
+          <div class="p-5 rounded bg-white border-r-2 border-zinc-500 hover:border-indigo-500 transition-colors duration-300">
+            <code class="text-sm font-mono bg-gray-100 px-2 py-1 rounded">border-r-2</code>
+            <p class="mt-2 text-gray-600">Right border only</p>
+          </div>
+          
+          <div class="p-5 rounded bg-white border-b-2 border-zinc-500 hover:border-indigo-500 transition-colors duration-300">
+            <code class="text-sm font-mono bg-gray-100 px-2 py-1 rounded">border-b-2</code>
+            <p class="mt-2 text-gray-600">Bottom border only</p>
+          </div>
+          
+          <div class="p-5 rounded bg-white border-l-2 border-zinc-500 hover:border-indigo-500 transition-colors duration-300">
+            <code class="text-sm font-mono bg-gray-100 px-2 py-1 rounded">border-l-2</code>
+            <p class="mt-2 text-gray-600">Left border only</p>
+          </div>
+        </div>
+        
+        <h3 id="border-radius" class="text-xl font-bold text-indigo-700 mb-4">Border Radius</h3>
+        
+        <!-- Border Radius Examples -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div class="p-5 bg-gray-100 rounded hover:bg-gray-200 transition-colors duration-300">
+            <code class="text-sm font-mono bg-white px-2 py-1 rounded">rounded</code>
+            <p class="mt-2 text-gray-600">Default rounded corners (0.25rem)</p>
+          </div>
+          
+          <div class="p-5 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-300">
+            <code class="text-sm font-mono bg-white px-2 py-1 rounded">rounded-lg</code>
+            <p class="mt-2 text-gray-600">Large rounded corners (0.5rem)</p>
+          </div>
+          
+          <div class="p-5 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors duration-300">
+            <code class="text-sm font-mono bg-white px-2 py-1 rounded">rounded-xl</code>
+            <p class="mt-2 text-gray-600">Extra large corners (0.75rem)</p>
+          </div>
+          
+          <div class="p-5 bg-gray-100 rounded-2xl hover:bg-gray-200 transition-colors duration-300">
+            <code class="text-sm font-mono bg-white px-2 py-1 rounded">rounded-2xl</code>
+            <p class="mt-2 text-gray-600">2x large corners (1rem)</p>
+          </div>
+          
+          <div class="p-5 bg-gray-100 rounded-3xl hover:bg-gray-200 transition-colors duration-300">
+            <code class="text-sm font-mono bg-white px-2 py-1 rounded">rounded-3xl</code>
+            <p class="mt-2 text-gray-600">3x large corners (1.5rem)</p>
+          </div>
+          
+          <div class="p-5 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors duration-300">
+            <code class="text-sm font-mono bg-white px-2 py-1 rounded">rounded-full</code>
+            <p class="mt-2 text-gray-600">Full rounded corners (9999px)</p>
+          </div>
+          
+          <div class="p-5 bg-gray-100 rounded-t-xl hover:bg-gray-200 transition-colors duration-300">
+            <code class="text-sm font-mono bg-white px-2 py-1 rounded">rounded-t-xl</code>
+            <p class="mt-2 text-gray-600">Top corners rounded only</p>
+          </div>
+          
+          <div class="p-5 bg-gray-100 rounded-b-xl hover:bg-gray-200 transition-colors duration-300">
+            <code class="text-sm font-mono bg-white px-2 py-1 rounded">rounded-b-xl</code>
+            <p class="mt-2 text-gray-600">Bottom corners rounded only</p>
+          </div>
+        </div>
+        
+        <h3 id="border-outline" class="text-xl font-bold text-indigo-700 mb-4">Outline Examples</h3>
+        
+        <!-- Outline Examples -->
+        <div class="flex flex-wrap gap-4 mb-8">
+          <button class="px-4 py-2 bg-white outline outline-offset-2 outline-1 outline-blue-500 hover:outline-2 transition-all duration-300 rounded">
+            outline outline-1
+          </button>
+          
+          <button class="px-4 py-2 bg-white outline outline-offset-2 outline-2 outline-purple-500 hover:outline-4 transition-all duration-300 rounded">
+            outline outline-2
+          </button>
+          
+          <button class="px-4 py-2 bg-white outline outline-offset-2 outline-4 outline-pink-500 hover:outline-offset-4 transition-all duration-300 rounded">
+            outline outline-4
+          </button>
+          
+          <button class="px-4 py-2 bg-indigo-500 text-white outline outline-offset-2 outline-2 outline-indigo-300 hover:outline-indigo-200 transition-all duration-300 rounded">
+            Styled Button with Outline
+          </button>
+        </div>
+        
+        <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+          <h4 class="font-bold text-lg mb-2 text-blue-800">Pro Tip</h4>
+          <p class="text-blue-700">
+            Unlike regular borders, outlines don't take up space in the document flow. They're perfect for focus states
+            and interactive elements where you don't want to shift the layout when highlighting.
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="w-96 m-3 p-5 bg-gray-300 rounded-b-xl">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consequuntur
-      reiciendis odio eaque vitae nostrum sunt tempora deleniti repellendus
-      dolores.
+
+    
+    <!-- Interactive Border Playground -->
+    <div class="max-w-5xl mx-auto mb-16">
+      <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg">
+          <h2 class="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Interactive Border Playground</h2>
+          
+          <div class="grid lg:grid-cols-2 gap-8 mb-8">
+            <!-- Controls -->
+            <div class="space-y-6">
+              <div>
+                <label for="border-width" class="block font-medium text-gray-700 mb-2">Border Width</label>
+                <input type="range" id="border-width" min="0" max="16" value="4" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>0px</span>
+                  <span>8px</span>
+                  <span>16px</span>
+                </div>
+              </div>
+              
+              <div>
+                <label for="border-style" class="block font-medium text-gray-700 mb-2">Border Style</label>
+                <select id="border-style" class="w-full p-2 border border-gray-300 rounded-md">
+                  <option value="solid">solid</option>
+                  <option value="dashed">dashed</option>
+                  <option value="dotted">dotted</option>
+                  <option value="double">double</option>
+                  <option value="groove">groove</option>
+                  <option value="ridge">ridge</option>
+                  <option value="inset">inset</option>
+                  <option value="outset">outset</option>
+                </select>
+              </div>
+              
+              <div>
+                <label for="border-color" class="block font-medium text-gray-700 mb-2">Border Color</label>
+                <input type="color" id="border-color" value="#4F46E5" class="w-full h-10 rounded-md">
+              </div>
+              
+              <div>
+                <label for="border-radius" class="block font-medium text-gray-700 mb-2">Border Radius</label>
+                <input type="range" id="border-radius" min="0" max="32" value="8" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>0px</span>
+                  <span>16px</span>
+                  <span>32px</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Preview -->
+            <div class="flex flex-col items-center justify-center bg-gray-50 p-6 rounded-lg h-full">
+              <div id="border-preview" class="w-64 h-64 bg-white flex items-center justify-center text-gray-500 mb-6">
+                Border Preview
+              </div>
+              <div class="text-center">
+                <p class="font-medium mb-2">Tailwind CSS class:</p>
+                <code id="border-code" class="bg-gray-100 px-4 py-2 rounded-md text-indigo-600 font-mono"></code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Outline -->
-    <button class="outline outline-offset-2 outline-1">Button 1</button>
-    <button class="outline outline-offset-2 outline-2">Button 2</button>
-    <button class="outline outline-offset-2 outline-4">Button 3</button>
-  </body>
-</html>
-
-<!-- Border Widths
-      border-0	    border-width: 0px;
-      border-2	    border-width: 2px;
-      border-4	    border-width: 4px;
-      border-8	    border-width: 8px;
-      border	      border-width: 1px;
-      border-x-0	  border-left-width: 0px;
-                    border-right-width: 0px;
-      border-x-2	  border-left-width: 2px;
-                    border-right-width: 2px;
-      border-x-4    border-left-width: 4px;
-                    border-right-width: 4px;
-      border-x-8	  border-left-width: 8px;
-                    border-right-width: 8px;
-      border-x	    border-left-width: 1px;
-                    border-right-width: 1px;
-      border-y-0  	border-top-width: 0px;
-                    border-bottom-width: 0px;
-      border-y-2	  border-top-width: 2px;
-                    border-bottom-width: 2px;
-      border-y-4	  border-top-width: 4px;
-                    border-bottom-width: 4px;
-      border-y-8	  border-top-width: 8px;
-                    border-bottom-width: 8px;
-      border-y	    border-top-width: 1px;
-                    border-bottom-width: 1px;
-      border-t-0	  border-top-width: 0px;
-      border-t-2	  border-top-width: 2px;
-      border-t-4	  border-top-width: 4px;
-      border-t-8	  border-top-width: 8px;
-      border-t	    border-top-width: 1px;
-      border-r-0	  border-right-width: 0px;
-      border-r-2	  border-right-width: 2px;
-      border-r-4	  border-right-width: 4px;
-      border-r-8	  border-right-width: 8px;
-      border-r	    border-right-width: 1px;
-      border-b-0	  border-bottom-width: 0px;
-      border-b-2	  border-bottom-width: 2px;
-      border-b-4	  border-bottom-width: 4px;
-      border-b-8	  border-bottom-width: 8px;
-      border-b	    border-bottom-width: 1px;
-      border-l-0	  border-left-width: 0px;
-      border-l-2	  border-left-width: 2px;
-      border-l-4	  border-left-width: 4px;
-      border-l-8	  border-left-width: 8px;
-      border-l	    border-left-width: 1px;
-    -->
-
-<!-- Border Radius
-      rounded-none	    border-radius: 0px;
-      rounded-sm	      border-radius: 0.125rem; /* 2px */
-      rounded	          border-radius: 0.25rem; /* 4px */
-      rounded-md	      border-radius: 0.375rem; /* 6px */
-      rounded-lg	      border-radius: 0.5rem; /* 8px */
-      rounded-xl	      border-radius: 0.75rem; /* 12px */
-      rounded-2xl	      border-radius: 1rem; /* 16px */
-      rounded-3xl	      border-radius: 1.5rem; /* 24px */
-      rounded-full	    border-radius: 9999px;
-     -->
-
-<!-- Outline
-      outline-0	outline-width: 0px;
-      outline-1	outline-width: 1px;
-      outline-2	outline-width: 2px;
-      outline-4	outline-width: 4px;
-      outline-8	outline-width: 8px;
-  -->
+    <!-- Advanced Border Techniques -->
+    <div class="max-w-5xl mx-auto mb-16">
+      <h2 class="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Advanced Border Techniques</h2>
+      
+      <!-- Gallery -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Animated Border -->
+        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="h-48 flex items-center justify-center p-6 overflow-hidden relative">
+            <div class="border-4 absolute inset-3 border-pulse rounded-lg"></div>
+            <div class="z-10 text-gray-800 font-medium text-center p-6">
+              Pulsing Border Animation
+            </div>
+          </div>
+          <div class="p-6 bg-gray-50">
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Animated Pulse</h3>
+            <p class="text-sm text-gray-600 mb-4">Border that pulses using CSS animation</p>
+            <code class="text-xs bg-gray-100 p-2 rounded block overflow-x-auto whitespace-nowrap">
+              .border-pulse { animation: border-pulse 2s infinite ease-in-out; }
+            </code>
+          </div>
+        </div>
+        
+        <!-- Gradient Border -->
+        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="h-48 flex items-center justify-center p-6 overflow-hidden">
+            <div class="border-gradient-rainbow w-full h-full rounded-lg flex items-center justify-center">
+              <div class="bg-white m-4 p-4 rounded-lg flex-1 h-full flex items-center justify-center">
+                <span class="text-gray-800 font-medium text-center">Rainbow Gradient Border</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 bg-gray-50 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-50 opacity-50"></div>
+            <div class="relative z-10">
+              <h3 class="font-bold text-lg mb-2 text-gray-800">Gradient Borders</h3>
+              <p class="text-sm text-gray-600 mb-4">Colorful borders using CSS gradient</p>
+              <code class="text-xs bg-gray-100 p-2 rounded block overflow-x-auto whitespace-nowrap">
+                border-image: linear-gradient(...) 1;
+              </code>
+              <div class="mt-4">
+                <button class="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center transition-colors" 
+                  onclick="navigator.clipboard.writeText('.border-gradient { border-width: 4px; border-style: solid; border-image: linear-gradient(to right, #4F46E5, #8B5CF6) 1; }')">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  Copy CSS
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Border with Image -->
+        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="h-48 flex items-center justify-center p-6 overflow-hidden relative">
+            <div class="absolute inset-3 border-4 border-double rounded-lg flex items-center justify-center" style="background-image: url('data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234F46E5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E'); background-clip: border-box;">
+              <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300"></div>
+              <div class="hidden group-hover:block absolute -bottom-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-80">
+                Hover to see pattern details
+              </div>
+            </div>
+            <div class="z-10 text-gray-800 font-medium text-center p-6 bg-white rounded-lg border border-gray-100 shadow-sm transform transition-transform group-hover:scale-95 group-hover:shadow">
+              Patterned Border
+            </div>
+          </div>
+          <div class="p-6 bg-gray-50 relative overflow-hidden">
+            <div class="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-gradient-to-r from-purple-100 to-indigo-50 opacity-50"></div>
+            <div class="relative z-10">
+              <h3 class="font-bold text-lg mb-2 text-gray-800 flex items-center gap-2">
+                Image Patterns
+                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-0.5 rounded">Interactive</span>
+              </h3>
+              <p class="text-sm text-gray-600 mb-4">Using SVG patterns for unique borders</p>
+              <code class="text-xs bg-gray-100 p-2 rounded block overflow-x-auto whitespace-nowrap">
+                background-image: url('svg-pattern.svg');
+              </code>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Rotating Border -->
+        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="h-48 flex items-center justify-center p-6 overflow-hidden">
+            <div class="border-rotate w-full h-full rounded-lg flex items-center justify-center">
+              <div class="bg-white m-4 p-4 rounded-lg flex-1 h-full flex items-center justify-center">
+                <span class="text-gray-800 font-medium text-center">Rotating Gradient Border</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 bg-gray-50">
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Rotating Borders</h3>
+            <p class="text-sm text-gray-600 mb-4">Animated rotating gradient effect</p>
+            <code class="text-xs bg-gray-100 p-2 rounded block overflow-x-auto whitespace-nowrap">
+              @keyframes border-rotate { ... }
+            </code>
+          </div>
+        </div>
+        
+        <!-- Custom Shape -->
+        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="h-48 flex items-center justify-center p-6 overflow-hidden">
+            <div class="rounded-diagonal border-3 border-indigo-500 w-full h-full flex items-center justify-center">
+              <span class="text-gray-800 font-medium text-center">Custom Border Radius</span>
+            </div>
+          </div>
+          <div class="p-6 bg-gray-50">
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Custom Shapes</h3>
+            <p class

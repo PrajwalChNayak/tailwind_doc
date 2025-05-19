@@ -45,6 +45,22 @@
     </style>
   </head>
   <body>
+    <!-- Introduction to Utility-First CSS -->
+    <div class="max-w-4xl mx-auto mb-12 p-6 bg-slate-100 rounded-lg shadow">
+      <h1 class="text-3xl font-bold text-center text-slate-800 mb-6">Utility-First CSS with Tailwind</h1>
+      <p class="text-lg text-slate-700 mb-4">
+        Utility-first CSS is an approach where you use small, single-purpose classes that each apply a specific style.
+        Instead of writing custom CSS, you compose these utility classes directly in your HTML to build complex designs.
+      </p>
+      <p class="text-lg text-slate-700">
+        Tailwind CSS provides a comprehensive set of utility classes for spacing, typography, colors, flexbox, grid, 
+        and more, allowing for rapid UI development without leaving your HTML.
+      </p>
+    </div>
+
+    <!-- Original Examples -->
+    <h2 class="text-2xl font-bold text-center mb-8 text-slate-700">Alert Component Example</h2>
+    
     <!-- HTML/CSS Version -->
     <div class="alert">
       <div class="alert-logo-wrap">
@@ -57,12 +73,94 @@
     </div>
 
     <!-- Tailwind Version -->
-    <div class="flex items-center p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4">
+    <div class="flex items-center p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4 mt-8">
       <img class="h-12 w-12" src="../assets/img/warning.svg" alt="alert" />
       <div>
         <div class="text-xl font-medium text-black">Are You Sure?</div>
         <p class="text-slate-500">You are about to delete a post</p>
       </div>
+    </div>
+    
+    <!-- Additional Examples -->
+    <h2 class="text-2xl font-bold text-center mt-16 mb-8 text-slate-700">More Utility-First Examples</h2>
+    
+    <!-- Example 1: Card Component -->
+    <div class="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-12">
+      <div class="md:flex">
+        <div class="md:shrink-0">
+          <img class="h-48 w-full object-cover md:h-full md:w-48" src="https://images.unsplash.com/photo-1637734433731-621aca1c8cb6" alt="Modern building architecture">
+        </div>
+        <div class="p-8">
+          <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Company retreats</div>
+          <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">Incredible accommodation for your team</a>
+          <p class="mt-2 text-slate-500">Looking to take your team away to refresh their minds and inspire creativity?</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Example 2: Button Styles -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Primary Button
+      </button>
+      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+        Secondary Button
+      </button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+        <span>Download</span>
+      </button>
+    </div>
+    
+    <!-- Example 3: Form Elements -->
+    <div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow-md mb-12">
+      <h3 class="text-xl font-medium text-gray-900 mb-4">Contact Form</h3>
+      <form class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea rows="4" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+          <label class="ml-2 block text-sm text-gray-900">Subscribe to newsletter</label>
+        </div>
+        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Send
+        </button>
+      </form>
+    </div>
+    
+    <!-- Example 4: Responsive Layout -->
+    <div class="p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-md mb-12">
+      <h3 class="text-xl font-medium text-gray-900 mb-4">Responsive Grid Layout</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="bg-blue-100 p-4 rounded-lg shadow text-center">Item 1</div>
+        <div class="bg-blue-200 p-4 rounded-lg shadow text-center">Item 2</div>
+        <div class="bg-blue-300 p-4 rounded-lg shadow text-center">Item 3</div>
+        <div class="bg-blue-400 p-4 rounded-lg shadow text-center">Item 4</div>
+        <div class="bg-blue-500 p-4 rounded-lg shadow text-center text-white">Item 5</div>
+        <div class="bg-blue-600 p-4 rounded-lg shadow text-center text-white">Item 6</div>
+        <div class="bg-blue-700 p-4 rounded-lg shadow text-center text-white">Item 7</div>
+        <div class="bg-blue-800 p-4 rounded-lg shadow text-center text-white">Item 8</div>
+      </div>
+    </div>
+    
+    <!-- Benefits Section -->
+    <div class="max-w-4xl mx-auto p-6 bg-slate-100 rounded-lg shadow mb-12">
+      <h2 class="text-2xl font-bold mb-4 text-slate-800">Benefits of Utility-First CSS</h2>
+      <ul class="list-disc pl-5 space-y-2 text-slate-700">
+        <li>No need to write custom CSS; just compose utilities in your HTML</li>
+        <li>No time spent on coming up with class names</li>
+        <li>CSS file size doesn't grow as your project grows</li>
+        <li>Make changes on the fly without context-switching to CSS files</li>
+        <li>Easy to experiment with different layouts and designs</li>
+        <li>Responsive design is built-in with breakpoint prefixes (sm:, md:, lg:)</li>
+        <li>Less chance of style conflicts since utilities are specific and isolated</li>
+      </ul>
     </div>
   </body>
 </html>

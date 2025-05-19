@@ -5,80 +5,347 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Colors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css"/>
+    <title>Tailwind CSS Colors Documentation</title>
+    <style>
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 1rem;
+      }
+      .color-swatch {
+        height: 100px;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: flex-end;
+        transition: transform 0.2s;
+      }
+      .color-swatch:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      code {
+        font-family: Consolas, Monaco, 'Andale Mono', monospace;
+      }
+      .code-sample {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem;
+      }
+      .code-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        background-color: rgba(0,0,0,0.6);
+        color: white;
+        border-bottom-left-radius: 0.5rem;
+      }
+    </style>
   </head>
-  <body>
-    <!-- Default colors -->
-    <!-- white, black, red, green, blue, orange, yellow, purple, lime, emerald, teal, cyan, indigo, violet, fuchsia, pink, rose, sky, gray, slate, zinc, neutral, stone, amber, -->
+  <body class="p-8 max-w-5xl mx-auto bg-gray-50">
+    <header class="mb-12 text-center bg-gradient-to-r from-blue-600 to-indigo-600 py-12 px-6 rounded-lg shadow-lg text-white">
+      <h1 class="text-4xl font-bold mb-4">Tailwind CSS Colors Documentation</h1>
+      <p class="text-xl opacity-90">A comprehensive guide to using Tailwind's powerful color utilities</p>
+    </header>
+    
+    <section class="mb-12 bg-white p-8 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-6 text-indigo-800 border-b pb-2">Overview</h2>
+      <p class="mb-4 text-gray-700 leading-relaxed">Tailwind CSS provides an extensive color system that allows for consistent, adaptive, and accessible color implementation across your project. The framework includes a carefully curated color palette that can be applied to various elements including text, backgrounds, borders, and more.</p>
+    </section>
 
-    <!-- Text Colors -->
-    <p class="text-black">Tailwind is awesome</p>
-    <p class="text-red-50">Tailwind is awesome</p>
-    <p class="text-red-100">Tailwind is awesome</p>
-    <p class="text-red-200">Tailwind is awesome</p>
-    <p class="text-red-300">Tailwind is awesome</p>
-    <p class="text-red-400">Tailwind is awesome</p>
-    <p class="text-red-500">Tailwind is awesome</p>
-    <p class="text-red-600">Tailwind is awesome</p>
-    <p class="text-red-700">Tailwind is awesome</p>
-    <p class="text-red-800">Tailwind is awesome</p>
-    <p class="text-red-900">Tailwind is awesome</p>
+    <section class="mb-12 bg-white p-8 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-6 text-indigo-800 border-b pb-2">Default Color Palette</h2>
+      <p class="mb-6 text-gray-700 leading-relaxed">Tailwind offers a wide range of predefined colors including:</p>
+      
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-gray-100 p-5 rounded-lg">
+          <h3 class="font-semibold mb-3 text-gray-800">Base & Gray Scales</h3>
+          <ul class="list-disc pl-6 mb-4 text-gray-700 space-y-1">
+            <li>Base colors: white, black</li>
+            <li>Gray scales: gray, slate, zinc, neutral, stone</li>
+          </ul>
+        </div>
+        <div class="bg-gray-100 p-5 rounded-lg">
+          <h3 class="font-semibold mb-3 text-gray-800">Colors & Special Shades</h3>
+          <ul class="list-disc pl-6 mb-4 text-gray-700 space-y-1">
+            <li>Colors: red, orange, yellow, green, blue, purple, pink</li>
+            <li>Special shades: amber, lime, emerald, teal, cyan, indigo, violet, fuchsia, rose, sky</li>
+          </ul>
+        </div>
+      </div>
 
-    <!-- Background Colors -->
-    <div class="bg-slate-600">
-      <p class="text-white">Tailwind is awesome</p>
-    </div>
-    <div class="bg-zinc-400">
-      <p class="text-white">Tailwind is awesome</p>
-    </div>
-    <div class="bg-emerald-600">
-      <p class="text-white">Tailwind is awesome</p>
-    </div>
+      <p class="mb-6 text-gray-700">Each color (except black and white) comes in 10 shades, from 50 (lightest) to 900 (darkest).</p>
+      
+      <h3 class="font-semibold mb-4 text-gray-800">Example Color Palette: Blue</h3>
+      <div class="color-grid mb-8">
+        <div class="color-swatch bg-blue-50"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs">blue-50</span></div>
+        <div class="color-swatch bg-blue-100"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs">blue-100</span></div>
+        <div class="color-swatch bg-blue-200"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs">blue-200</span></div>
+        <div class="color-swatch bg-blue-300"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs">blue-300</span></div>
+        <div class="color-swatch bg-blue-400"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs">blue-400</span></div>
+        <div class="color-swatch bg-blue-500"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs">blue-500</span></div>
+        <div class="color-swatch bg-blue-600"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs">blue-600</span></div>
+        <div class="color-swatch bg-blue-700"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs text-white">blue-700</span></div>
+        <div class="color-swatch bg-blue-800"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs text-white">blue-800</span></div>
+        <div class="color-swatch bg-blue-900"><span class="bg-white bg-opacity-70 w-full text-center p-1 text-xs text-white">blue-900</span></div>
+      </div>
+      
+      <div class="code-sample bg-gray-800 p-4 rounded-lg">
+        <span class="code-label">HTML</span>
+        <pre class="text-sm text-gray-100 overflow-auto"><code>&lt;!-- Color shade syntax --&gt;
+&lt;div class="bg-blue-50"&gt;&lt;/div&gt;
+&lt;div class="bg-blue-100"&gt;&lt;/div&gt;
+&lt;div class="bg-blue-900"&gt;&lt;/div&gt;</code></pre>
+      </div>
+    </section>
 
-    <!-- Text Underline -->
-    <p class="underline text-red-700 decoration-red-800">Tailwind is awesome</p>
-    <p class="underline text-blue-700 decoration-blue-700">
-      Tailwind is awesome
-    </p>
+    <section class="mb-12 bg-white p-8 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-6 text-indigo-800 border-b pb-2">Color Implementation Methods</h2>
 
-    <!-- Border Colors -->
-    <input class="border-2 border-rose-500"/>
-    <input class="border-2 border-blue-300"/>
-    <input class="border-2 border-purple-900"/>
-    <input class="border-2 border-yellow-500"/>
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Text Colors</h3>
+        <p class="mb-4">Text colors are applied using the <code class="bg-gray-100 px-1 rounded">text-{color}-{shade}</code> utility classes:</p>
+        
+        <div class="bg-gray-100 p-4 rounded mb-4">
+          <!-- Default colors -->
+          <!-- Text Colors Examples -->
+          <p class="text-black" >Tailwind is awesome</p>
+          <p class="text-red-50">Tailwind is awesome</p>
+          <p class="text-red-100">Tailwind is awesome</p>
+          <p class="text-red-200">Tailwind is awesome</p>
+          <p class="text-red-300">Tailwind is awesome</p>
+          <p class="text-red-400">Tailwind is awesome</p>
+          <p class="text-red-500">Tailwind is awesome</p>
+          <p class="text-red-600">Tailwind is awesome</p>
+          <p class="text-red-700">Tailwind is awesome</p>
+          <p class="text-red-800">Tailwind is awesome</p>
+          <p class="text-red-900">Tailwind is awesome</p>
+        </div>
+        
+        <p class="font-semibold">Use cases:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Creating visual hierarchy with different text importance levels</li>
+          <li>Matching brand colors in textual content</li>
+          <li>Improving readability against different backgrounds</li>
+        </ul>
+      </div>
 
-    <!-- Divide Colors -->
-    <div class="divide-y divide-blue-200">
-      <div>Item 1</div>
-      <div>Item 2</div>
-      <div>Item 4</div>
-      <div>Item 5</div>
-      <div>Item 6</div>
-    </div>
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Background Colors</h3>
+        <p class="mb-4">Background colors use the <code class="bg-gray-100 px-1 rounded">bg-{color}-{shade}</code> pattern:</p>
+        
+        <div class="bg-gray-100 p-4 rounded mb-4">
+          <!-- Background Colors Examples -->
+          <div class="bg-slate-600 p-2 mb-2">
+            <p class="text-white">Tailwind is awesome</p>
+          </div>
+          <div class="bg-zinc-400 p-2 mb-2">
+            <p class="text-white">Tailwind is awesome</p>
+          </div>
+          <div class="bg-emerald-600 p-2 mb-2">
+            <p class="text-white">Tailwind is awesome</p>
+          </div>
+        </div>
+        
+        <p class="font-semibold">Use cases:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Creating contrasting sections on a page</li>
+          <li>Highlighting important UI elements</li>
+          <li>Implementing color-coded categories or statuses</li>
+          <li>Creating cards, panels, or content containers</li>
+        </ul>
+      </div>
 
-    <!-- Outline Colors -->
-    <button class="outline outline-blue-500">Subscribe</button>
-    <button class="outline outline-purple-300">Subscribe</button>
-    <button class="outline outline-gray-500">Subscribe</button>
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Text Decoration Colors</h3>
+        <p class="mb-4">You can style underlined text with colors different from the text itself:</p>
+        
+        <div class="bg-gray-100 p-4 rounded mb-4">
+          <!-- Text Underline Examples -->
+          <p class="underline text-red-700 decoration-red-800">Tailwind is awesome</p>
+          <p class="underline text-blue-700 decoration-blue-700">Tailwind is awesome</p>
+        </div>
+        
+        <p class="font-semibold">Use cases:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Creating stylish link hover states</li>
+          <li>Emphasizing important text while maintaining a cohesive color scheme</li>
+          <li>Creating visual separators within text blocks</li>
+        </ul>
+      </div>
 
-    <!-- Box Shadow Colors (Opacity defaults to 100, but you cans set it)-->
-    <button class="bg-cyan-500 shadow-lg shadow-cyan-500">Subscribe</button>
-    <button class="bg-blue-500 shadow-lg shadow-blue-500/50">Subscribe</button>
-    <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50">
-      Subscribe
-    </button>
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Border Colors</h3>
+        <p class="mb-4">Border colors are specified using <code class="bg-gray-100 px-1 rounded">border-{color}-{shade}</code> after defining border width:</p>
+        
+        <div class="bg-gray-100 p-4 rounded mb-4 flex space-x-2">
+          <!-- Border Colors Examples -->
+          <input class="border-2 border-rose-500" placeholder="Rose border"/>
+          <input class="border-2 border-blue-300" placeholder="Blue border"/>
+          <input class="border-2 border-purple-900" placeholder="Purple border"/>
+          <input class="border-2 border-yellow-500" placeholder="Yellow border"/>
+        </div>
+        
+        <p class="font-semibold">Use cases:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Form input validation states (red for errors, green for success)</li>
+          <li>Creating visual boundaries between UI sections</li>
+          <li>Highlighting interactive elements</li>
+          <li>Creating color-coded containers</li>
+        </ul>
+      </div>
 
-    <!-- Accent Colors -->
-    <input type="checkbox" class="accent-purple-500" checked="checked"/>
-    Option 1
-    <input type="checkbox" class="accent-pink-500" checked="checked"/>
-    Option 2
-    <input type="checkbox" class="accent-red-300" checked="checked"/>
-    Option 3
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Divide Colors</h3>
+        <p class="mb-4">When using the <code class="bg-gray-100 px-1 rounded">divide</code> utility to add separators between elements, you can specify colors:</p>
+        
+        <div class="bg-gray-100 p-4 rounded mb-4">
+          <!-- Divide Colors Examples -->
+          <div class="divide-y divide-blue-200">
+            <div class="py-2">Item 1</div>
+            <div class="py-2">Item 2</div>
+            <div class="py-2">Item 4</div>
+            <div class="py-2">Item 5</div>
+            <div class="py-2">Item 6</div>
+          </div>
+        </div>
+        
+        <p class="font-semibold">Use cases:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Creating subtle separation in lists or content sections</li>
+          <li>Implementing visually consistent dividers in navigation menus</li>
+          <li>Styling table rows with colored separators</li>
+        </ul>
+      </div>
 
-    <!-- Arbitrary Colors -->
-    <div class="bg-[#427fab] h-10">Hello</div>
-    <div class="text-[#427fab] h-10">Hello</div>
-    <div class="border border-[#427fab] h-10">Hello</div>
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Outline Colors</h3>
+        <p class="mb-4">Add colored outlines to elements using <code class="bg-gray-100 px-1 rounded">outline outline-{color}-{shade}</code>:</p>
+        
+        <div class="bg-gray-100 p-4 rounded mb-4 flex space-x-4">
+          <!-- Outline Colors Examples -->
+          <button class="outline outline-blue-500 px-4 py-2">Subscribe</button>
+          <button class="outline outline-purple-300 px-4 py-2">Subscribe</button>
+          <button class="outline outline-gray-500 px-4 py-2">Subscribe</button>
+        </div>
+        
+        <p class="font-semibold">Use cases:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Creating focus states for accessibility</li>
+          <li>Secondary or tertiary button styles</li>
+          <li>Highlighting active UI elements</li>
+        </ul>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Box Shadow Colors</h3>
+        <p class="mb-4">Add colored shadows with opacity control:</p>
+        
+        <div class="bg-gray-100 p-4 rounded mb-4 flex space-x-4">
+          <!-- Box Shadow Colors Examples -->
+          <button class="bg-cyan-500 shadow-lg shadow-cyan-500 px-4 py-2 text-white">Subscribe</button>
+          <button class="bg-blue-500 shadow-lg shadow-blue-500/50 px-4 py-2 text-white">Subscribe</button>
+          <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-4 py-2 text-white">Subscribe</button>
+        </div>
+        
+        <p class="font-semibold">Use cases:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Creating depth and elevation in UI</li>
+          <li>Drawing attention to important call-to-action buttons</li>
+          <li>Implementing card hover effects</li>
+          <li>Creating "glow" effects for special elements</li>
+        </ul>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Accent Colors</h3>
+        <p class="mb-4">Customize the color of UI controls like checkboxes and radio buttons:</p>
+        
+        <div class="bg-gray-100 p-4 rounded mb-4 flex flex-col gap-2">
+          <!-- Accent Colors Examples -->
+          <div>
+            <input type="checkbox" class="accent-purple-500" checked="checked"/>
+            Option 1
+          </div>
+          <div>
+            <input type="checkbox" class="accent-pink-500" checked="checked"/>
+            Option 2
+          </div>
+          <div>
+            <input type="checkbox" class="accent-red-300" checked="checked"/>
+            Option 3
+          </div>
+        </div>
+        
+        <p class="font-semibold">Use cases:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Matching form controls to your brand colors</li>
+          <li>Creating visually consistent form experiences</li>
+          <li>Implementing feature toggles with meaningful colors</li>
+        </ul>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Arbitrary Colors</h3>
+        <p class="mb-4">When you need specific colors outside the default palette:</p>
+        
+        <div class="bg-gray-100 p-4 rounded mb-4">
+          <!-- Arbitrary Colors Examples -->
+          <div class="bg-[#427fab] h-10 text-white p-2 mb-2">Hello</div>
+          <div class="text-[#427fab] h-10 p-2 mb-2">Hello</div>
+          <div class="border border-[#427fab] h-10 p-2">Hello</div>
+        </div>
+        
+        <p class="font-semibold">Use cases:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Implementing exact brand colors not in the default palette</li>
+          <li>Creating gradient or specialized color schemes</li>
+          <li>Matching legacy design systems</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Best Practices</h2>
+      <ol class="list-decimal pl-6 mb-4">
+        <li class="mb-1"><strong>Consistency</strong>: Use the same shade numbers across your project for consistent visual hierarchy</li>
+        <li class="mb-1"><strong>Accessibility</strong>: Ensure sufficient contrast between text and background colors</li>
+        <li class="mb-1"><strong>Color meaning</strong>: Maintain consistent meaning for colors (e.g., red for errors, green for success)</li>
+        <li class="mb-1"><strong>Dark mode</strong>: Consider using Tailwind's dark mode variants for color adaptability</li>
+        <li class="mb-1"><strong>Color variables</strong>: For complex projects, consider extracting common colors into the Tailwind config</li>
+      </ol>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Advanced Techniques</h2>
+      
+      <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-3">Color Opacity</h3>
+        <p class="mb-3">Most color utilities can have opacity modifiers:</p>
+        <div class="bg-blue-500/75 p-2 text-white mb-2 rounded">75% opacity blue background</div>
+        <code class="bg-gray-100 px-2 py-1 rounded block">&lt;div class="bg-blue-500/75"&gt;75% opacity blue background&lt;/div&gt;</code>
+      </div>
+      
+      <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-3">Responsive Color Variations</h3>
+        <p class="mb-3">Colors can change based on screen size:</p>
+        <div class="text-blue-500 md:text-green-500 p-2 mb-2 border rounded">Blue on mobile, green on medium screens and up</div>
+        <code class="bg-gray-100 px-2 py-1 rounded block">&lt;div class="text-blue-500 md:text-green-500"&gt;Blue on mobile, green on medium screens and up&lt;/div&gt;</code>
+      </div>
+      
+      <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-3">Hover, Focus, and Other States</h3>
+        <p class="mb-3">Apply colors on various states:</p>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded mb-2">Button with hover state</button>
+        <code class="bg-gray-100 px-2 py-1 rounded block">&lt;button class="bg-blue-500 hover:bg-blue-700"&gt;Button with hover state&lt;/button&gt;</code>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Conclusion</h2>
+      <p>Tailwind's color system provides a powerful and flexible way to implement consistent colors across your project. By understanding the various color utilities and their applications, you can create visually cohesive and accessible interfaces while maintaining development efficiency.</p>
+    </section>
   </body>
 </html>
