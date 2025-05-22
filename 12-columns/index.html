@@ -4,35 +4,521 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS columns - learn about multi-column layouts, column spacing, and controlling content breaks with interactive examples" />
+    <meta name="author" content="Tailwind Documentation" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h18v2H3v-2zm0 4h18v2H3v-2zm0 4h18v2H3v-2z'/%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Columns</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tailwind CSS Columns | Interactive Documentation</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4F46E5',
+              secondary: '#8B5CF6'
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @keyframes column-highlight {
+        0% { background-color: rgba(79, 70, 229, 0.1); }
+        50% { background-color: rgba(79, 70, 229, 0.3); }
+        100% { background-color: rgba(79, 70, 229, 0.1); }
+      }
+      
+      .column-highlight {
+        animation: column-highlight 2s infinite ease-in-out;
+      }
+      
+      .column-divider {
+        column-rule: 1px solid #e5e7eb;
+      }
+      
+      .column-divider-colored {
+        column-rule: 2px solid #4F46E5;
+      }
+      
+      .demo-text {
+        text-align: justify;
+      }
+    </style>
   </head>
-  <body>
-    <div class="columns-2 gap-8">
-      <img class="w-full" src="/assets/img/img1.jpg" />
-      <img class="w-full" src="/assets/img/img2.jpg" />
-      <img class="w-full break-after-column" src="/assets/img/img3.jpg" />
-      <img class="w-full" src="/assets/img/img4.jpg" />
+  <body class="bg-gray-50 font-sans" style="font-family: 'Inter', sans-serif;">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="flex items-center gap-2 text-white hover:text-indigo-100 transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+            <span>Back to Main Documentation</span>
+          </a>
+          <a href="https://tailwindcss.com/docs/columns" target="_blank" class="flex items-center gap-1 text-indigo-100 hover:text-white transition-colors text-sm">
+            <span>Official Docs</span>
+            <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-columns"></i>
+          Tailwind CSS Columns
+        </h1>
+        <p class="text-indigo-100 text-lg max-w-3xl">
+          Create elegant multi-column layouts for text and images with Tailwind's powerful column utilities
+        </p>
+      </div>
+    </header>
+
+    <!-- Documentation Section -->
+    <div class="max-w-5xl mx-auto px-6 mb-12">
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-t-4 border-indigo-600">
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-indigo-600"></i>
+              What are CSS Columns?
+            </h2>
+            <p class="text-lg text-gray-700 mb-6">
+              Columns in CSS (and Tailwind) create elegant newspaper-style layouts where content <span class="text-indigo-600 font-medium">flows naturally</span> from one column to the next—like water filling containers. Unlike grid or flexbox where you manually place elements in specific cells, columns automatically handle content distribution.
+            </p>
+            <p class="text-md text-gray-600 mb-4">
+              <span class="bg-yellow-50 px-2 py-0.5 rounded border-b-2 border-yellow-200">🔍 Think of it like this:</span> Grid and Flexbox are like carefully arranging furniture in specific spots, while CSS columns are like pouring text that naturally fills the available space in balanced columns.
+            </p>
+            <p class="text-md text-gray-600">
+              Tailwind simplifies column layouts with intuitive utility classes, making them ideal for:
+            </p>
+            <ul class="mt-2 space-y-1 text-gray-600 ml-5 list-disc">
+              <li>Text-heavy content like articles and blog posts</li>
+              <li>Image galleries with varying heights</li>
+              <li>Magazine-style layouts with balanced content</li>
+              <li>Card collections that need to flow vertically first</li>
+            </ul>
+          </div>
+          <div class="md:w-1/3">
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-5 border border-indigo-100 shadow-sm">
+              <h3 class="font-semibold text-indigo-800 mb-3 flex items-center gap-2">
+                <i class="fas fa-lightbulb text-indigo-600"></i>
+                Key Concept
+              </h3>
+              <p class="text-sm text-indigo-700">
+                CSS columns perform <em>content balancing</em>, automatically distributing content to achieve equal column heights. Content flows vertically within a column before filling the next column.
+              </p>
+              <div class="mt-4 bg-white/70 p-3 rounded-lg border border-indigo-100 text-xs">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-medium text-indigo-800">Grid vs. Columns</span>
+                  <span class="text-gray-500 text-[10px]">comparison</span>
+                </div>
+                <div class="flex gap-2 text-center">
+                  <div class="flex-1 bg-indigo-100 p-1 rounded">
+                    <div class="text-indigo-800">Grid</div>
+                    <div class="text-indigo-600 mt-1">Horizontal first</div>
+                  </div>
+                  <div class="flex-1 bg-purple-100 p-1 rounded">
+                    <div class="text-purple-800">Columns</div>
+                    <div class="text-purple-600 mt-1">Vertical first</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-4 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+              <div class="flex items-start">
+                <i class="fas fa-info-circle text-blue-500 mt-1 mr-2"></i>
+                <p class="text-xs text-blue-700">
+                  Columns are <strong>perfect for reading</strong> experiences—they create shorter line lengths that improve readability while maximizing screen space.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-100 pt-6">
+          <h3 class="font-semibold text-gray-700 mb-4 flex items-center">
+            <i class="fas fa-table text-indigo-500 mr-2"></i>
+            Column Properties
+          </h3>
+          <div class="overflow-x-auto bg-gradient-to-r from-gray-50 to-white rounded-xl border border-gray-100 shadow-sm">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="bg-gradient-to-r from-indigo-50 to-purple-50">
+                  <th class="px-4 py-3 text-left font-medium text-indigo-700">Property</th>
+                  <th class="px-4 py-3 text-left font-medium text-indigo-700">Description</th>
+                  <th class="px-4 py-3 text-left font-medium text-indigo-700">Example Class</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="px-4 py-3 font-medium">Column Count</td>
+                  <td class="px-4 py-3">Defines the number of columns</td>
+                  <td class="px-4 py-3"><code class="bg-gray-100 px-1 py-0.5 rounded text-xs">columns-3</code></td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="px-4 py-3 font-medium">Column Width</td>
+                  <td class="px-4 py-3">Sets fixed width for columns</td>
+                  <td class="px-4 py-3"><code class="bg-gray-100 px-1 py-0.5 rounded text-xs">columns-md</code></td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="px-4 py-3 font-medium">Column Gap</td>
+                  <td class="px-4 py-3">Controls spacing between columns</td>
+                  <td class="px-4 py-3"><code class="bg-gray-100 px-1 py-0.5 rounded text-xs">gap-8</code></td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="px-4 py-3 font-medium">Column Break</td>
+                  <td class="px-4 py-3">Forces content to start or end at column boundary</td>
+                  <td class="px-4 py-3"><code class="bg-gray-100 px-1 py-0.5 rounded text-xs">break-after-column</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-green-50 rounded-lg p-3 border border-green-100 flex items-center">
+              <i class="fas fa-check-circle text-green-500 text-xl mr-3"></i>
+              <div class="text-sm text-green-800">
+                <span class="font-medium block">Easy to implement</span>
+                <span class="text-xs">Minimal HTML structure needed</span>
+              </div>
+            </div>
+            <div class="bg-amber-50 rounded-lg p-3 border border-amber-100 flex items-center">
+              <i class="fas fa-mobile-alt text-amber-500 text-xl mr-3"></i>
+              <div class="text-sm text-amber-800">
+                <span class="font-medium block">Responsive by default</span>
+                <span class="text-xs">Works with Tailwind breakpoints</span>
+              </div>
+            </div>
+            <div class="bg-purple-50 rounded-lg p-3 border border-purple-100 flex items-center">
+              <i class="fas fa-feather text-purple-500 text-xl mr-3"></i>
+              <div class="text-sm text-purple-800">
+                <span class="font-medium block">Lightweight solution</span>
+                <span class="text-xs">No JavaScript required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="columns-3 gap-24">
-      <img class="w-full" src="/assets/img/img3.jpg" />
-      <img class="w-full break-before-column" src="/assets/img/img4.jpg" />
-      <img class="w-full" src="/assets/img/img5.jpg" />
-      <img class="w-full" src="/assets/img/img6.jpg" />
-      <img class="w-full" src="/assets/img/img7.jpg" />
+    
+    <!-- Practical Usage Examples -->
+    <div class="max-w-5xl mx-auto px-6 mb-16">
+      <h2 class="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Practical Usage Examples</h2>
+      
+      <!-- Basic Column Examples -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6 flex flex-wrap items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-th-large text-indigo-500"></i>
+              Basic Column Layouts
+            </h3>
+            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Beginner-friendly</span>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <!-- 2-Column Text Example -->
+          <div class="mb-8">
+            <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+              <i class="fas fa-newspaper text-indigo-400"></i>
+              2-Column Text Layout
+            </h4>
+            <div class="mb-4 columns-2 gap-8 column-divider p-4 bg-gradient-to-r from-gray-50 to-white rounded-lg shadow-sm border border-gray-100">
+              <p class="demo-text mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio.
+              </p>
+              <p class="demo-text">
+                Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit.
+              </p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+              <div class="flex items-center gap-2 mb-2">
+                <i class="fas fa-code text-indigo-500"></i>
+                <p class="text-sm font-medium text-gray-700">Code Example:</p>
+              </div>
+              <pre class="text-xs bg-gray-100 p-3 rounded overflow-x-auto border border-gray-200"><code>&lt;div class="<span class="text-red-500">columns-2 gap-8 column-divider</span>"&gt;
+  &lt;p&gt;First paragraph of text...&lt;/p&gt;
+  &lt;p&gt;Second paragraph of text...&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              <p class="text-xs text-gray-500 mt-2 italic">The column-divider class adds a subtle line between columns for improved readability.</p>
+            </div>
+          </div>
+          
+          <!-- 3-Column Image Gallery -->
+          <div class="mt-10">
+            <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+              <i class="fas fa-images text-indigo-400"></i>
+              3-Column Image Gallery
+            </h4>
+            <div class="columns-3 gap-4 mb-4 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg shadow-sm border border-indigo-100">
+              <img class="w-full aspect-video object-cover mb-4 rounded-lg shadow-sm transform transition-transform hover:scale-[1.02]" src="/assets/img/img1.jpg" />
+              <img class="w-full aspect-square object-cover mb-4 rounded-lg shadow-sm transform transition-transform hover:scale-[1.02]" src="/assets/img/img2.jpg" />
+              <img class="w-full aspect-video object-cover mb-4 break-after-column rounded-lg shadow-sm transform transition-transform hover:scale-[1.02]" src="/assets/img/img3.jpg" />
+              <img class="w-full aspect-square object-cover mb-4 rounded-lg shadow-sm transform transition-transform hover:scale-[1.02]" src="/assets/img/img4.jpg" />
+              <img class="w-full aspect-video object-cover mb-4 rounded-lg shadow-sm transform transition-transform hover:scale-[1.02]" src="/assets/img/img5.jpg" />
+              <img class="w-full aspect-square object-cover rounded-lg shadow-sm transform transition-transform hover:scale-[1.02]" src="/assets/img/img6.jpg" />
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+              <div class="flex items-center gap-2 mb-2">
+                <i class="fas fa-code text-indigo-500"></i>
+                <p class="text-sm font-medium text-gray-700">Code Example:</p>
+              </div>
+              <pre class="text-xs bg-gray-100 p-3 rounded overflow-x-auto border border-gray-200"><code>&lt;div class="<span class="text-red-500">columns-3 gap-4</span>"&gt;
+  &lt;img class="w-full aspect-video object-cover mb-4" src="img1.jpg" /&gt;
+  &lt;img class="w-full aspect-square object-cover mb-4" src="img2.jpg" /&gt;
+  &lt;img class="w-full aspect-video object-cover mb-4 <span class="text-red-500">break-after-column</span>" src="img3.jpg" /&gt;
+  &lt;img class="w-full aspect-square object-cover mb-4" src="img4.jpg" /&gt;
+  &lt;img class="w-full aspect-video object-cover mb-4" src="img5.jpg" /&gt;
+  &lt;img class="w-full aspect-square object-cover" src="img6.jpg" /&gt;
+&lt;/div&gt;</code></pre>
+              <div class="mt-2 bg-amber-50 p-2 rounded border border-amber-100 text-xs text-amber-800">
+                <i class="fas fa-lightbulb text-amber-500 mr-1"></i>
+                Notice how the <code class="bg-white px-1 py-0.5 rounded border border-amber-200">break-after-column</code> class forces the content after the third image to start in a new column.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Advanced Column Features -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6 flex items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-puzzle-piece text-indigo-500"></i>
+              Advanced Column Features
+            </h3>
+            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Intermediate</span>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <!-- Column Width Example -->
+          <div class="mb-8">
+            <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+              <i class="fas fa-ruler-horizontal text-indigo-400"></i>
+              Fixed-Width Columns
+            </h4>
+            <div class="columns-xs gap-8 column-divider-colored mb-4 p-5 bg-gradient-to-r from-gray-50 via-white to-gray-50 rounded-lg shadow-sm border border-gray-200">
+              <p class="demo-text">
+                When using fixed-width columns like <code class="bg-gray-100 text-xs px-1 py-0.5 rounded">columns-xs</code>, Tailwind sets each column to a specific width (320px for xs) instead of dividing the container into a specific number of columns. This is particularly useful for maintaining readable line lengths across different screen sizes.
+              </p>
+              <p class="demo-text">
+                With fixed-width columns, the browser will fit as many columns as it can within the container while maintaining the specified column width. If the container is too narrow to fit multiple columns, the content will display as a single column.
+              </p>
+            </div>
+            
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-5 border border-indigo-100 shadow-sm">
+              <div class="flex items-center gap-2 mb-3">
+                <i class="fas fa-ruler-combined text-indigo-500"></i>
+                <p class="text-sm font-medium text-indigo-800">Available Width-Based Column Classes:</p>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+                <div class="bg-white/80 px-3 py-2 rounded shadow-sm border border-indigo-100 flex items-center justify-between">
+                  <code class="text-indigo-600">columns-3xs</code>
+                  <span class="text-gray-500">256px</span>
+                </div>
+                <div class="bg-white/80 px-3 py-2 rounded shadow-sm border border-indigo-100 flex items-center justify-between">
+                  <code class="text-indigo-600">columns-2xs</code>
+                  <span class="text-gray-500">288px</span>
+                </div>
+                <div class="bg-white/80 px-3 py-2 rounded shadow-sm border border-indigo-100 flex items-center justify-between">
+                  <code class="text-indigo-600">columns-xs</code>
+                  <span class="text-gray-500">320px</span>
+                </div>
+                <div class="bg-white/80 px-3 py-2 rounded shadow-sm border border-indigo-100 flex items-center justify-between">
+                  <code class="text-indigo-600">columns-sm</code>
+                  <span class="text-gray-500">384px</span>
+                </div>
+                <div class="bg-white/80 px-3 py-2 rounded shadow-sm border border-indigo-100 flex items-center justify-between">
+                  <code class="text-indigo-600">columns-md</code>
+                  <span class="text-gray-500">448px</span>
+                </div>
+                <div class="bg-white/80 px-3 py-2 rounded shadow-sm border border-indigo-100 flex items-center justify-between">
+                  <code class="text-indigo-600">columns-lg</code>
+                  <span class="text-gray-500">512px</span>
+                </div>
+              </div>
+              <div class="mt-3 text-xs text-indigo-700 border-t border-indigo-100 pt-3">
+                <i class="fas fa-lightbulb text-amber-500 mr-1"></i>
+                These fixed-width classes are perfect for ensuring optimal reading experiences regardless of screen size.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Column Break Example -->
+          <div class="mt-10">
+            <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+              <i class="fas fa-scissors text-indigo-400"></i>
+              Column Break Control
+            </h4>
+            <div class="columns-2 gap-8 mb-4 p-5 bg-gradient-to-r from-gray-50 via-white to-gray-50 rounded-lg shadow-sm border border-gray-200">
+              <p class="mb-4 demo-text">This is the first paragraph of text that flows naturally into the multi-column layout. Note how the text continues into the next column when it reaches the bottom of the first column.</p>
+              <div class="bg-indigo-100 p-4 rounded-lg mb-4 break-before-column shadow-sm border border-indigo-200">
+                <h5 class="font-bold text-indigo-800 mb-2">This content starts a new column</h5>
+                <p class="text-indigo-700 text-sm">Using <code class="bg-white text-xs px-1 py-0.5 rounded">break-before-column</code> forces this content to start at the top of a new column, regardless of available space in the previous column.</p>
+              </div>
+              <p class="mb-4 demo-text">This paragraph continues the normal flow after the break element. The column balancing will distribute the remaining content evenly.</p>
+              <p class="demo-text">Final paragraph to demonstrate how content continues to flow through the columns after a column break was applied to a specific element.</p>
+            </div>
+            
+            <div class="bg-gradient-to-r from-gray-50 to-white rounded-lg p-5 border border-gray-100 shadow-sm">
+              <div class="flex items-center gap-2 mb-3">
+                <i class="fas fa-code text-indigo-500"></i>
+                <p class="text-sm font-medium text-gray-700">Column Break Classes:</p>
+              </div>
+              <ul class="space-y-3 text-sm">
+                <li class="flex items-start p-2 bg-white rounded shadow-sm border border-gray-100">
+                  <div class="flex items-center justify-center w-8 h-8 bg-green-100 rounded-full mr-3 flex-shrink-0">
+                    <i class="fas fa-arrow-right text-green-600"></i>
+                  </div>
+                  <div>
+                    <code class="bg-gray-100 px-2 py-0.5 rounded border border-gray-200 text-indigo-600">break-after-column</code>
+                    <p class="text-gray-600 text-xs mt-1">Forces a break after the element, pushing subsequent content to the next column</p>
+                  </div>
+                </li>
+                <li class="flex items-start p-2 bg-white rounded shadow-sm border border-gray-100">
+                  <div class="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full mr-3 flex-shrink-0">
+                    <i class="fas fa-arrow-left text-blue-600"></i>
+                  </div>
+                  <div>
+                    <code class="bg-gray-100 px-2 py-0.5 rounded border border-gray-200 text-indigo-600">break-before-column</code>
+                    <p class="text-gray-600 text-xs mt-1">Forces the element itself to start at the beginning of a new column</p>
+                  </div>
+                </li>
+                <li class="flex items-start p-2 bg-white rounded shadow-sm border border-gray-100">
+                  <div class="flex items-center justify-center w-8 h-8 bg-amber-100 rounded-full mr-3 flex-shrink-0">
+                    <i class="fas fa-ban text-amber-600"></i>
+                  </div>
+                  <div>
+                    <code class="bg-gray-100 px-2 py-0.5 rounded border border-gray-200 text-indigo-600">break-inside-avoid-column</code>
+                    <p class="text-gray-600 text-xs mt-1">Prevents the element from being split across multiple columns</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Responsive Columns Example -->
+          <div class="mt-10">
+            <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+              <i class="fas fa-mobile-alt text-indigo-400 mr-1"></i>
+              <i class="fas fa-arrow-right text-gray-400 text-xs"></i>
+              <i class="fas fa-tablet-alt text-indigo-500 mr-1"></i>
+              <i class="fas fa-arrow-right text-gray-400 text-xs"></i>
+              <i class="fas fa-laptop text-indigo-600"></i>
+              Responsive Columns
+            </h4>
+            
+            <div class="p-5 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg shadow-sm border border-indigo-100 mb-4">
+              <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 column-divider">
+                <p class="demo-text mb-4">
+                  Combine column utilities with Tailwind's responsive prefixes for layouts that adapt to different screen sizes. This example shows content in a single column on mobile, two columns on tablets, and three columns on desktops.
+                </p>
+                <p class="demo-text mb-4">
+                  This approach ensures optimal reading experiences across all devices. On smaller screens where multiple columns would make text too compressed, content displays in fewer columns with comfortable reading widths.
+                </p>
+                <p class="demo-text">
+                  The fluid nature of CSS columns means you don't need to worry about content balancing - the browser handles distributing content evenly across the available columns, regardless of how many are displayed.
+                </p>
+              </div>
+              <div class="mt-4 bg-white p-3 rounded-lg text-xs border border-indigo-100 flex items-center justify-between">
+                <code class="text-indigo-600 font-medium">columns-1 sm:columns-2 lg:columns-3</code>
+                <span class="text-gray-600">Resize to see columns change</span>
+              </div>
+            </div>
+            
+            <div class="bg-indigo-600 text-white p-5 rounded-lg shadow-lg">
+              <div class="flex items-center gap-2 mb-3">
+                <i class="fas fa-graduation-cap text-indigo-200"></i>
+                <h5 class="font-bold">Pro Tip: Column Balancing</h5>
+              </div>
+              <p class="text-indigo-100 text-sm mb-3">
+                CSS columns automatically balance content, but sometimes the result doesn't look perfect. For more control:
+              </p>
+              <ul class="list-disc list-inside text-xs text-indigo-100 space-y-2 ml-1">
+                <li>Use <code class="bg-indigo-500/50 px-1 py-0.5 rounded">break-after-column</code> strategically to force manual breaks</li>
+                <li>Consider <code class="bg-indigo-500/50 px-1 py-0.5 rounded">break-inside-avoid-column</code> on headings to keep them with their following paragraph</li>
+                <li>Add consistent bottom margins to ensure proper spacing between elements</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="columns-3xs">
-      <!-- Video Aspect Ratio -->
-      <img class="w-full aspect-video" src="/assets/img/img8.jpg" />
-      <!-- Square Aspect Ratio -->
-      <img class="w-full aspect-square" src="/assets/img/img9.jpg" />
-      <img class="w-full break" src="/assets/img/img1.jpg" />
-      <img class="w-full" src="/assets/img/img2.jpg" />
+
+    <!-- Next Steps and Resources -->
+    <div class="max-w-5xl mx-auto px-6 mb-16">
+      <div class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-700 rounded-xl overflow-hidden shadow-lg">
+        <div class="p-8 md:p-10">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-bold text-xl mb-4 text-white flex items-center gap-2">
+                <i class="fas fa-book text-yellow-300"></i>
+                Further Resources
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-external-link-alt text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <a href="https://tailwindcss.com/docs/columns" target="_blank" class="text-indigo-100 hover:text-white">
+                    Tailwind CSS Columns Documentation
+                  </a>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-external-link-alt text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns" target="_blank" class="text-indigo-100 hover:text-white">
+                    MDN CSS Multi-column Layout
+                  </a>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-external-link-alt text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <a href="https://css-tricks.com/almanac/properties/c/columns/" target="_blank" class="text-indigo-100 hover:text-white">
+                    CSS-Tricks Guide to CSS Columns
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-bold text-xl mb-4 text-white flex items-center gap-2">
+                <i class="fas fa-forward text-yellow-300"></i>
+                Next Steps
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span class="text-indigo-100">Try combining columns with other Tailwind features like typography and spacing</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span class="text-indigo-100">Experiment with responsive column layouts that change count at different breakpoints</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span class="text-indigo-100">Explore column-spanning for creating magazine-style layouts</span>
+                </li>
+              </ul>
+              
+              <div class="mt-6 pt-6 border-t border-indigo-500/30">
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors">
+                  <i class="fas fa-home mr-2"></i>
+                  Back to Main Documentation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Footer -->
+  
   </body>
 </html>
 
-<!-- Column Classes
+<!-- Column Classes Reference (Hidden)
 columns-1	      columns: 1;
 columns-2	      columns: 2;
 columns-3	      columns: 3;
@@ -61,7 +547,7 @@ columns-6xl	    columns: 72rem; /* 1152px */
 columns-7xl	    columns: 80rem; /* 1280px */
 -->
 
-<!-- Break After
+<!-- Break After Reference (Hidden)
   break-after-auto	break-after: auto;
   break-after-avoid	break-after: avoid;
   break-after-all	break-after: all;
@@ -72,8 +558,8 @@ columns-7xl	    columns: 80rem; /* 1280px */
   break-after-column	break-after: column;
 -->
 
-<!-- Break Before
-  reak-before-auto	break-before: auto;
+<!-- Break Before Reference (Hidden)
+  break-before-auto	break-before: auto;
   break-before-avoid	break-before: avoid;
   break-before-all	break-before: all;
   break-before-avoid-page	break-before: avoid-page;

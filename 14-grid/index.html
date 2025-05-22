@@ -4,39 +4,829 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS grid system - learn about grid columns, rows, gaps, and responsive grid layouts with interactive examples" />
+    <meta name="author" content="Tailwind Documentation" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M3 3H11V11H3V3ZM13 3H21V11H13V3ZM3 13H11V21H3V13ZM13 13H21V21H13V13Z'/%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Grid</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tailwind CSS Grid | Interactive Documentation</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            gridTemplateColumns: {
+              'custom': 'repeat(3, minmax(150px, 1fr))',
+              'auto-fill': 'repeat(auto-fill, minmax(200px, 1fr))',
+              'auto-fit': 'repeat(auto-fit, minmax(200px, 1fr))',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .grid-area-demo {
+        display: grid;
+        grid-template-areas:
+          "header header header"
+          "sidebar content content"
+          "footer footer footer";
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr 3fr;
+      }
+      
+      .area-header { grid-area: header; }
+      .area-sidebar { grid-area: sidebar; }
+      .area-content { grid-area: content; }
+      .area-footer { grid-area: footer; }
+      
+      @keyframes grid-pulse {
+        0% { background-color: rgba(79, 70, 229, 0.2); }
+        50% { background-color: rgba(79, 70, 229, 0.4); }
+        100% { background-color: rgba(79, 70, 229, 0.2); }
+      }
+      
+      .grid-pulse > div {
+        animation: grid-pulse 2s infinite ease-in-out;
+      }
+    </style>
+    <!-- Grid Builder Script -->
+    <script>
+      function updateGridPreview() {
+        const cols = document.getElementById('grid-cols').value;
+        const rows = document.getElementById('grid-rows').value;
+        const gap = document.getElementById('grid-gap').value;
+        const itemCount = document.getElementById('grid-items').value;
+        
+        const preview = document.getElementById('grid-preview');
+        preview.className = `grid grid-cols-${cols} grid-rows-${rows} gap-${gap} w-full bg-gray-100 p-4 rounded-lg`;
+        
+        // Clear the grid
+        preview.innerHTML = '';
+        
+        // Add the items
+        for (let i = 1; i <= itemCount; i++) {
+          const div = document.createElement('div');
+          div.className = 'p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center font-medium';
+          div.textContent = i.toString().padStart(2, '0');
+          preview.appendChild(div);
+        }
+        
+        document.getElementById('grid-code').textContent = 
+          `<div class="grid grid-cols-${cols} grid-rows-${rows} gap-${gap}">
+  <!-- Grid items -->
+</div>`;
+      }
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        if(document.getElementById('grid-cols')) {
+          updateGridPreview();
+          
+          document.getElementById('grid-cols').addEventListener('change', updateGridPreview);
+          document.getElementById('grid-rows').addEventListener('change', updateGridPreview);
+          document.getElementById('grid-gap').addEventListener('change', updateGridPreview);
+          document.getElementById('grid-items').addEventListener('change', updateGridPreview);
+        }
+      });
+    </script>
   </head>
-  <body>
-    <!-- Grid cols and rows -->
-    <div class="grid grid-cols-3 grid-rows-4 gap-4 w-100 bg-gray-100">
-      <div class="p-10 border border-blue-600 bg-blue-100">01</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">02</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">03</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">04</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">05</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">06</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">07</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">08</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">09</div>
+  <body class="bg-gray-50 font-sans" style="font-family: 'Inter', sans-serif;">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="text-white hover:text-indigo-200 transition-colors">
+            <i class="fas fa-home mr-2"></i>Home
+          </a>
+          <div class="flex space-x-4">
+            <a href="../13-flex/index.html" class="text-indigo-200 hover:text-white transition-colors">
+              <i class="fas fa-arrow-left mr-1"></i>Flex
+            </a>
+            <a href="../15-transform-transition/index.html" class="text-indigo-200 hover:text-white transition-colors">
+              Transform<i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-th-large"></i> Tailwind CSS Grid
+        </h1>
+        <p class="text-indigo-100 text-lg max-w-3xl">
+          Powerful grid system for creating complex layouts with CSS Grid properties using intuitive utility classes
+        </p>
+      </div>
+    </header>
+
+    <!-- Documentation Section -->
+    <div class="max-w-5xl mx-auto px-6 mb-12">
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-t-4 border-indigo-600">
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+          <div class="flex-1">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Grid System Overview</h2>
+            <p class="text-gray-700 mb-4">
+              Tailwind's grid system uses CSS Grid Layout to create responsive, complex layouts
+              with a simple utility-based approach. The grid system makes it easy to create grids with
+              different numbers of columns and rows, adjust spacing between items, and control the
+              sizing and positioning of individual grid items.
+            </p>
+            <p class="text-gray-700">
+              Unlike traditional grid systems, Tailwind uses the power of CSS Grid directly,
+              giving you more flexibility while maintaining the convenience of utility classes.
+            </p>
+          </div>
+          <div class="flex-1 bg-indigo-50 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-indigo-800 mb-3">Key Grid Features</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-indigo-600 mt-1 mr-2"></i>
+                <span>Define any number of columns and rows</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-indigo-600 mt-1 mr-2"></i>
+                <span>Control column and row spanning</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-indigo-600 mt-1 mr-2"></i>
+                <span>Create responsive grid layouts</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-indigo-600 mt-1 mr-2"></i>
+                <span>Adjust gap spacing between grid items</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-indigo-600 mt-1 mr-2"></i>
+                <span>Auto-placement or precise positioning</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Grid Properties</h2>
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="text-lg font-semibold text-indigo-700 mb-3">Creating a Grid Container</h3>
+            <p class="text-gray-700 mb-3">
+              Use the <code class="bg-gray-100 px-1 py-0.5 rounded">grid</code> class to create a grid container
+              and then add column and row utilities to define the structure.
+            </p>
+            <pre class="bg-gray-100 p-3 text-sm rounded overflow-x-auto"><code>class="grid grid-cols-3 grid-rows-2 gap-4"</code></pre>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold text-indigo-700 mb-3">Grid Item Placement</h3>
+            <p class="text-gray-700 mb-3">
+              Control how items are placed in the grid with column and row span utilities.
+            </p>
+            <pre class="bg-gray-100 p-3 text-sm rounded overflow-x-auto"><code>class="col-span-2 row-span-2"</code></pre>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="text-lg font-semibold text-indigo-700 mb-3">Grid Gaps</h3>
+            <p class="text-gray-700 mb-3">
+              Adjust the spacing between grid items with gap utilities, which can be applied to rows, columns, or both.
+            </p>
+            <pre class="bg-gray-100 p-3 text-sm rounded overflow-x-auto"><code>class="gap-4 gap-x-6 gap-y-8"</code></pre>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold text-indigo-700 mb-3">Auto Grid</h3>
+            <p class="text-gray-700 mb-3">
+              Create flexible, automatic grid layouts that adjust based on available space.
+            </p>
+            <pre class="bg-gray-100 p-3 text-sm rounded overflow-x-auto"><code>class="grid grid-cols-auto-fit gap-4"</code></pre>
+          </div>
+        </div>
+        
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold text-indigo-700 mb-3">Custom Grid Builder</h3>
+          <p class="text-gray-700 mb-4">
+            Use this interactive tool to experiment with different grid configurations:
+          </p>
+          
+          <div class="flex flex-wrap gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Columns</label>
+              <select id="grid-cols" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                <option value="1">1 column</option>
+                <option value="2">2 columns</option>
+                <option value="3" selected>3 columns</option>
+                <option value="4">4 columns</option>
+                <option value="5">5 columns</option>
+                <option value="6">6 columns</option>
+                <option value="12">12 columns</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Rows</label>
+              <select id="grid-rows" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                <option value="1">1 row</option>
+                <option value="2">2 rows</option>
+                <option value="3" selected>3 rows</option>
+                <option value="4">4 rows</option>
+                <option value="5">5 rows</option>
+                <option value="6">6 rows</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Gap</label>
+              <select id="grid-gap" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                <option value="0">No gap</option>
+                <option value="1">gap-1</option>
+                <option value="2">gap-2</option>
+                <option value="4" selected>gap-4</option>
+                <option value="6">gap-6</option>
+                <option value="8">gap-8</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Items</label>
+              <select id="grid-items" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                <option value="3">3 items</option>
+                <option value="6">6 items</option>
+                <option value="9" selected>9 items</option>
+                <option value="12">12 items</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="grid-preview" class="grid grid-cols-3 grid-rows-3 gap-4 mb-4 w-full bg-gray-100 p-4 rounded-lg">
+            <!-- Will be filled by JavaScript -->
+          </div>
+          
+          <div class="bg-gray-100 p-3 rounded-lg">
+            <p class="text-sm font-medium text-gray-700 mb-2">Generated Code:</p>
+            <pre id="grid-code" class="text-sm overflow-x-auto"></pre>
+          </div>
+        </div>
+        
+        <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+          <h3 class="text-lg font-semibold text-indigo-800 mb-3 flex items-center">
+            <i class="fas fa-lightbulb text-indigo-600 mr-2"></i>
+            Grid vs Flexbox
+          </h3>
+          <p class="text-indigo-900 mb-3">
+            While <strong>flexbox</strong> is designed for one-dimensional layouts (either rows OR columns),
+            <strong>grid</strong> is designed for two-dimensional layouts (rows AND columns simultaneously).
+          </p>
+          <ul class="text-indigo-800 space-y-2">
+            <li class="flex items-start">
+              <i class="fas fa-arrow-right text-indigo-600 mt-1 mr-2"></i>
+              <span>Use <strong>grid</strong> when you need to control both rows and columns</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-arrow-right text-indigo-600 mt-1 mr-2"></i>
+              <span>Use <strong>flexbox</strong> for simpler one-directional layouts</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <!-- Col and row span -->
-    <div class="grid grid-cols-3 gap-4 w-100 bg-gray-100">
-      <div
-        class="col-span-2 row-span-2 p-10 border border-blue-600 bg-blue-100"
-      >
-        01
+    <!-- Enhanced Grid Examples Section -->
+    <div class="max-w-5xl mx-auto px-6 mb-12">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Grid Examples</h2>
+      
+      <!-- Tabs for Examples -->
+      <div class="mb-8 border-b border-gray-200">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
+          <li class="mr-2">
+            <a href="#grid-columns" class="inline-block p-4 border-b-2 border-indigo-600 rounded-t-lg text-indigo-600">Grid Columns</a>
+          </li>
+          <li class="mr-2">
+            <a href="#grid-spans" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300">Grid Spans</a>
+          </li>
+          <li class="mr-2">
+            <a href="#grid-auto" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300">Auto Grid</a>
+          </li>
+          <li class="mr-2">
+            <a href="#grid-areas" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300">Grid Areas</a>
+          </li>
+        </ul>
       </div>
-      <div class="p-10 border border-blue-600 bg-blue-100">02</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">03</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">04</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">05</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">06</div>
-      <div class="col-span-3 p-10 border border-blue-600 bg-blue-100">07</div>
-      <div class="p-10 border border-blue-600 bg-blue-100">08</div>
-      <div class="col-span-2 p-10 border border-blue-600 bg-blue-100">09</div>
+      
+      <!-- Interactive Examples -->
+      <div class="bg-white p-8 rounded-lg shadow-md mb-10">
+        <h3 id="grid-columns" class="text-xl font-bold text-indigo-700 mb-4">Grid Template Columns</h3>
+        
+        <!-- Basic Grid Columns -->
+        <div class="mb-8">
+          <p class="text-gray-700 mb-4">
+            Control the number of columns in your grid with the <code class="bg-gray-100 px-1 py-0.5 rounded">grid-cols-{n}</code> 
+            utilities, where n is the number of columns (1-12).
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">grid-cols-1</h4>
+              <div class="grid grid-cols-1 gap-2 bg-gray-100 p-2 rounded">
+                <div class="p-3 border border-indigo-600 bg-indigo-100 text-center">Column</div>
+                <div class="p-3 border border-indigo-600 bg-indigo-100 text-center">Column</div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">grid-cols-3</h4>
+              <div class="grid grid-cols-3 gap-2 bg-gray-100 p-2 rounded">
+                <div class="p-3 border border-indigo-600 bg-indigo-100 text-center">1</div>
+                <div class="p-3 border border-indigo-600 bg-indigo-100 text-center">2</div>
+                <div class="p-3 border border-indigo-600 bg-indigo-100 text-center">3</div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">grid-cols-6</h4>
+              <div class="grid grid-cols-6 gap-1 bg-gray-100 p-2 rounded">
+                <div class="p-1 border border-indigo-600 bg-indigo-100 text-center text-xs">1</div>
+                <div class="p-1 border border-indigo-600 bg-indigo-100 text-center text-xs">2</div>
+                <div class="p-1 border border-indigo-600 bg-indigo-100 text-center text-xs">3</div>
+                <div class="p-1 border border-indigo-600 bg-indigo-100 text-center text-xs">4</div>
+                <div class="p-1 border border-indigo-600 bg-indigo-100 text-center text-xs">5</div>
+                <div class="p-1 border border-indigo-600 bg-indigo-100 text-center text-xs">6</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-100 p-4 rounded-lg mb-6">
+            <p class="font-medium text-sm mb-2">Available column utilities:</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+              <code class="bg-white p-1 rounded">grid-cols-1</code>
+              <code class="bg-white p-1 rounded">grid-cols-2</code>
+              <code class="bg-white p-1 rounded">grid-cols-3</code>
+              <code class="bg-white p-1 rounded">grid-cols-4</code>
+              <code class="bg-white p-1 rounded">grid-cols-5</code>
+              <code class="bg-white p-1 rounded">grid-cols-6</code>
+              <code class="bg-white p-1 rounded">grid-cols-7</code>
+              <code class="bg-white p-1 rounded">grid-cols-8</code>
+              <code class="bg-white p-1 rounded">grid-cols-9</code>
+              <code class="bg-white p-1 rounded">grid-cols-10</code>
+              <code class="bg-white p-1 rounded">grid-cols-11</code>
+              <code class="bg-white p-1 rounded">grid-cols-12</code>
+              <code class="bg-white p-1 rounded">grid-cols-none</code>
+            </div>
+          </div>
+        </div>
+        
+        <h3 id="grid-spans" class="text-xl font-bold text-indigo-700 mb-4">Column & Row Spanning</h3>
+        
+        <!-- Spanning Examples -->
+        <div class="mb-8">
+          <p class="text-gray-700 mb-4">
+            Use <code class="bg-gray-100 px-1 py-0.5 rounded">col-span-{n}</code> and 
+            <code class="bg-gray-100 px-1 py-0.5 rounded">row-span-{n}</code> utilities 
+            to make elements span multiple columns or rows.
+          </p>
+          
+          <div class="grid grid-cols-3 gap-4 bg-gray-100 p-4 rounded-lg mb-6">
+            <div class="col-span-2 row-span-2 p-4 border-2 border-indigo-600 bg-indigo-100 flex items-center justify-center font-medium">
+              col-span-2<br>row-span-2
+            </div>
+            <div class="p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center">3</div>
+            <div class="p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center">4</div>
+            <div class="col-span-3 p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center font-medium">
+              col-span-3
+            </div>
+            <div class="p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center">6</div>
+            <div class="col-span-2 p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center font-medium">
+              col-span-2
+            </div>
+          </div>
+          
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <p class="font-medium text-sm mb-2">Example code:</p>
+            <pre class="bg-white p-3 rounded text-sm overflow-x-auto"><code>&lt;div class="grid grid-cols-3 gap-4"&gt;
+  &lt;div class="col-span-2 row-span-2"&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div class="col-span-3"&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div class="col-span-2"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+        
+        <h3 id="grid-auto" class="text-xl font-bold text-indigo-700 mb-4">Auto Columns & Responsive Grid</h3>
+        
+        <!-- Auto Grid Examples -->
+        <div class="mb-8">
+          <p class="text-gray-700 mb-4">
+            Create responsive layouts that automatically adjust based on screen size or content.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 bg-gray-100 p-4 rounded-lg mb-6">
+            <div class="p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center">
+              Responsive Item
+            </div>
+            <div class="p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center">
+              Responsive Item
+            </div>
+            <div class="p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center">
+              Responsive Item
+            </div>
+            <div class="p-4 border border-indigo-600 bg-indigo-100 flex items-center justify-center">
+              Responsive Item
+            </div>
+          </div>
+          
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <p class="font-medium text-sm mb-2">Example code:</p>
+            <pre class="bg-white p-3 rounded text-sm overflow-x-auto"><code>&lt;div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4"&gt;
+  &lt;div&gt;Responsive Item&lt;/div&gt;
+  &lt;div&gt;Responsive Item&lt;/div&gt;
+  &lt;div&gt;Responsive Item&lt;/div&gt;
+  &lt;div&gt;Responsive Item&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+        
+        <h3 id="grid-areas" class="text-xl font-bold text-indigo-700 mb-4">Grid Areas Example</h3>
+        
+        <!-- Grid Areas Example -->
+        <div class="mb-8">
+          <p class="text-gray-700 mb-4">
+            You can create complex layouts with named grid areas using custom CSS along with Tailwind.
+          </p>
+          
+          <div class="grid-area-demo h-64 bg-gray-100 rounded-lg mb-6 overflow-hidden">
+            <div class="area-header bg-indigo-600 text-white p-4 flex items-center justify-center font-medium">
+              Header Area
+            </div>
+            <div class="area-sidebar bg-indigo-400 text-white p-4 flex items-center justify-center font-medium">
+              Sidebar
+            </div>
+            <div class="area-content bg-indigo-200 p-4 flex items-center justify-center font-medium text-indigo-900">
+              Main Content Area
+            </div>
+            <div class="area-footer bg-indigo-600 text-white p-4 flex items-center justify-center font-medium">
+              Footer Area
+            </div>
+          </div>
+          
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <p class="font-medium text-sm mb-2">Custom grid areas with CSS:</p>
+            <pre class="bg-white p-3 rounded text-sm overflow-x-auto"><code>.grid-area-demo {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr 3fr;
+}
+
+.area-header { grid-area: header; }
+.area-sidebar { grid-area: sidebar; }
+.area-content { grid-area: content; }
+.area-footer { grid-area: footer; }</code></pre>
+          </div>
+        </div>
+        
+        <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+          <h3 class="text-lg font-semibold text-blue-800 mb-3 flex items-center">
+            <i class="fas fa-info-circle text-blue-600 mr-2"></i>
+            Browser Support
+          </h3>
+          <p class="text-blue-700 mb-3">
+            CSS Grid is supported in all modern browsers. For older browser support, 
+            consider using a fallback layout or a polyfill.
+          </p>
+          <p class="text-blue-700">
+            Tailwind's grid utilities generate standard CSS Grid properties, providing
+            excellent compatibility across browsers and devices.
+          </p>
+        </div>
+      </div>
     </div>
+
+    <!-- Practical Usage Examples -->
+    <div class="max-w-5xl mx-auto px-6 mb-16">
+      <h2 class="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Practical Usage Examples</h2>
+      
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6">
+            <h3 class="text-xl font-bold text-gray-800">Common Grid Patterns</h3>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid md:grid-cols-2 gap-10">
+            <!-- Dashboard Layout Example -->
+            <div>
+              <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+                <i class="fas fa-columns text-indigo-600"></i>
+                Dashboard Layout
+              </h4>
+              
+              <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                <div class="grid grid-cols-4 gap-4 h-64">
+                  <div class="col-span-4 bg-indigo-600 rounded-md p-3 text-white font-medium shadow-sm">
+                    Header
+                  </div>
+                  <div class="col-span-1 row-span-2 bg-indigo-500 rounded-md p-3 text-white font-medium shadow-sm">
+                    Sidebar
+                  </div>
+                  <div class="col-span-3 bg-indigo-400 rounded-md p-3 text-white font-medium shadow-sm flex items-center justify-center">
+                    Main Stats
+                  </div>
+                  <div class="col-span-1 bg-indigo-300 rounded-md p-3 text-indigo-800 font-medium shadow-sm flex items-center justify-center">
+                    Card 1
+                  </div>
+                  <div class="col-span-1 bg-indigo-300 rounded-md p-3 text-indigo-800 font-medium shadow-sm flex items-center justify-center">
+                    Card 2
+                  </div>
+                  <div class="col-span-1 bg-indigo-300 rounded-md p-3 text-indigo-800 font-medium shadow-sm flex items-center justify-center">
+                    Card 3
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-sm font-medium text-gray-700 mb-2">Code Example:</p>
+                <pre class="text-xs bg-gray-100 p-3 rounded overflow-x-auto"><code>&lt;div class="grid grid-cols-4 gap-4"&gt;
+  &lt;div class="col-span-4"&gt;Header&lt;/div&gt;
+  &lt;div class="col-span-1 row-span-2"&gt;Sidebar&lt;/div&gt;
+  &lt;div class="col-span-3"&gt;Main Stats&lt;/div&gt;
+  &lt;div class="col-span-1"&gt;Card 1&lt;/div&gt;
+  &lt;div class="col-span-1"&gt;Card 2&lt;/div&gt;
+  &lt;div class="col-span-1"&gt;Card 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+            <!-- Photo Gallery Example -->
+            <div>
+              <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+                <i class="fas fa-images text-indigo-600"></i>
+                Photo Gallery
+              </h4>
+              
+              <div class="mb-6 space-y-4">
+                <div class="grid grid-cols-3 gap-2 bg-gray-100 p-4 rounded-lg">
+                  <div class="bg-indigo-300 aspect-square rounded shadow-sm"></div>
+                  <div class="bg-indigo-400 aspect-square rounded shadow-sm"></div>
+                  <div class="bg-indigo-500 aspect-square rounded shadow-sm"></div>
+                  <div class="bg-indigo-600 aspect-square rounded shadow-sm"></div>
+                  <div class="col-span-2 bg-indigo-700 aspect-video rounded shadow-sm"></div>
+                </div>
+              </div>
+              
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-sm font-medium text-gray-700 mb-2">Code Example:</p>
+                <pre class="text-xs bg-gray-100 p-3 rounded overflow-x-auto"><code>&lt;div class="grid grid-cols-3 gap-2"&gt;
+  &lt;div class="aspect-square"&gt;Image 1&lt;/div&gt;
+  &lt;div class="aspect-square"&gt;Image 2&lt;/div&gt;
+  &lt;div class="aspect-square"&gt;Image 3&lt;/div&gt;
+  &lt;div class="aspect-square"&gt;Image 4&lt;/div&gt;
+  &lt;div class="col-span-2 aspect-video"&gt;
+    Featured Image
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-10">
+            <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+              <i class="fas fa-table text-indigo-600"></i>
+              Card Grid with Auto-Fit
+            </h4>
+            
+            <div class="mb-6">
+              <p class="text-gray-700 mb-4">
+                When used with custom configuration, you can create responsive card layouts that automatically adjust:
+              </p>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200">
+                  <div class="h-12 bg-indigo-100 rounded mb-3"></div>
+                  <h5 class="font-medium text-gray-800">Card Title</h5>
+                  <p class="text-gray-600 text-sm">Card content goes here with auto-fit behavior</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200">
+                  <div class="h-12 bg-indigo-100 rounded mb-3"></div>
+                  <h5 class="font-medium text-gray-800">Card Title</h5>
+                  <p class="text-gray-600 text-sm">Card content goes here with auto-fit behavior</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200">
+                  <div class="h-12 bg-indigo-100 rounded mb-3"></div>
+                  <h5 class="font-medium text-gray-800">Card Title</h5>
+                  <p class="text-gray-600 text-sm">Card content goes here with auto-fit behavior</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200">
+                  <div class="h-12 bg-indigo-100 rounded mb-3"></div>
+                  <h5 class="font-medium text-gray-800">Card Title</h5>
+                  <p class="text-gray-600 text-sm">Card content goes here with auto-fit behavior</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-4">
+              <p class="text-sm font-medium text-gray-700 mb-2">Standard responsive approach:</p>
+              <pre class="text-xs bg-gray-100 p-3 rounded overflow-x-auto"><code>&lt;div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"&gt;
+  &lt;div class="bg-white border rounded-lg shadow-sm p-4"&gt;Card 1&lt;/div&gt;
+  &lt;div class="bg-white border rounded-lg shadow-sm p-4"&gt;Card 2&lt;/div&gt;
+  &lt;div class="bg-white border rounded-lg shadow-sm p-4"&gt;Card 3&lt;/div&gt;
+  &lt;div class="bg-white border rounded-lg shadow-sm p-4"&gt;Card 4&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          
+          <div class="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500 mt-8">
+            <h4 class="font-bold text-lg mb-2 text-indigo-900">Advanced Tip</h4>
+            <p class="text-indigo-800">
+              For more advanced auto-sizing grids, extend your Tailwind config with custom grid utilities:
+            </p>
+            <pre class="bg-white p-3 rounded text-xs overflow-x-auto mt-2"><code>// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      gridTemplateColumns: {
+        'auto-fill': 'repeat(auto-fill, minmax(200px, 1fr))',
+        'auto-fit': 'repeat(auto-fit, minmax(200px, 1fr))',
+      }
+    }
+  }
+}</code></pre>
+            <p class="text-indigo-800 mt-3">
+              Then use them like: <code class="bg-white px-1 py-0.5 rounded">grid-cols-auto-fit</code>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Best Practices -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-16">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6">
+            <h3 class="text-xl font-bold text-gray-800">Grid Best Practices</h3>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-green-50 p-5 rounded-lg border-l-4 border-green-500">
+              <h4 class="font-bold text-green-800 mb-3">Do</h4>
+              <ul class="space-y-2 text-green-700">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                  <span>Use responsive prefixes (sm:, md:, lg:) for different layouts at different screen sizes</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                  <span>Combine with gap utilities for proper spacing</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                  <span>Use grid-flow-row-dense or grid-flow-col-dense to fill in empty cells efficiently</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                  <span>Create maintainable layouts by using consistent column spans</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-red-50 p-5 rounded-lg border-l-4 border-red-500">
+              <h4 class="font-bold text-red-800 mb-3">Don't</h4>
+              <ul class="space-y-2 text-red-700">
+                <li class="flex items-start">
+                  <i class="fas fa-times text-red-600 mt-1 mr-2"></i>
+                  <span>Overuse grid for simple one-directional layouts where flexbox would be simpler</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-times text-red-600 mt-1 mr-2"></i>
+                  <span>Create overcomplicated grid structures that are hard to maintain</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-times text-red-600 mt-1 mr-2"></i>
+                  <span>Forget about accessibility when reordering grid items</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-times text-red-600 mt-1 mr-2"></i>
+                  <span>Neglect testing your grid layouts across different screen sizes</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-8 bg-blue-50 rounded-lg p-5 border border-blue-100">
+            <h4 class="font-bold text-blue-800 mb-2 flex items-center">
+              <i class="fas fa-cog text-blue-600 mr-2"></i>
+              Customizing Grid Settings
+            </h4>
+            <p class="text-blue-700 mb-3">
+              You can extend Tailwind's grid configuration in your tailwind.config.js file:
+            </p>
+            <pre class="bg-white p-3 rounded text-xs overflow-x-auto"><code>// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      gridTemplateColumns: {
+        'sidebar': '200px minmax(0, 1fr)',
+        'footer': '200px minmax(900px, 1fr) 100px',
+      },
+      gridTemplateRows: {
+        'layout': 'auto 1fr auto',
+      }
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Summary & Conclusion -->
+      <div class="bg-gradient-to-r from-indigo-700 to-purple-700 rounded-xl shadow-xl overflow-hidden mb-16 text-white">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold mb-6">Summary & Key Takeaways</h2>
+          
+          <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+            <div>
+              <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+                <i class="fas fa-th-large"></i>
+                Grid Fundamentals
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-indigo-300 mt-1 mr-2"></i>
+                  <span>Tailwind makes CSS Grid accessible with simple utility classes</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-indigo-300 mt-1 mr-2"></i>
+                  <span>Choose between predefined column counts (1-12) or customize your own</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-indigo-300 mt-1 mr-2"></i>
+                  <span>Combine grid-cols-* with col-span-* for flexible layouts</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-indigo-300 mt-1 mr-2"></i>
+                  <span>Use gap-* utilities to control spacing between grid items</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+                <i class="fas fa-laptop-code"></i>
+                Grid Applications
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-indigo-300 mt-1 mr-2"></i>
+                  <span>Create complex, responsive layouts with minimal code</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-indigo-300 mt-1 mr-2"></i>
+                  <span>Build dashboards, galleries, and card layouts efficiently</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-indigo-300 mt-1 mr-2"></i>
+                  <span>Extend Tailwind with custom grid configurations when needed</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-indigo-300 mt-1 mr-2"></i>
+                  <span>Combine with other Tailwind utilities for complete design systems</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-8 pt-6 border-t border-indigo-500">
+            <p class="text-indigo-200">
+              Grid is one of the most powerful layout tools in CSS, and Tailwind makes it approachable
+              with its utility-first approach. By understanding the grid system concepts in this guide,
+              you can build complex, responsive layouts with minimal effort.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="bg-gray-800 text-gray-400 py-10">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <h4 class="text-white font-bold mb-2">Tailwind CSS Grid Documentation</h4>
+            <p class="text-sm">An interactive guide to understanding and using CSS Grid with Tailwind.</p>
+          </div>
+          <div class="flex space-x-6">
+            <a href="../index.html" class="hover:text-white transition-colors">
+              <i class="fas fa-home mr-1"></i> Home
+            </a>
+            <a href="https://tailwindcss.com/docs/grid-template-columns" class="hover:text-white transition-colors" target="_blank">
+              <i class="fas fa-external-link-alt mr-1"></i> Official Docs
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 

@@ -4,12 +4,102 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS utility-first approach - learn the core concepts with interactive examples" />
+    <meta name="author" content="Tailwind Documentation" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Utility First Fundamentals</title>
-    <style>
-      body {
-        margin-top: 200px !important;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Utility First Fundamentals | Tailwind CSS</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4F46E5',
+              secondary: '#8B5CF6'
+            }
+          }
+        }
       }
+    </script>
+    <style>
+      /* Custom animation for demonstration */
+      @keyframes utility-pulse {
+        0%, 100% { opacity: 0.9; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.03); }
+      }
+      
+      .utility-pulse {
+        animation: utility-pulse 2s ease-in-out infinite;
+      }
+      
+      /* Timeline styling */
+      .timeline-container {
+        position: relative;
+        padding-left: 30px;
+      }
+      
+      .timeline-container::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, #4F46E5, #8B5CF6);
+      }
+      
+      .timeline-item {
+        position: relative;
+        padding-bottom: 1.5rem;
+      }
+      
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -34px;
+        top: 0px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #4F46E5;
+        border: 2px solid white;
+      }
+      
+      /* Code comparison styling */
+      .code-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      
+      @media (max-width: 768px) {
+        .code-comparison {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      .code-block {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem;
+      }
+      
+      .code-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        background-color: rgba(0,0,0,0.6);
+        color: white;
+        border-bottom-left-radius: 0.5rem;
+      }
+      
+      /* Custom alert styles */
       .alert {
         display: flex;
         max-width: 24rem;
@@ -20,23 +110,28 @@
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
           0 10px 10px -5px rgba(0, 0, 0, 0.04);
       }
+      
       .alert-logo-wrap {
         flex-shrink: 0;
       }
+      
       .alert-logo {
         height: 3rem;
         width: 3rem;
       }
+      
       .alert-body {
         margin-left: 1.5rem;
         padding-top: 0.25rem;
       }
+      
       .alert-title {
         color: #1a202c;
         font-size: 1.25rem;
         line-height: 1.25;
         font-weight: 500;
       }
+      
       .alert-message {
         color: #718096;
         font-size: 1rem;
@@ -44,131 +139,483 @@
       }
     </style>
   </head>
-  <body>
-    <!-- Introduction to Utility-First CSS -->
-    <div class="max-w-4xl mx-auto mb-12 p-6 bg-slate-100 rounded-lg shadow">
-      <h1 class="text-3xl font-bold text-center text-slate-800 mb-6">Utility-First CSS with Tailwind</h1>
-      <p class="text-lg text-slate-700 mb-4">
-        Utility-first CSS is an approach where you use small, single-purpose classes that each apply a specific style.
-        Instead of writing custom CSS, you compose these utility classes directly in your HTML to build complex designs.
-      </p>
-      <p class="text-lg text-slate-700">
-        Tailwind CSS provides a comprehensive set of utility classes for spacing, typography, colors, flexbox, grid, 
-        and more, allowing for rapid UI development without leaving your HTML.
-      </p>
-    </div>
-
-    <!-- Original Examples -->
-    <h2 class="text-2xl font-bold text-center mb-8 text-slate-700">Alert Component Example</h2>
-    
-    <!-- HTML/CSS Version -->
-    <div class="alert">
-      <div class="alert-logo-wrap">
-        <img class="alert-logo" src="../assets/img/warning.svg" alt="alert" />
-      </div>
-      <div class="alert-body">
-        <h4 class="alert-title">Are You Sure?</h4>
-        <p class="alert-message">You are about to delete a post</p>
-      </div>
-    </div>
-
-    <!-- Tailwind Version -->
-    <div class="flex items-center p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4 mt-8">
-      <img class="h-12 w-12" src="../assets/img/warning.svg" alt="alert" />
-      <div>
-        <div class="text-xl font-medium text-black">Are You Sure?</div>
-        <p class="text-slate-500">You are about to delete a post</p>
-      </div>
-    </div>
-    
-    <!-- Additional Examples -->
-    <h2 class="text-2xl font-bold text-center mt-16 mb-8 text-slate-700">More Utility-First Examples</h2>
-    
-    <!-- Example 1: Card Component -->
-    <div class="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-12">
-      <div class="md:flex">
-        <div class="md:shrink-0">
-          <img class="h-48 w-full object-cover md:h-full md:w-48" src="https://images.unsplash.com/photo-1637734433731-621aca1c8cb6" alt="Modern building architecture">
+  <body class="bg-gray-50 font-sans" style="font-family: 'Inter', sans-serif;">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="flex items-center gap-2 text-white hover:text-indigo-100 transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+            <span>Back to Main Documentation</span>
+          </a>
+          <a href="https://tailwindcss.com/docs/utility-first" target="_blank" class="flex items-center gap-1 text-indigo-100 hover:text-white transition-colors text-sm">
+            <span>Official Docs</span>
+            <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
         </div>
-        <div class="p-8">
-          <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Company retreats</div>
-          <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">Incredible accommodation for your team</a>
-          <p class="mt-2 text-slate-500">Looking to take your team away to refresh their minds and inspire creativity?</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-layer-group"></i>
+          Utility First Fundamentals
+        </h1>
+        <p class="text-indigo-100 text-lg max-w-3xl">
+          Master the paradigm shift in CSS that enables rapid, maintainable UI development
+        </p>
+      </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="max-w-5xl mx-auto px-6 mb-12">
+      <!-- What is Utility-First CSS -->
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-t-4 border-indigo-600">
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-indigo-600"></i>
+              What is Utility-First CSS?
+            </h2>
+            <p class="text-lg text-gray-700 mb-4">
+              Utility-first CSS is a design approach that uses small, single-purpose classes that each perform one specific styling function. Instead of writing custom CSS in separate files, you apply these utility classes directly in your HTML.
+            </p>
+            <p class="text-md text-gray-600 mb-4">
+              Tailwind CSS is a utility-first framework that provides thousands of these utility classes for colors, spacing, typography, flexbox, grid layouts, and more—enabling rapid UI development without leaving your HTML.
+            </p>
+            <p class="text-md text-gray-600">
+              This approach represents a paradigm shift from traditional semantic CSS methodologies like BEM, SMACSS, or component-based styling.
+            </p>
+          </div>
+          <div class="md:w-1/3 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg p-4 flex flex-col items-center justify-center utility-pulse">
+            <div class="text-center">
+              <i class="fas fa-bolt text-5xl text-indigo-500 mb-2"></i>
+              <div class="font-medium text-indigo-800">Rapid Development</div>
+              <div class="font-medium text-indigo-800">Consistent Design</div>
+              <div class="font-medium text-indigo-800">Maintainable Code</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Traditional vs Utility First -->
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Traditional CSS vs. Utility-First</h3>
+        <div class="code-comparison mb-6">
+          <!-- Traditional CSS -->
+          <div>
+            <h4 class="text-lg font-medium text-indigo-700 mb-2">Traditional CSS Approach</h4>
+            <div class="code-block bg-gray-800 p-4 text-sm text-white rounded-lg overflow-x-auto">
+              <div class="code-label">HTML</div>
+              <pre><code>&lt;div class="alert"&gt;
+  &lt;div class="alert-logo-wrap"&gt;
+    &lt;img class="alert-logo" src="warning.svg" /&gt;
+  &lt;/div&gt;
+  &lt;div class="alert-body"&gt;
+    &lt;h4 class="alert-title"&gt;Are You Sure?&lt;/h4&gt;
+    &lt;p class="alert-message"&gt;You're about to delete a post&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="code-block bg-gray-800 p-4 text-sm text-white rounded-lg mt-2 overflow-x-auto">
+              <div class="code-label">CSS</div>
+              <pre><code>.alert {
+  display: flex;
+  max-width: 24rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+.alert-logo-wrap { flex-shrink: 0; }
+.alert-logo { height: 3rem; width: 3rem; }
+.alert-body { margin-left: 1.5rem; padding-top: 0.25rem; }
+.alert-title {
+  color: #1a202c;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  font-weight: 500;
+}
+.alert-message {
+  color: #718096;
+  font-size: 1rem;
+  line-height: 1.5;
+}</code></pre>
+            </div>
+          </div>
+          
+          <!-- Utility-First CSS -->
+          <div>
+            <h4 class="text-lg font-medium text-indigo-700 mb-2">Utility-First Approach</h4>
+            <div class="code-block bg-gray-800 p-4 text-sm text-white rounded-lg overflow-x-auto">
+              <div class="code-label">HTML with Tailwind</div>
+              <pre><code>&lt;div class="flex items-center p-6 max-w-sm mx-auto
+  bg-white rounded-xl shadow-lg space-x-4"&gt;
+  &lt;img class="h-12 w-12" src="warning.svg" /&gt;
+  &lt;div&gt;
+    &lt;div class="text-xl font-medium text-black"&gt;
+      Are You Sure?
+    &lt;/div&gt;
+    &lt;p class="text-slate-500"&gt;
+      You're about to delete a post
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="bg-indigo-100 p-4 rounded-lg mt-2">
+              <h5 class="font-medium text-indigo-800 mb-2">Benefits:</h5>
+              <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                <li>No need to write custom CSS files</li>
+                <li>No time spent on inventing class names</li>
+                <li>CSS file size stays constant as project grows</li>
+                <li>Changes can be made directly in HTML</li>
+                <li>No context switching between HTML and CSS</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <!-- Example 2: Button Styles -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Primary Button
-      </button>
-      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-        Secondary Button
-      </button>
-      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-        <span>Download</span>
-      </button>
-    </div>
-    
-    <!-- Example 3: Form Elements -->
-    <div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow-md mb-12">
-      <h3 class="text-xl font-medium text-gray-900 mb-4">Contact Form</h3>
-      <form class="space-y-4">
+      
+      <!-- Tailwind CSS History -->
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 flex items-center gap-2">
+          <i class="fas fa-history text-indigo-600"></i>
+          The History of Tailwind CSS
+        </h2>
+        
+        <div class="timeline-container">
+          <div class="timeline-item">
+            <h3 class="text-lg font-bold text-indigo-700">2017: Initial Release</h3>
+            <p class="text-gray-700">
+              Created by Adam Wathan, Jonathan Reinink, David Hemphill, and Steve Schoger. The first version was released as an experiment to test if utility-first CSS could work at scale.
+            </p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3 class="text-lg font-bold text-indigo-700">2018-2019: Growing Adoption</h3>
+            <p class="text-gray-700">
+              Tailwind gained popularity due to its flexibility and developer experience. The community grew rapidly, with contributors adding new features and utilities.
+            </p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3 class="text-lg font-bold text-indigo-700">2020: Tailwind CSS v2.0</h3>
+            <p class="text-gray-700">
+              A major update that added a new color palette, dark mode support, and form styles. PurgeCSS was integrated to remove unused styles in production.
+            </p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3 class="text-lg font-bold text-indigo-700">2021: Tailwind CSS v3.0</h3>
+            <p class="text-gray-700">
+              Introduced Just-in-Time (JIT) engine, enabling on-demand generation of utility classes, dramatically reducing build times and file sizes. Added support for arbitrary values and variants.
+            </p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3 class="text-lg font-bold text-indigo-700">2022-Present: Ecosystem Expansion</h3>
+            <p class="text-gray-700">
+              The Tailwind ecosystem expanded with Headless UI, Tailwind UI, and official plugins. Tailwind Labs continues to innovate with new features while maintaining the core principles of utility-first design.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Live Examples -->
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 flex items-center gap-2">
+          <i class="fas fa-code text-indigo-600"></i>
+          Interactive Examples
+        </h2>
+        
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Alert Component</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Traditional CSS Alert -->
+            <div>
+              <h4 class="text-base font-medium text-indigo-600 mb-2">Traditional CSS Version</h4>
+              <div class="alert">
+                <div class="alert-logo-wrap">
+                  <img class="alert-logo" src="../assets/img/warning.svg" alt="alert" />
+                </div>
+                <div class="alert-body">
+                  <h4 class="alert-title">Are You Sure?</h4>
+                  <p class="alert-message">You are about to delete a post</p>
+                </div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">
+                <p>Requires custom CSS definitions for each component</p>
+              </div>
+            </div>
+            
+            <!-- Tailwind Alert -->
+            <div>
+              <h4 class="text-base font-medium text-indigo-600 mb-2">Tailwind CSS Version</h4>
+              <div class="flex items-center p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4">
+                <img class="h-12 w-12" src="../assets/img/warning.svg" alt="alert" />
+                <div>
+                  <div class="text-xl font-medium text-black">Are You Sure?</div>
+                  <p class="text-slate-500">You are about to delete a post</p>
+                </div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">
+                <p>Styled entirely with utility classes in the HTML</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Card Component Example</h3>
+          
+          <div class="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4">
+            <div class="md:flex">
+              <div class="md:shrink-0">
+                <img class="h-48 w-full object-cover md:h-full md:w-48" src="https://images.unsplash.com/photo-1637734433731-621aca1c8cb6" alt="Modern building architecture">
+              </div>
+              <div class="p-8">
+                <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Company retreats</div>
+                <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">Incredible accommodation for your team</a>
+                <p class="mt-2 text-slate-500">Looking to take your team away to refresh their minds and inspire creativity?</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-100 p-4 rounded-lg text-sm">
+            <p class="font-medium mb-2">Utility Classes Used:</p>
+            <code class="text-xs bg-white p-2 rounded block overflow-x-auto">
+              max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4
+              md:flex md:shrink-0 h-48 w-full object-cover md:h-full md:w-48 p-8
+              uppercase tracking-wide text-sm text-indigo-500 font-semibold
+              block mt-1 text-lg leading-tight font-medium text-black hover:underline mt-2 text-slate-500
+            </code>
+          </div>
+        </div>
+        
         <div>
-          <label class="block text-sm font-medium text-gray-700">Email</label>
-          <input type="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Button Styles</h3>
+          
+          <div class="flex flex-wrap justify-center gap-4 mb-6">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+              Primary Button
+            </button>
+            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded transition-colors duration-300">
+              Secondary Button
+            </button>
+            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center transition-colors duration-300">
+              <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+              <span>Download</span>
+            </button>
+          </div>
+          
+          <div class="bg-gray-100 p-4 rounded-lg text-sm">
+            <p class="font-medium mb-2">No CSS files needed, all styled with utility classes:</p>
+            <code class="text-xs bg-white p-2 rounded block overflow-x-auto">
+              bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300
+            </code>
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700">Message</label>
-          <textarea rows="4" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+      </div>
+      
+      <!-- Core Concepts -->
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 flex items-center gap-2">
+          <i class="fas fa-lightbulb text-indigo-600"></i>
+          Core Concepts
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Responsive Design -->
+          <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+            <h3 class="text-lg font-semibold mb-3 text-indigo-800 flex items-center gap-2">
+              <i class="fas fa-mobile-alt text-indigo-600"></i>
+              Responsive Design
+            </h3>
+            <p class="text-gray-700 mb-3">
+              Tailwind's responsive design system uses breakpoint prefixes to apply styles at specific screen sizes.
+            </p>
+            <code class="bg-white p-2 text-xs rounded block mb-3">
+              &lt;div class="<span class="text-indigo-600">w-full md:w-1/2 lg:w-1/3</span>"&gt;
+            </code>
+            <p class="text-sm text-gray-600">
+              This div will be full width on mobile, half width on medium screens, and one-third width on large screens.
+            </p>
+          </div>
+          
+          <!-- State Variants -->
+          <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+            <h3 class="text-lg font-semibold mb-3 text-indigo-800 flex items-center gap-2">
+              <i class="fas fa-fingerprint text-indigo-600"></i>
+              State Variants
+            </h3>
+            <p class="text-gray-700 mb-3">
+              Apply styles only when elements are in specific states using prefixed variants.
+            </p>
+            <code class="bg-white p-2 text-xs rounded block mb-3">
+              &lt;button class="bg-blue-500 <span class="text-indigo-600">hover:bg-blue-700 focus:ring</span>"&gt;
+            </code>
+            <p class="text-sm text-gray-600">
+              The button changes background color on hover and shows a ring on focus.
+            </p>
+          </div>
+          
+          <!-- Component Extraction -->
+          <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+            <h3 class="text-lg font-semibold mb-3 text-indigo-800 flex items-center gap-2">
+              <i class="fas fa-boxes text-indigo-600"></i>
+              Component Extraction
+            </h3>
+            <p class="text-gray-700 mb-3">
+              For reused UI patterns, extract components using your framework's component system or Tailwind's @apply directive.
+            </p>
+            <code class="bg-white p-2 text-xs rounded block mb-3">
+              .btn-primary {<br>
+              &nbsp;&nbsp;@apply px-4 py-2 bg-blue-500 text-white rounded;<br>
+              }
+            </code>
+            <p class="text-sm text-gray-600">
+              This maintains the utility-first approach while reducing repetition.
+            </p>
+          </div>
+          
+          <!-- Just-in-Time Mode -->
+          <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+            <h3 class="text-lg font-semibold mb-3 text-indigo-800 flex items-center gap-2">
+              <i class="fas fa-bolt text-indigo-600"></i>
+              Just-in-Time Engine
+            </h3>
+            <p class="text-gray-700 mb-3">
+              Tailwind v3's JIT engine generates styles on-demand, enabling arbitrary values and variants without bloating CSS.
+            </p>
+            <code class="bg-white p-2 text-xs rounded block mb-3">
+              &lt;div class="<span class="text-indigo-600">bg-[#3b82f6] text-[14px] grid-cols-[1fr,2fr]</span>"&gt;
+            </code>
+            <p class="text-sm text-gray-600">
+              These arbitrary values are generated only when needed, keeping CSS files small.
+            </p>
+          </div>
         </div>
-        <div class="flex items-center">
-          <input type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-          <label class="ml-2 block text-sm text-gray-900">Subscribe to newsletter</label>
+      </div>
+      
+      <!-- Pros and Cons -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <!-- Advantages -->
+        <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-green-500">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+            <i class="fas fa-check-circle text-green-500"></i>
+            Advantages
+          </h2>
+          
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span><strong class="text-gray-800">No CSS files:</strong> <span class="text-gray-600">Build complete UIs without writing custom CSS</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span><strong class="text-gray-800">No naming:</strong> <span class="text-gray-600">No more time spent inventing class names</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span><strong class="text-gray-800">Consistent scaling:</strong> <span class="text-gray-600">CSS file size doesn't grow with project size</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span><strong class="text-gray-800">Responsive:</strong> <span class="text-gray-600">Built-in responsive design with breakpoint prefixes</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span><strong class="text-gray-800">Interactive states:</strong> <span class="text-gray-600">Easy hover, focus, and other states without custom CSS</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span><strong class="text-gray-800">Fast development:</strong> <span class="text-gray-600">Rapid iterative development with instant feedback</span></span>
+            </li>
+          </ul>
         </div>
-        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Send
-        </button>
-      </form>
-    </div>
-    
-    <!-- Example 4: Responsive Layout -->
-    <div class="p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-md mb-12">
-      <h3 class="text-xl font-medium text-gray-900 mb-4">Responsive Grid Layout</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div class="bg-blue-100 p-4 rounded-lg shadow text-center">Item 1</div>
-        <div class="bg-blue-200 p-4 rounded-lg shadow text-center">Item 2</div>
-        <div class="bg-blue-300 p-4 rounded-lg shadow text-center">Item 3</div>
-        <div class="bg-blue-400 p-4 rounded-lg shadow text-center">Item 4</div>
-        <div class="bg-blue-500 p-4 rounded-lg shadow text-center text-white">Item 5</div>
-        <div class="bg-blue-600 p-4 rounded-lg shadow text-center text-white">Item 6</div>
-        <div class="bg-blue-700 p-4 rounded-lg shadow text-center text-white">Item 7</div>
-        <div class="bg-blue-800 p-4 rounded-lg shadow text-center text-white">Item 8</div>
+        
+        <!-- Challenges -->
+        <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-amber-500">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+            <i class="fas fa-exclamation-triangle text-amber-500"></i>
+            Challenges
+          </h2>
+          
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2">
+              <i class="fas fa-exclamation text-amber-500 mt-1"></i>
+              <span><strong class="text-gray-800">HTML verbosity:</strong> <span class="text-gray-600">HTML can become lengthy with many utility classes</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-exclamation text-amber-500 mt-1"></i>
+              <span><strong class="text-gray-800">Learning curve:</strong> <span class="text-gray-600">Initial learning investment to memorize utility classes</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-exclamation text-amber-500 mt-1"></i>
+              <span><strong class="text-gray-800">Separation of concerns:</strong> <span class="text-gray-600">Mixes presentation with content in HTML</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-exclamation text-amber-500 mt-1"></i>
+              <span><strong class="text-gray-800">Team adoption:</strong> <span class="text-gray-600">May meet resistance from traditional CSS developers</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-exclamation text-amber-500 mt-1"></i>
+              <span><strong class="text-gray-800">Specificity:</strong> <span class="text-gray-600">May require !important flags when integrating with legacy CSS</span></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-exclamation text-amber-500 mt-1"></i>
+              <span><strong class="text-gray-800">Style duplication:</strong> <span class="text-gray-600">Without component extraction, repeating styles can be an issue</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Conclusion -->
+      <div class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-8 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">Ready to Embrace Utility-First CSS?</h2>
+        <p class="mb-6 text-indigo-100">
+          Tailwind CSS has revolutionized how developers approach styling web applications. Whether you're building a small project or a large-scale application, the utility-first approach offers a flexible, maintainable, and efficient way to create beautiful user interfaces.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://tailwindcss.com/docs/installation" target="_blank" class="bg-white text-indigo-600 px-4 py-2 rounded-md font-medium hover:bg-indigo-50 transition-colors inline-flex items-center gap-2">
+            <i class="fas fa-external-link-alt"></i>
+            Getting Started with Tailwind
+          </a>
+          <a href="../index.html" class="bg-indigo-800 bg-opacity-50 hover:bg-opacity-70 transition-colors px-4 py-2 rounded-md font-medium inline-flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            Back to Main Documentation
+          </a>
+        </div>
       </div>
     </div>
     
-    <!-- Benefits Section -->
-    <div class="max-w-4xl mx-auto p-6 bg-slate-100 rounded-lg shadow mb-12">
-      <h2 class="text-2xl font-bold mb-4 text-slate-800">Benefits of Utility-First CSS</h2>
-      <ul class="list-disc pl-5 space-y-2 text-slate-700">
-        <li>No need to write custom CSS; just compose utilities in your HTML</li>
-        <li>No time spent on coming up with class names</li>
-        <li>CSS file size doesn't grow as your project grows</li>
-        <li>Make changes on the fly without context-switching to CSS files</li>
-        <li>Easy to experiment with different layouts and designs</li>
-        <li>Responsive design is built-in with breakpoint prefixes (sm:, md:, lg:)</li>
-        <li>Less chance of style conflicts since utilities are specific and isolated</li>
-      </ul>
-    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <p class="text-sm text-gray-400">
+              Interactive Tailwind CSS Documentation
+            </p>
+          </div>
+          <div class="flex space-x-4">
+            <a href="https://tailwindcss.com" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-external-link-alt mr-1"></i>
+              Official Docs
+            </a>
+            <a href="https://github.com/tailwindlabs/tailwindcss" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-github mr-1"></i>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <script>
+      // Add any interactive functionality here
+      document.addEventListener('DOMContentLoaded', function() {
+        // Add animations or interactive elements if needed
+      });
+    </script>
   </body>
 </html>
 
-<!--  
-  - We didn't have to write any extra CSS
-  - No spending time on class names
-  - No worrying about our CSS file getting too large
-  - Add and change things on the fly, try different layouts, etc
-  - Less chance of stuff going wrong
--->
+
+   

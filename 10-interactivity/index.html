@@ -4,328 +4,462 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS interactivity - learn about hover, focus, active states, cursors, and more with interactive examples" />
+    <meta name="author" content="Tailwind Documentation" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M6 5H18V19H6V5ZM4 3V21H20V3H4Z'/%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Interactivity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tailwind CSS Interactivity | Interactive Documentation</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4F46E5',
+              secondary: '#8B5CF6'
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body>
-    <a href="#item">Scroll To Item</a>
-    <!-- Hover State Styling -->
-    <button
-      type="button"
-      class="bg-black text-white py-3 px-5 rounded-lg m-3 hover:bg-orange-500 hover:text-black"
-    >
-      Submit
-    </button>
-    <!-- Focus State Styling -->
-    <button
-      type="button"
-      class="bg-black text-white py-3 px-5 rounded-lg m-3 focus:bg-green-500 focus:text-black"
-    >
-      Submit
-    </button>
-    <!-- Active State Styling -->
-    <button
-      type="button"
-      class="bg-black text-white py-3 px-5 rounded-lg m-3 active:bg-yellow-500 active:text-black"
-    >
-      Submit
-    </button>
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-12 px-4 md:px-8 mb-8">
+      <div class="container mx-auto max-w-6xl">
+        <div class="flex flex-col md:flex-row md:items-center justify-between">
+          <div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Interactivity in Tailwind CSS</h1>
+            <p class="text-xl md:text-2xl text-indigo-100 mb-6">Master state-based styling and user interactions</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-medium">Hover Effects</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-medium">Focus States</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-medium">Active States</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-medium">User Selection</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-medium">Cursor Types</span>
+            </div>
+          </div>
+          <div class="mt-6 md:mt-0">
+            <div class="p-4 bg-white/10 rounded-lg border border-white/20 shadow-lg">
+              <pre class="text-indigo-100 text-sm"><code>button class="<span class="text-yellow-300">hover:bg-indigo-700</span> 
+<span class="text-yellow-300">focus:ring-2</span> 
+<span class="text-yellow-300">active:translate-y-0.5</span>"</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <br>
+    <div class="container mx-auto max-w-6xl px-4 md:px-8">
+      <div class="prose prose-lg max-w-none mb-10">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Interactive Elements with Tailwind CSS</h2>
+        <p class="text-gray-600 mb-6">
+          Tailwind CSS provides a rich set of utilities for handling user interactions and states. These utilities help you create responsive, interactive UI elements without writing custom CSS. Let's explore the different interactivity features offered by Tailwind.
+        </p>
+      </div>
 
-    <!-- Styling based on parent state -->
-    <!-- When you need to style an element based on the state of some parent element, mark the parent with the group class, and use group-* modifiers like group-hover to style the target element: -->
-    <a href="#" class="group block max-w-xs mx-auto rounded-lg p-6 bg-white shadow-lg space-y-3 hover:bg-sky-500">
-  <div class="flex items-center">
-    <h3 class="group-hover:text-white">Card Title</h3>
-  </div>
-  <p class="group-hover:text-white">This is some card text</p>
-</a>
+      <!-- Interactive Examples Section -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">State-Based Styling</h3>
+      
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <a href="#item">Scroll To Item</a>
+          <!-- Hover State Styling -->
+          <div class="p-6 rounded-lg border border-gray-200 shadow-sm">
+            <h4 class="text-xl font-semibold mb-4 text-indigo-600">Hover State Styling</h4>
+            <p class="text-gray-600 mb-4">Apply styles when a user hovers over an element using the <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">hover:</code> prefix.</p>
+            <button
+              type="button"
+              class="bg-black text-white py-3 px-5 rounded-lg m-3 hover:bg-orange-500 hover:text-black"
+            >
+              Submit
+            </button>
+            <div class="mt-4 bg-gray-50 p-3 rounded">
+              <code class="text-sm text-gray-800">hover:bg-orange-500 hover:text-black</code>
+            </div>
+          </div>
+          
+          <!-- Focus State Styling -->
+          <div class="p-6 rounded-lg border border-gray-200 shadow-sm">
+            <h4 class="text-xl font-semibold mb-4 text-indigo-600">Focus State Styling</h4>
+            <p class="text-gray-600 mb-4">Apply styles when an element receives focus using the <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">focus:</code> prefix.</p>
+            <button
+              type="button"
+              class="bg-black text-white py-3 px-5 rounded-lg m-3 focus:bg-green-500 focus:text-black"
+            >
+              Submit
+            </button>
+            <div class="mt-4 bg-gray-50 p-3 rounded">
+              <code class="text-sm text-gray-800">focus:bg-green-500 focus:text-black</code>
+            </div>
+          </div>
+          
+          <!-- Active State Styling -->
+          <div class="p-6 rounded-lg border border-gray-200 shadow-sm">
+            <h4 class="text-xl font-semibold mb-4 text-indigo-600">Active State Styling</h4>
+            <p class="text-gray-600 mb-4">Apply styles when an element is being activated (pressed) using the <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">active:</code> prefix.</p>
+            <button
+              type="button"
+              class="bg-black text-white py-3 px-5 rounded-lg m-3 active:bg-yellow-500 active:text-black"
+            >
+              Submit
+            </button>
+            <div class="mt-4 bg-gray-50 p-3 rounded">
+              <code class="text-sm text-gray-800">active:bg-yellow-500 active:text-black</code>
+            </div>
+          </div>
+          
+          <!-- Group Hover Styling -->
+          <div class="p-6 rounded-lg border border-gray-200 shadow-sm">
+            <h4 class="text-xl font-semibold mb-4 text-indigo-600">Group Hover Styling</h4>
+            <p class="text-gray-600 mb-4">Style elements based on parent hover state using <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">group</code> and <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">group-hover:</code> prefixes.</p>
+            <a href="#" class="group block max-w-xs mx-auto rounded-lg p-6 bg-white shadow-lg space-y-3 hover:bg-sky-500">
+              <div class="flex items-center">
+                <h3 class="group-hover:text-white">Card Title</h3>
+              </div>
+              <p class="group-hover:text-white">This is some card text</p>
+            </a>
+            <div class="mt-4 bg-gray-50 p-3 rounded">
+              <code class="text-sm text-gray-800">group group-hover:text-white</code>
+            </div>
+          </div>
+        </div>
 
- <br>
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">Pseudo Element Styling</h3>
+        <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-12">
+          <h4 class="text-xl font-semibold mb-4 text-indigo-600">Even & Odd Styling</h4>
+          <p class="text-gray-600 mb-4">Apply styles to alternating items in a list using <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">even:</code> and <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">odd:</code> prefixes.</p>
+          
+          <ul class="border rounded-lg overflow-hidden">
+            <li class="even:bg-green-200 odd:bg-blue-200 p-3">Item 1</li>
+            <li class="even:bg-green-200 odd:bg-blue-200 p-3">Item 2</li>
+            <li class="even:bg-green-200 odd:bg-blue-200 p-3">Item 3</li>
+            <li class="even:bg-green-200 odd:bg-blue-200 p-3">Item 4</li>
+            <li class="even:bg-green-200 odd:bg-blue-200 p-3">Item 5</li>
+          </ul>
+          
+          <div class="mt-4 bg-gray-50 p-3 rounded">
+            <code class="text-sm text-gray-800">even:bg-green-200 odd:bg-blue-200</code>
+          </div>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">Form & Input Styling</h3>
+        <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-12">
+          <h4 class="text-xl font-semibold mb-4 text-indigo-600">Appearance Control</h4>
+          <p class="text-gray-600 mb-4">Remove browser-specific styling from elements using <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">appearance-none</code>.</p>
+          
+          <div class="grid grid-cols-2 gap-8">
+            <div>
+              <h5 class="font-medium mb-2 text-gray-700">Default Select</h5>
+              <select class="border border-gray-300 rounded p-2">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            
+            <div>
+              <h5 class="font-medium mb-2 text-gray-700">With appearance-none</h5>
+              <select class="appearance-none border border-gray-300 rounded p-2">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="mt-4 bg-gray-50 p-3 rounded">
+            <code class="text-sm text-gray-800">appearance-none</code>
+          </div>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">Cursor Control</h3>
+        <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-12">
+          <h4 class="text-xl font-semibold mb-4 text-indigo-600">Cursor Types</h4>
+          <p class="text-gray-600 mb-4">Control the cursor appearance when hovering over elements using <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">cursor-{type}</code> utilities.</p>
+          
+          <div class="flex flex-wrap gap-4 mb-6">
+            <button
+              type="button"
+              class="bg-black text-white py-3 px-5 rounded-lg cursor-pointer"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="bg-black text-yellow-500 py-3 px-5 rounded-lg cursor-progress"
+            >
+              Loading...
+            </button>
+            <button
+              type="button"
+              disabled
+              class="bg-black text-red-200 py-3 px-5 rounded-lg cursor-not-allowed"
+            >
+              Confirm
+            </button>
+          </div>
+          
+          <div class="mt-4 mb-8 bg-gray-50 p-3 rounded">
+            <code class="text-sm text-gray-800">cursor-pointer cursor-progress cursor-not-allowed</code>
+          </div>
 
-    <!-- Pseudo Classes -->
-    <ul>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 1</li>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 2</li>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 3</li>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 4</li>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 5</li>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 6</li>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 7</li>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 8</li>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 9</li>
-      <li class="even:bg-green-200 odd:bg-blue-200">Item 10</li>
-    </ul>
+          <h4 class="text-xl font-semibold mb-4 text-indigo-600">Comprehensive Cursor Gallery</h4>
+          <p class="text-gray-600 mb-4">Tailwind provides many cursor utilities for different use cases:</p>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-auto">
+              <p class="font-medium text-gray-700">cursor-auto</p>
+              <p class="text-sm text-gray-500">Browser default cursor</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-default">
+              <p class="font-medium text-gray-700">cursor-default</p>
+              <p class="text-sm text-gray-500">Standard cursor</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-pointer">
+              <p class="font-medium text-gray-700">cursor-pointer</p>
+              <p class="text-sm text-gray-500">Clickable element</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-wait">
+              <p class="font-medium text-gray-700">cursor-wait</p>
+              <p class="text-sm text-gray-500">Program is busy</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-text">
+              <p class="font-medium text-gray-700">cursor-text</p>
+              <p class="text-sm text-gray-500">Text can be selected</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-move">
+              <p class="font-medium text-gray-700">cursor-move</p>
+              <p class="text-sm text-gray-500">Element can be moved</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-help">
+              <p class="font-medium text-gray-700">cursor-help</p>
+              <p class="text-sm text-gray-500">Help is available</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-not-allowed">
+              <p class="font-medium text-gray-700">cursor-not-allowed</p>
+              <p class="text-sm text-gray-500">Action not available</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-none">
+              <p class="font-medium text-gray-700">cursor-none</p>
+              <p class="text-sm text-gray-500">Cursor is hidden</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-context-menu">
+              <p class="font-medium text-gray-700">cursor-context-menu</p>
+              <p class="text-sm text-gray-500">Context menu available</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-progress">
+              <p class="font-medium text-gray-700">cursor-progress</p>
+              <p class="text-sm text-gray-500">Program working</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-cell">
+              <p class="font-medium text-gray-700">cursor-cell</p>
+              <p class="text-sm text-gray-500">Cell selection</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-crosshair">
+              <p class="font-medium text-gray-700">cursor-crosshair</p>
+              <p class="text-sm text-gray-500">Precise selection</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-vertical-text">
+              <p class="font-medium text-gray-700">cursor-vertical-text</p>
+              <p class="text-sm text-gray-500">Vertical text</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-alias">
+              <p class="font-medium text-gray-700">cursor-alias</p>
+              <p class="text-sm text-gray-500">Create alias/shortcut</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-copy">
+              <p class="font-medium text-gray-700">cursor-copy</p>
+              <p class="text-sm text-gray-500">Can be copied</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-no-drop">
+              <p class="font-medium text-gray-700">cursor-no-drop</p>
+              <p class="text-sm text-gray-500">Cannot be dropped</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-grab">
+              <p class="font-medium text-gray-700">cursor-grab</p>
+              <p class="text-sm text-gray-500">Element can be grabbed</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-grabbing">
+              <p class="font-medium text-gray-700">cursor-grabbing</p>
+              <p class="text-sm text-gray-500">Grabbing element</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-all-scroll">
+              <p class="font-medium text-gray-700">cursor-all-scroll</p>
+              <p class="text-sm text-gray-500">Scroll in any direction</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-col-resize">
+              <p class="font-medium text-gray-700">cursor-col-resize</p>
+              <p class="text-sm text-gray-500">Resize column</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-row-resize">
+              <p class="font-medium text-gray-700">cursor-row-resize</p>
+              <p class="text-sm text-gray-500">Resize row</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-n-resize">
+              <p class="font-medium text-gray-700">cursor-n-resize</p>
+              <p class="text-sm text-gray-500">Resize north edge</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-e-resize">
+              <p class="font-medium text-gray-700">cursor-e-resize</p>
+              <p class="text-sm text-gray-500">Resize east edge</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-s-resize">
+              <p class="font-medium text-gray-700">cursor-s-resize</p>
+              <p class="text-sm text-gray-500">Resize south edge</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-w-resize">
+              <p class="font-medium text-gray-700">cursor-w-resize</p>
+              <p class="text-sm text-gray-500">Resize west edge</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-ne-resize">
+              <p class="font-medium text-gray-700">cursor-ne-resize</p>
+              <p class="text-sm text-gray-500">Resize NE corner</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-nw-resize">
+              <p class="font-medium text-gray-700">cursor-nw-resize</p>
+              <p class="text-sm text-gray-500">Resize NW corner</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-se-resize">
+              <p class="font-medium text-gray-700">cursor-se-resize</p>
+              <p class="text-sm text-gray-500">Resize SE corner</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-sw-resize">
+              <p class="font-medium text-gray-700">cursor-sw-resize</p>
+              <p class="text-sm text-gray-500">Resize SW corner</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-ew-resize">
+              <p class="font-medium text-gray-700">cursor-ew-resize</p>
+              <p class="text-sm text-gray-500">Resize east-west</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-ns-resize">
+              <p class="font-medium text-gray-700">cursor-ns-resize</p>
+              <p class="text-sm text-gray-500">Resize north-south</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-nesw-resize">
+              <p class="font-medium text-gray-700">cursor-nesw-resize</p>
+              <p class="text-sm text-gray-500">Resize NE-SW diagonal</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-nwse-resize">
+              <p class="font-medium text-gray-700">cursor-nwse-resize</p>
+              <p class="text-sm text-gray-500">Resize NW-SE diagonal</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-zoom-in">
+              <p class="font-medium text-gray-700">cursor-zoom-in</p>
+              <p class="text-sm text-gray-500">Content can be zoomed in</p>
+            </div>
+            <div class="p-4 border rounded hover:bg-gray-50 cursor-zoom-out">
+              <p class="font-medium text-gray-700">cursor-zoom-out</p>
+              <p class="text-sm text-gray-500">Content can be zoomed out</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">User Selection Control</h3>
+        <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-12">
+          <h4 class="text-xl font-semibold mb-4 text-indigo-600">Text Selection</h4>
+          <p class="text-gray-600 mb-4">Control how users can select text using <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">select-{type}</code> utilities.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-4 border rounded-lg">
+              <h5 class="font-medium mb-2 text-gray-700">select-none</h5>
+              <div class="select-none p-3 bg-gray-50">Lorem ipsum dolor sit amet.</div>
+            </div>
+            <div class="p-4 border rounded-lg">
+              <h5 class="font-medium mb-2 text-gray-700">select-text</h5>
+              <div class="select-text p-3 bg-gray-50">Lorem ipsum dolor sit amet.</div>
+            </div>
+            <div class="p-4 border rounded-lg">
+              <h5 class="font-medium mb-2 text-gray-700">select-all</h5>
+              <div class="select-all p-3 bg-gray-50">Lorem ipsum dolor sit amet.</div>
+            </div>
+            <div class="p-4 border rounded-lg">
+              <h5 class="font-medium mb-2 text-gray-700">select-auto</h5>
+              <div class="select-auto p-3 bg-gray-50">Lorem ipsum dolor sit amet.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary & Conclusion -->
+        <div class="bg-gradient-to-r from-indigo-700 to-purple-700 rounded-xl shadow-xl overflow-hidden mb-16 text-white">
+          <div class="p-8">
+            <h2 class="text-3xl font-bold mb-6">Summary & Key Takeaways</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+              <div>
+                <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                  <i class="fas fa-star text-yellow-300"></i>
+                  What We've Learned
+                </h3>
+                <ul class="space-y-3">
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Interactivity utilities in Tailwind make it easy to create responsive and interactive UI elements</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>State-based styling like hover, focus, and active can enhance user experience without custom CSS</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Cursor utilities provide visual cues to users about what actions are possible</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Selection controls give you fine-grained control over how users can interact with content</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                  <i class="fas fa-forward text-yellow-300"></i>
+                  Next Steps
+                </h3>
+                <ul class="space-y-3">
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                    <span>Combine interactivity utilities with animations for more engaging UIs</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                    <span>Create consistent interactive patterns across your entire application</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                    <span>Explore advanced interactivity with JavaScript and Tailwind for dynamic interfaces</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                    <span>Check out the <a href="https://tailwindcss.com/docs/hover-focus-and-other-states" class="underline hover:text-white">official Tailwind CSS documentation</a> for more details</span>
+                  </li>
+                </ul>
+                
+                <div class="mt-6 pt-6 border-t border-indigo-500/30">
+                  <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors">
+                    <i class="fas fa-home mr-2"></i>
+                    Back to Main Documentation
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <br />
 
-    <!-- Appearance -->
-    <!-- Use appearance-none to reset any browser specific styling on an element. This utility is often used when creating custom form components. -->
-    <select>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-
-    <select class="appearance-none">
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-
-    <br />
-
-    <!-- Cursor -->
-    <button
-      type="button"
-      class="bg-black text-white py-3 px-5 rounded-lg m-3 cursor-pointer"
-    >
-      Submit
-    </button>
-    <button
-      type="button"
-      class="bg-black text-yellow-500 py-3 px-5 rounded-lg m-3 cursor-progress"
-    >
-      Loading...
-    </button>
-    <button
-      type="button"
-      disabled
-      class="bg-black text-red-200 py-3 px-5 rounded-lg m-3 cursor-not-allowed"
-    >
-      Confirm
-    </button>
-
-    <br />
-
-    <!-- Resize -->
-    <textarea class="border border-black rounded resize"></textarea>
-
-    <!-- User Select -->
-    <div class="select-none">Lorem ipsum dolor sit amet.</div>
-    <div class="select-text">Lorem ipsum dolor sit amet.</div>
-    <div class="select-all">Lorem ipsum dolor sit amet.</div>
-    <div class="select-auto">Lorem ipsum dolor sit amet.</div>
-
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse id eveniet
-      quidem explicabo et molestiae rerum libero rem aperiam ad in fugiat, atque
-      excepturi vel enim, suscipit iure inventore natus provident deserunt?
-      Dolorum nihil fugiat sapiente odio nulla reiciendis qui repudiandae
-      doloremque eos, voluptatem iste tenetur ipsam doloribus aperiam deleniti
-      laboriosam consectetur in debitis quae a similique tempora eum ratione?
-      Consequatur possimus dolor quidem! Iure, laborum doloribus. Recusandae
-      odio, doloremque dolorum inventore, quaerat libero, quasi ad sunt aliquam
-      dolor nihil possimus minima debitis ab perferendis in culpa nesciunt
-      repellat consequuntur provident excepturi. Quod illo sequi sint, neque
-      porro animi, delectus non sapiente amet fugit ea, dolor debitis ipsum ut
-      temporibus officia nisi? Voluptas ex reprehenderit, itaque fugiat cumque
-      quasi vero, non excepturi exercitationem dignissimos qui quis nemo quia
-      delectus mollitia assumenda corrupti, ut incidunt quas ducimus aperiam
-      explicabo minus? Corporis, modi. Unde eos laudantium delectus amet enim
-      blanditiis culpa quasi quaerat, temporibus labore? Unde reprehenderit quod
-      officiis odit animi voluptatibus deleniti aspernatur inventore quam ex
-      saepe ea, laborum aliquam blanditiis odio corrupti aperiam molestiae id
-      placeat qui! Perferendis nisi nesciunt assumenda, quos omnis error itaque
-      laudantium inventore quasi ipsa laboriosam praesentium, minus modi soluta
-      asperiores illum molestiae alias aliquid quia incidunt accusamus eaque
-      quae. Veritatis ea provident aperiam architecto! Impedit sunt blanditiis,
-      molestiae sequi reprehenderit in sapiente quos id! Maiores, similique a
-      harum alias commodi, ullam esse nesciunt aliquam assumenda voluptatibus
-      dolores, aperiam minus ut. Doloribus ipsam at ex quasi mollitia unde totam
-      perferendis nobis obcaecati aperiam doloremque dignissimos dolores harum
-      nam debitis officia, qui cum minus commodi corrupti odit, excepturi esse
-      quibusdam numquam? Quos facilis eius eos error exercitationem. Cum, illo
-      dolore. Accusamus voluptatibus odio vel repellendus eum iste corrupti
-      voluptatem reiciendis molestias dolore, id quis expedita ipsam vero totam
-      fugiat a minus eaque deserunt aspernatur vitae. Ea eveniet quae
-      perspiciatis aliquid expedita optio voluptates reiciendis, molestias cum,
-      obcaecati pariatur officiis blanditiis dignissimos nesciunt! Cum atque
-      alias doloribus nam libero error quibusdam, minus nisi, enim accusantium
-      est unde dolor distinctio esse labore? Iure expedita sed consequatur
-      dolorem totam adipisci modi asperiores architecto dolorum mollitia
-      excepturi numquam id quibusdam vitae itaque distinctio dolore labore et
-      doloremque cumque sint, soluta ullam. Soluta beatae pariatur quas esse
-      iure et nulla, perspiciatis, obcaecati sunt temporibus atque est
-      asperiores, laboriosam odio rem veniam delectus corrupti fugiat fugit
-      dicta? Eveniet modi sit facilis inventore voluptate et laborum
-      consequuntur ad ex, eius possimus vero delectus vitae accusamus recusandae
-      voluptatem cumque iusto at eligendi ut repellat deleniti? Neque ducimus
-      numquam accusamus dicta laboriosam vel quis debitis molestias iure,
-      mollitia facere natus blanditiis officia deserunt amet provident ratione
-      odio sapiente cum sint. Impedit, voluptate distinctio quaerat ratione
-      asperiores voluptatem dignissimos labore maiores saepe ex cum facere
-      numquam quos reiciendis iste rerum quae blanditiis voluptates consequatur,
-      nemo mollitia ipsum hic, esse suscipit? Dolor officia, ducimus
-      reprehenderit iste voluptate qui minima odit a unde quo amet distinctio
-      expedita. Voluptates optio fugiat vel eos quae fuga corporis explicabo
-      magnam voluptatum repudiandae nesciunt odit, minus soluta neque!
-      Distinctio est sunt eligendi blanditiis, sit ut ratione, et consequatur
-      iusto atque sint neque sed, tenetur ullam quo recusandae veniam quisquam
-      hic nostrum deleniti architecto! Voluptate voluptates sint velit, magnam
-      in distinctio. Harum eaque vero voluptate velit suscipit commodi quae est
-      neque expedita iste aspernatur porro modi, animi quo, quisquam, placeat
-      praesentium rem omnis? Nobis, quia dolores, cupiditate hic quibusdam aut
-      officiis maxime laborum tenetur illo quam reiciendis magni obcaecati
-      dolorem explicabo nisi? Incidunt qui praesentium recusandae aliquam,
-      asperiores suscipit deleniti magnam perferendis similique, voluptatum
-      excepturi molestias maiores provident velit eius quis quisquam id iure.
-      Delectus ab molestiae similique, minus vitae repellendus dolorem doloribus
-      aliquam nemo suscipit dicta, at facere nihil. Expedita laborum, officiis
-      neque accusantium laudantium rerum illum temporibus sequi ut modi, libero
-      magni! Esse voluptatem asperiores excepturi fugiat provident doloribus
-      neque consequuntur laboriosam amet voluptates? Veniam quaerat fugiat
-      voluptas exercitationem adipisci. Voluptate, qui repellat totam tenetur a
-      facere assumenda provident ipsum in quis eum atque ipsa quidem omnis,
-      sunt, pariatur optio ullam porro sint illo? Quod debitis eligendi deleniti
-      in ex suscipit optio animi dignissimos eaque quae, accusantium, nobis
-      veniam velit officia. Praesentium sunt aut minus corrupti, qui tempora
-      tenetur mollitia harum, voluptatum quibusdam obcaecati dolorum eum saepe
-      beatae velit magnam, possimus quaerat ut amet. Illum consectetur, eum
-      laboriosam assumenda, saepe iure aliquam nesciunt et cum, quis dolore?
-      Totam numquam consequatur incidunt quod magni perferendis sit delectus
-      tempora animi, ipsum facere natus corporis quam quaerat recusandae cumque,
-      quasi sed fugit, aliquam necessitatibus nesciunt? Sequi reprehenderit
-      molestias magnam fugiat ab perferendis iusto harum et odit sint illum
-      molestiae amet quam quibusdam minima delectus ipsa consequatur,
-      perspiciatis quod necessitatibus veritatis nesciunt, excepturi voluptates
-      ea? Minima repellendus delectus earum fugit obcaecati error eveniet
-      possimus, totam vel voluptates perspiciatis quaerat non modi? Vero culpa
-      laborum, accusantium at consequatur explicabo, labore error debitis illum
-      quibusdam totam mollitia, tempore recusandae sed maiores nihil ex qui
-      dolorem? Facilis beatae fuga sunt aut nesciunt ipsum, similique sapiente,
-      quia non voluptates laborum earum voluptate explicabo atque officiis
-      pariatur consequuntur tenetur. Nobis doloribus odio harum laudantium sed
-      exercitationem atque ratione, laboriosam soluta provident eum itaque, quae
-      voluptas dicta obcaecati, nihil distinctio quos impedit delectus corrupti
-      deserunt! Odit facilis laboriosam veniam reprehenderit eos, maiores animi
-      obcaecati laudantium tempore? Ex ducimus eaque commodi molestiae debitis
-      culpa repellat voluptatem ea deleniti nesciunt unde dolore, earum nihil
-      cum quos laboriosam magni illo iure aperiam quidem itaque! Quod minus nemo
-      recusandae mollitia ipsam qui delectus odio id voluptatem esse natus
-      corrupti fugit obcaecati, voluptate quidem doloremque modi, optio, quam
-      quaerat provident eveniet repellat laborum dolorum sequi. Quos mollitia
-      et, voluptatum pariatur iste nisi velit voluptatem eos! Natus similique
-      possimus ea vel! Magnam adipisci necessitatibus vitae amet iste. Modi
-      omnis repellat molestiae, eum officia iusto perferendis quis numquam harum
-      voluptatum ut iure totam neque assumenda provident? Impedit, officiis
-      laboriosam! Recusandae quo sapiente porro vel minima eum. Commodi totam
-      consequatur neque aperiam doloribus. Odit adipisci repellat ducimus,
-      numquam incidunt iste repellendus officia iusto eligendi voluptatem
-      pariatur, porro facilis reiciendis id tempore. Obcaecati eos assumenda
-      animi et totam aliquam cupiditate ea.
-    </p>
-
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur
-      adipisci mollitia odio aspernatur, expedita repellendus nisi aut, dolorem
-      corporis ipsam dolor sed ducimus atque tenetur officiis saepe in quaerat
-      enim doloremque alias iure! Nemo, quos veniam accusamus quae quisquam
-      tempora fugit. Debitis repellendus totam ex? Et voluptatum sunt maxime
-      cupiditate! Vero earum perferendis esse temporibus amet nesciunt
-      distinctio aliquid voluptates sequi? Hic iste tempora accusamus,
-      architecto animi reiciendis fugit rerum dolorum quisquam pariatur sint nam
-      eligendi placeat magni harum non nihil quas voluptatibus. Exercitationem
-      quae natus perspiciatis vitae, dolorum modi libero commodi quam
-      voluptatibus minus eaque, numquam dolor itaque, fuga tempora nobis!
-      Similique aut consequatur vitae, inventore repellendus ad possimus natus
-      distinctio ratione nam consequuntur unde id ipsum, maxime eius dicta odit?
-      Repellendus accusantium dolorem facilis distinctio quos? Cupiditate sed
-      totam harum? Quaerat autem assumenda optio, doloremque aperiam molestias
-      ullam eveniet, quod temporibus rerum eligendi iste distinctio fuga,
-      praesentium asperiores consequuntur debitis hic! Corrupti sapiente ipsum
-      quas libero! Error voluptates ad molestias dolorem doloremque omnis quasi
-      asperiores delectus voluptatem ullam? Adipisci sequi natus distinctio,
-      totam enim doloribus cupiditate eum delectus inventore obcaecati
-      aspernatur quod itaque dolor. Nesciunt, soluta voluptatem optio suscipit
-      consectetur ipsam enim voluptate corrupti quaerat. Quis minima itaque
-      doloribus quod eveniet reprehenderit error facilis. Facere quos, eos
-      reiciendis quae, perspiciatis in fugiat dolore recusandae laudantium,
-      aliquid atque consequuntur? Laborum quo, perspiciatis odit excepturi
-      ratione in quam iste consequuntur facere, sunt voluptas corrupti hic
-      dolorum debitis! Voluptates aut rem fuga beatae explicabo velit maiores
-      accusamus accusantium consequatur? Eveniet, blanditiis quam autem ea
-      numquam accusamus. Odit quidem explicabo, maxime vero molestiae facere
-      incidunt omnis. A id, voluptatem distinctio dolor veniam pariatur maxime
-      eaque minima commodi nostrum! Nulla nisi voluptas rerum ducimus officia
-      voluptatum repellat veniam velit non error mollitia facere tenetur, sequi
-      ut illo totam eius omnis quam quisquam sit quia sunt ea? Molestias nobis
-      rem molestiae odit veritatis illum, quidem nihil! Officiis eaque autem
-      veniam magni magnam quisquam tempora quo quod culpa odit, velit error
-      aliquid dolores aliquam et, ad nostrum neque exercitationem voluptate
-      delectus, ipsa explicabo! Dignissimos explicabo consectetur voluptates
-      necessitatibus tenetur vel unde fugiat laboriosam eum? Voluptates quisquam
-      sequi amet minus nostrum assumenda. Omnis quos maxime, ipsam rerum tempora
-      unde cupiditate deserunt veniam asperiores, saepe illum eveniet!
-      Distinctio inventore quae officia aliquam tempora accusantium modi!
-      Officiis facere deleniti corrupti doloremque nam asperiores excepturi sint
-      voluptates. Officia ut autem ipsam? Ipsum fugit ea voluptates sed, officia
-      expedita vel saepe assumenda ipsam minus tempore numquam aliquid impedit
-      reprehenderit similique commodi illum perferendis ipsa reiciendis cumque.
-      Ipsam explicabo assumenda consectetur, adipisci perspiciatis obcaecati non
-      provident iusto praesentium debitis? Eligendi cum natus hic optio
-      corporis, distinctio aliquid iusto ratione iste neque sint totam magni
-      eveniet adipisci quibusdam, atque aspernatur rem? Itaque inventore
-      expedita aut nemo aperiam delectus quisquam rem tenetur mollitia
-      doloremque dolores ad neque molestiae necessitatibus sit, dignissimos
-      ipsam at. Voluptas quis exercitationem nam non, voluptatem eos nulla iure
-      consequatur, esse ut ipsa ab necessitatibus expedita, tempore odio
-      voluptate deserunt ea corrupti nemo est consequuntur magni quaerat
-      recusandae ipsam! Porro aperiam totam possimus, eius, libero iusto, quo ex
-      quisquam voluptatum expedita voluptate error. Et facere cum ratione?
-      Consequuntur aut recusandae et quod maxime deleniti autem at rem ex
-      inventore saepe doloremque consequatur ratione, iusto amet fugiat
-      repellendus praesentium nostrum. Repudiandae optio temporibus laboriosam
-      autem. Magni, ab, neque sunt itaque quam eos accusantium exercitationem
-      dolorum blanditiis dignissimos iure! Autem perspiciatis ad quidem rem
-      deserunt numquam consequatur omnis in, eligendi aperiam magni odio modi
-      sequi, laborum eos cupiditate velit beatae deleniti dolor cum recusandae
-      ipsam voluptas quam asperiores. Dolorum officiis iste maiores quae, iusto
-      laboriosam quis neque nemo atque perspiciatis explicabo quasi distinctio
-      odio at eos corrupti aliquid fuga omnis voluptatibus quidem, reprehenderit
-      consequatur ex culpa ab. Repellat, odit ipsum. Eos, fugit, magnam ea,
-      itaque ipsum doloremque facere harum pariatur architecto quas fuga esse
-      quos autem sunt dolorem? Minima vitae enim et quia quaerat ad esse
-      inventore. Cumque earum laboriosam officiis, assumenda totam culpa
-      incidunt. Qui ex molestiae voluptates eius recusandae praesentium magnam
-      esse dicta. Accusamus enim rerum tempore odit, quasi placeat! Voluptas
-      consequatur dicta dolor veniam dignissimos modi molestiae quos labore
-      tempora architecto! Veniam animi nostrum aliquam cum at dolorum eveniet
-      tempore explicabo eligendi, modi enim quia earum quasi officiis. Quas,
-      exercitationem laudantium fugit perferendis at veritatis sapiente itaque
-      praesentium ullam ea voluptates numquam, quam velit officia sunt vel quia
-      pariatur asperiores porro est explicabo? Libero deleniti nisi inventore.
-      Quisquam aut saepe fugiat illum eius laboriosam magni illo blanditiis
-      vitae explicabo quia quas sapiente quis beatae, iste vero quaerat
-      perferendis atque nobis unde! Recusandae nihil aut officiis amet quos
-      ducimus quo, porro unde exercitationem perspiciatis blanditiis dicta magni
-      nemo illum voluptatibus placeat laboriosam, cum alias distinctio!
-      Voluptatibus eaque recusandae ad modi voluptate odio praesentium eum rem
-      quae quia. Repellendus voluptatum illum, asperiores debitis saepe ipsa
-      dolorum? Non obcaecati ut qui quos voluptatum ducimus saepe. Velit dolor
-      est dolores iure architecto alias explicabo quae, veniam incidunt eos,
-      quod quidem recusandae saepe placeat enim! Maxime provident quos,
-      reprehenderit aut molestias nemo nam nesciunt atque error in sapiente,
-      necessitatibus quo inventore vitae, esse corrupti minus. Laboriosam non
-      deleniti doloremque ullam veritatis quod reprehenderit veniam, ipsum unde,
-      ea molestias beatae exercitationem aut incidunt. Sed consequuntur
-      molestiae iste tempora voluptate veritatis tenetur cumque voluptates iure
-      eum labore at, vitae magni delectus maiores eaque quasi voluptatibus
-      praesentium perspiciatis amet minus illum. Corporis pariatur, voluptas
-      illum cumque maxime consequuntur vero dolor veritatis dicta. Sed sunt
-      laudantium aperiam error quidem obcaecati, quaerat totam repellendus ipsam
-      voluptas aspernatur veniam, expedita deleniti repellat ea perferendis at
-      doloribus commodi dolores dicta, sequi quos cupiditate? Fugit quibusdam
-      neque pariatur! Nostrum vel deleniti est dolor sapiente reiciendis quo
-      inventore unde consequatur esse non consectetur, facere ea laboriosam ex
-      modi illo accusamus repellat labore sint ullam harum eligendi. Asperiores,
-      porro eaque eum assumenda ratione culpa esse ab cupiditate dolores!
-      Dolorem explicabo ea minima numquam cum et veniam quos accusamus quod
-      laudantium animi, doloremque a cumque exercitationem, quis maiores facere!
-      At odio amet saepe esse cupiditate. Veritatis, sequi! Ipsa sunt saepe
-      eaque suscipit nisi voluptatem. Et.
-    </p>
-
-    <div id="item">Item</div>
+  
   </body>
 </html>
 

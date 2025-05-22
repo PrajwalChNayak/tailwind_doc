@@ -56,118 +56,183 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
-  <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
-    <div class="container mx-auto px-4 py-8 max-w-5xl">
-      <!-- Enhanced Documentation Header -->
-      <header class="text-center hero-container">
-        <h1 class="hero-title">Tailwind CSS - Container & Spacing</h1>
-        <p class="hero-subtitle">
-          A comprehensive guide to using container utilities and spacing techniques in Tailwind CSS,
-          with practical examples and code snippets for frontend developers.
-        </p>
-        <div class="mt-6 space-x-2">
-          <span class="feature-pill"><i class="fa-solid fa-ruler-combined feature-pill-icon"></i> Margin</span>
-          <span class="feature-pill"><i class="fa-solid fa-border-all feature-pill-icon"></i> Padding</span>
-          <span class="feature-pill"><i class="fa-solid fa-box feature-pill-icon"></i> Container</span>
-          <span class="feature-pill"><i class="fa-solid fa-arrows-left-right-to-line feature-pill-icon"></i> Spacing</span>
+  <body class="bg-gray-50 font-sans" style="font-family: 'Inter', sans-serif;">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="flex items-center gap-2 text-white hover:text-indigo-100 transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+            <span>Back to Main Documentation</span>
+          </a>
+          <a href="https://tailwindcss.com/docs/container" target="_blank" class="flex items-center gap-1 text-indigo-100 hover:text-white transition-colors text-sm">
+            <span>Official Docs</span>
+            <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
         </div>
-      </header>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-expand"></i>
+          Tailwind CSS Container & Spacing
+        </h1>
+        <p class="text-indigo-100 text-lg max-w-3xl">
+          Master the art of creating perfect layouts with container utilities and space management in Tailwind CSS
+        </p>
+      </div>
+    </header>
+    
+    <div class="container mx-auto px-4 py-0 max-w-5xl">
       
       <!-- Introduction -->
-      <section>
-        <h2 class="section-heading">Introduction</h2>
-        <p class="mb-4">
-          Tailwind CSS provides powerful utilities for controlling layout and spacing. These are fundamental
-          building blocks for creating responsive, well-spaced user interfaces. This guide covers containers
-          for constraining content width and spacing utilities for controlling margins, padding, and space between elements.
-        </p>
-      </section>
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-t-4 border-indigo-600">
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-indigo-600"></i>
+              What are Tailwind CSS Container & Spacing Utilities?
+            </h2>
+            <p class="text-lg text-gray-700 mb-6">
+              Container and spacing utilities in Tailwind CSS provide the foundation for creating well-structured, 
+              responsive layouts. They control how elements are sized, spaced and contained within your design.
+            </p>
+            <p class="text-md text-gray-600">
+              These utilities help maintain consistent spacing through your project, creating visual rhythm and hierarchy
+              while ensuring your layouts work seamlessly across different screen sizes.
+            </p>
+          </div>
+          <div class="md:w-1/3 bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+              <i class="fas fa-lightbulb text-yellow-500"></i>
+              Key Features
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center gap-2">
+                <i class="fas fa-check text-indigo-500"></i>
+                <span>Container for responsive width control</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-check text-indigo-500"></i>
+                <span>Margin for external spacing</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-check text-indigo-500"></i>
+                <span>Padding for internal spacing</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-check text-indigo-500"></i>
+                <span>Space-between for consistent gaps</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 mb-8 rounded-r-md">
+          <p class="text-indigo-700 flex items-start">
+            <i class="fas fa-lightbulb text-indigo-600 mr-2 mt-1"></i>
+            <span><strong>Pro Tip:</strong> When creating responsive designs, combine container utilities with spacing utilities and responsive prefixes to create layouts that adapt perfectly to all screen sizes.</span>
+          </p>
+        </div>
+      </div>
       
       <!-- Container Documentation -->
-      <section>
-        <h2 class="section-heading">Containers</h2>
-        <p class="mb-4">
+      <section class="bg-white p-8 rounded-xl shadow-lg mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-3 border-b border-gray-200 flex items-center">
+          <i class="fas fa-box text-indigo-600 mr-3"></i>
+          Containers
+        </h2>
+        <p class="mb-4 text-gray-700 leading-relaxed">
           Containers are used to constrain content width within a specified max-width. By default, they're centered horizontally and
           responsive to different screen sizes.
         </p>
         
-        <div class="code-block">
+        <div class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto font-mono text-sm my-4 border border-gray-700 shadow-inner">
           <pre>&lt;div class="container mx-auto"&gt;
   &lt;!-- Your content here --&gt;
 &lt;/div&gt;</pre>
         </div>
         
-        <h3 class="sub-heading">Container Breakpoints</h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm text-left border-collapse my-4 custom-table">
-            <thead class="bg-indigo-100">
+        <h3 class="text-xl font-bold text-indigo-700 mb-4 mt-8 flex items-center">
+          <i class="fas fa-table-cells text-indigo-500 mr-2"></i>
+          Container Breakpoints
+        </h3>
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full text-sm border-collapse rounded-lg overflow-hidden shadow-sm">
+            <thead class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
               <tr>
-                <th class="p-3 border">Breakpoint</th>
-                <th class="p-3 border">Screen Width</th>
-                <th class="p-3 border">Container Max-Width</th>
+                <th class="p-3 text-left">Breakpoint</th>
+                <th class="p-3 text-left">Screen Width</th>
+                <th class="p-3 text-left">Container Max-Width</th>
               </tr>
             </thead>
             <tbody>
               <tr class="bg-white">
-                <td class="p-3 border">Default</td>
-                <td class="p-3 border">-</td>
-                <td class="p-3 border">width: 100%</td>
+                <td class="p-3 border-b border-gray-100">Default</td>
+                <td class="p-3 border-b border-gray-100">-</td>
+                <td class="p-3 border-b border-gray-100 font-mono text-xs text-indigo-600">width: 100%</td>
               </tr>
               <tr class="bg-gray-50">
-                <td class="p-3 border">sm</td>
-                <td class="p-3 border">640px</td>
-                <td class="p-3 border">max-width: 640px</td>
+                <td class="p-3 border-b border-gray-100">sm</td>
+                <td class="p-3 border-b border-gray-100">640px</td>
+                <td class="p-3 border-b border-gray-100 font-mono text-xs text-indigo-600">max-width: 640px</td>
               </tr>
               <tr class="bg-white">
-                <td class="p-3 border">md</td>
-                <td class="p-3 border">768px</td>
-                <td class="p-3 border">max-width: 768px</td>
+                <td class="p-3 border-b border-gray-100">md</td>
+                <td class="p-3 border-b border-gray-100">768px</td>
+                <td class="p-3 border-b border-gray-100 font-mono text-xs text-indigo-600">max-width: 768px</td>
               </tr>
               <tr class="bg-gray-50">
-                <td class="p-3 border">lg</td>
-                <td class="p-3 border">1024px</td>
-                <td class="p-3 border">max-width: 1024px</td>
+                <td class="p-3 border-b border-gray-100">lg</td>
+                <td class="p-3 border-b border-gray-100">1024px</td>
+                <td class="p-3 border-b border-gray-100 font-mono text-xs text-indigo-600">max-width: 1024px</td>
               </tr>
               <tr class="bg-white">
-                <td class="p-3 border">xl</td>
-                <td class="p-3 border">1280px</td>
-                <td class="p-3 border">max-width: 1280px</td>
+                <td class="p-3 border-b border-gray-100">xl</td>
+                <td class="p-3 border-b border-gray-100">1280px</td>
+                <td class="p-3 border-b border-gray-100 font-mono text-xs text-indigo-600">max-width: 1280px</td>
               </tr>
               <tr class="bg-gray-50">
-                <td class="p-3 border">2xl</td>
-                <td class="p-3 border">1536px</td>
-                <td class="p-3 border">max-width: 1536px</td>
+                <td class="p-3">2xl</td>
+                <td class="p-3">1536px</td>
+                <td class="p-3 font-mono text-xs text-indigo-600">max-width: 1536px</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="example-box">
-          <h4 class="font-semibold text-gray-700 mb-3">Container Example</h4>
-          <div class="bg-indigo-100 p-4 rounded text-center text-indigo-800 font-medium">
+        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-lg border border-indigo-100 mb-6">
+          <h4 class="font-semibold text-gray-800 mb-3">Container Example</h4>
+          <div class="bg-indigo-600 p-6 rounded text-center text-white font-medium mb-4">
             This div is contained within the container class
           </div>
-          <div class="code-block mt-4">
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto font-mono text-sm shadow-inner">
             <pre>&lt;div class="container mx-auto"&gt;
-  &lt;div class="bg-indigo-100 p-4 rounded text-center"&gt;
+  &lt;div class="bg-indigo-600 p-6 rounded text-center text-white"&gt;
     This div is contained within the container class
   &lt;/div&gt;
 &lt;/div&gt;</pre>
           </div>
         </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-md">
+          <p class="text-yellow-700 flex items-start">
+            <i class="fas fa-lightbulb text-yellow-600 mr-2 mt-1"></i>
+            <span><strong>Pro Tip:</strong> Use the container in combination with center utilities like <code class="bg-yellow-100 px-1 py-0.5 rounded">mx-auto</code> to ensure your content stays neatly within the desired width and is properly centered.</span>
+          </p>
+        </div>
       </section>
 
       <!-- Margin Documentation -->
-      <section>
-        <h2 class="section-heading">Margin</h2>
-        <p class="mb-4">
+      <section class="bg-white p-8 rounded-xl shadow-lg mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-3 border-b border-gray-200 flex items-center">
+          <i class="fas fa-arrows-to-dot text-indigo-600 mr-3"></i>
+          Margin
+        </h2>
+        <p class="mb-4 text-gray-700 leading-relaxed">
           Margin utilities control the space outside elements. Tailwind provides utilities for all sides 
           (m), horizontal sides (mx), vertical sides (my), and individual sides (mt, mr, mb, ml).
         </p>
         
-        <div class="code-block">
-          <pre>
-&lt;div class="m-4"&gt;All sides margin&lt;/div&gt;
+        <div class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto font-mono text-sm my-4 border border-gray-700 shadow-inner">
+          <pre>&lt;div class="m-4"&gt;All sides margin&lt;/div&gt;
 &lt;div class="mx-4"&gt;Horizontal margin&lt;/div&gt;
 &lt;div class="my-4"&gt;Vertical margin&lt;/div&gt;
 &lt;div class="mt-4"&gt;Top margin&lt;/div&gt;
@@ -176,32 +241,74 @@
 &lt;div class="ml-4"&gt;Left margin&lt;/div&gt;</pre>
         </div>
 
-        <div class="example-box">
-          <h4 class="font-semibold text-gray-700 mb-3">Margin Examples</h4>
-          <div class="bg-white border border-gray-200 p-1">
-            <div class="m-4 bg-indigo-100 p-2 text-center text-indigo-800 font-medium">m-4</div>
-            <div class="mx-4 bg-indigo-200 p-2 text-center text-indigo-800 font-medium">mx-4</div>
-            <div class="my-4 bg-indigo-300 p-2 text-center text-indigo-800 font-medium">my-4</div>
-            <div class="mt-6 bg-indigo-400 p-2 text-center text-white font-medium">mt-6</div>
-            <div class="mr-4 bg-indigo-500 p-2 text-center text-white font-medium">mr-4</div>
-            <div class="mb-8 bg-indigo-600 p-2 text-center text-white font-medium">mb-8</div>
-            <div class="ml-2 bg-indigo-700 p-2 text-center text-white font-medium">ml-2</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div>
+            <h3 class="text-xl font-bold text-indigo-700 mb-4 flex items-center">
+              <i class="fas fa-arrows-up-down-left-right text-indigo-500 mr-2"></i>
+              Margin Examples
+            </h3>
+            <div class="bg-gray-100 p-4 rounded-lg border border-gray-200">
+              <div class="m-4 bg-indigo-600 p-2 text-center text-white font-medium rounded shadow-sm">
+                m-4
+                <div class="text-xs mt-1 text-indigo-100">margin: 1rem (16px)</div>
+              </div>
+              <div class="mt-8 mx-4 bg-indigo-500 p-2 text-center text-white font-medium rounded shadow-sm">
+                mx-4
+                <div class="text-xs mt-1 text-indigo-100">margin-left: 1rem; margin-right: 1rem;</div>
+              </div>
+              <div class="mt-8 my-4 bg-indigo-400 p-2 text-center text-white font-medium rounded shadow-sm">
+                my-4
+                <div class="text-xs mt-1 text-indigo-100">margin-top: 1rem; margin-bottom: 1rem;</div>
+              </div>
+              <div class="mt-8 bg-indigo-300 p-2 text-center text-indigo-800 font-medium rounded shadow-sm">
+                mt-6
+                <div class="text-xs mt-1 text-indigo-800">margin-top: 1.5rem (24px)</div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold text-indigo-700 mb-4 flex items-center">
+              <i class="fas fa-ruler text-indigo-500 mr-2"></i>
+              More Margin Examples
+            </h3>
+            <div class="bg-gray-100 p-4 rounded-lg border border-gray-200">
+              <div class="mb-8 mr-4 bg-purple-500 p-2 text-center text-white font-medium rounded shadow-sm">
+                mr-4
+                <div class="text-xs mt-1 text-purple-100">margin-right: 1rem (16px)</div>
+              </div>
+              <div class="mb-8 bg-purple-600 p-2 text-center text-white font-medium rounded shadow-sm">
+                mb-8
+                <div class="text-xs mt-1 text-purple-100">margin-bottom: 2rem (32px)</div>
+              </div>
+              <div class="ml-2 bg-purple-700 p-2 text-center text-white font-medium rounded shadow-sm">
+                ml-2
+                <div class="text-xs mt-1 text-purple-100">margin-left: 0.5rem (8px)</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h3 class="sub-heading">Arbitrary Margin Values</h3>
-        <p class="mb-4">
+        <h3 class="text-xl font-bold text-indigo-700 mb-4 mt-8 flex items-center">
+          <i class="fas fa-sliders text-indigo-500 mr-2"></i>
+          Arbitrary Margin Values
+        </h3>
+        <p class="mb-4 text-gray-700">
           Tailwind allows for arbitrary values using square bracket notation when you need specific margins 
           not included in the default spacing scale.
         </p>
 
-        <div class="code-block">
+        <div class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto font-mono text-sm my-4 border border-gray-700 shadow-inner">
           <pre>&lt;div class="ml-[200px]"&gt;Custom left margin of 200px&lt;/div&gt;</pre>
         </div>
 
-        <div class="example-box">
-          <div class="relative bg-white border border-gray-200 p-1 h-16">
-            <div class="ml-[200px] bg-indigo-700 p-2 text-white font-medium inline-block">ml-[200px]</div>
+        <div class="relative bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-lg border border-indigo-100 h-20">
+          <div class="ml-[200px] bg-indigo-700 p-2 text-white font-medium inline-block rounded shadow">
+            ml-[200px]
+            <div class="text-xs mt-1 text-indigo-100">margin-left: 200px</div>
+          </div>
+          <div class="absolute left-0 bottom-2 text-indigo-600 text-sm pl-6">
+            <i class="fas fa-arrow-right"></i> 200px margin
           </div>
         </div>
       </section>
@@ -360,9 +467,84 @@
           </ul>
         </div>
       </section>
+      
+      <!-- Summary & Conclusion -->
+      <div class="bg-gradient-to-r from-indigo-700 to-purple-700 rounded-xl shadow-xl overflow-hidden mb-16 text-white">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold mb-6">Summary & Key Takeaways</h2>
+          
+          <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+            <div>
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <i class="fas fa-star text-yellow-300"></i>
+                What We've Learned
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Container utilities help maintain consistent width across different screen sizes</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Margin utilities control spacing outside elements, creating separation between components</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Padding utilities provide internal spacing to improve readability and visual appeal</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Space-between utilities create consistent gaps between elements without manual margin calculations</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <i class="fas fa-forward text-yellow-300"></i>
+                Next Steps
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Combine spacing utilities with Flexbox or Grid for more advanced layouts</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Create a spacing system with consistent values throughout your project</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Experiment with responsive variants to create adaptive layouts</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Check out the <a href="https://tailwindcss.com/docs/container" class="underline hover:text-white">official Tailwind CSS documentation</a> for more details</span>
+                </li>
+              </ul>
+              
+              <div class="mt-6 pt-6 border-t border-indigo-500/30">
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors">
+                  <i class="fas fa-home mr-2"></i>
+                  Back to Main Documentation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <footer class="mt-12 pt-6 border-t border-gray-200 text-center text-gray-600 text-sm">
+      <footer class="max-w-5xl mx-auto px-6 pb-8 text-center text-gray-600 text-sm">
         <p>Tailwind CSS Container & Spacing Documentation</p>
+        <p class="mt-2">© 2025 Tailwind CSS Documentation</p>
       </footer>
 
       <!-- Original examples below (kept for reference) -->

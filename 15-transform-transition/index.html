@@ -4,275 +4,1041 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS transform and transition utilities - learn about scale, rotate, translate, timing functions, and duration with interactive examples" />
+    <meta name="author" content="Tailwind Documentation" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M12.75 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM7.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM8.25 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM9.75 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM10.5 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12.75 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM14.25 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 13.5a.75.75 0 100-1.5.75.75 0 000 1.5z' /%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tailwind CSS Transform & Transition | Interactive Documentation</title>
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            colors: {
+              primary: '#4F46E5',
+              secondary: '#8B5CF6'
+            },
             transitionDuration: {
               0: '0ms',
               2000: '2000ms',
+              3000: '3000ms',
             },
+            rotate: {
+              '360': '360deg',
+            }
           },
         },
       }
     </script>
-    <title>Transform & Transition</title>
+    <style>
+      @keyframes pulse-transform {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+      }
+      
+      .animate-pulse-transform {
+        animation: pulse-transform 2s infinite ease-in-out;
+      }
+      
+      @keyframes rotate-animation {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      .animate-rotate {
+        animation: rotate-animation 3s infinite linear;
+      }
+      
+      @keyframes translate-animation {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(20px); }
+        100% { transform: translateX(0); }
+      }
+      
+      .animate-translate {
+        animation: translate-animation 2s infinite ease-in-out;
+      }
+      
+      @keyframes skew-animation {
+        0% { transform: skewX(0deg); }
+        50% { transform: skewX(10deg); }
+        100% { transform: skewX(0deg); }
+      }
+      
+      .animate-skew {
+        animation: skew-animation 2s infinite ease-in-out;
+      }
+      
+      .transform-demo {
+        width: 100px;
+        height: 100px;
+        background-color: #4F46E5;
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+      }
+      
+      /* Transition Preview JavaScript */
+      .transform-sample {
+        transition-property: all;
+        transition-duration: 300ms;
+      }
+    </style>
+    <!-- Live Transform Editor Script -->
+    <script>
+      // Update transform preview function
+      function updateTransformPreview() {
+        const scaleX = document.getElementById('scale-x').value;
+        const scaleY = document.getElementById('scale-y').value;
+        const rotate = document.getElementById('rotate').value;
+        const translateX = document.getElementById('translate-x').value;
+        const translateY = document.getElementById('translate-y').value;
+        const skewX = document.getElementById('skew-x').value;
+        const skewY = document.getElementById('skew-y').value;
+        const duration = document.getElementById('duration').value;
+        const timing = document.getElementById('timing').value;
+        
+        const preview = document.getElementById('transform-preview');
+        preview.style.transform = `scale(${scaleX}, ${scaleY}) rotate(${rotate}deg) translate(${translateX}px, ${translateY}px) skew(${skewX}deg, ${skewY}deg)`;
+        preview.style.transitionDuration = `${duration}ms`;
+        preview.style.transitionTimingFunction = getTimingFunction(timing);
+        
+        document.getElementById('transform-code').textContent = 
+          `scale-[${scaleX}] rotate-[${rotate}deg] translate-x-[${translateX}px] translate-y-[${translateY}px] skew-x-[${skewX}deg] skew-y-[${skewY}deg] duration-[${duration}] ${timing}`;
+      }
+      
+      function getTimingFunction(timing) {
+        switch(timing) {
+          case 'ease-linear': return 'linear';
+          case 'ease-in': return 'cubic-bezier(0.4, 0, 1, 1)';
+          case 'ease-out': return 'cubic-bezier(0, 0, 0.2, 1)';
+          case 'ease-in-out': return 'cubic-bezier(0.4, 0, 0.2, 1)';
+          default: return 'cubic-bezier(0.4, 0, 0.2, 1)';
+        }
+      }
+      
+      function resetTransform() {
+        document.getElementById('scale-x').value = 1;
+        document.getElementById('scale-y').value = 1;
+        document.getElementById('rotate').value = 0;
+        document.getElementById('translate-x').value = 0;
+        document.getElementById('translate-y').value = 0;
+        document.getElementById('skew-x').value = 0;
+        document.getElementById('skew-y').value = 0;
+        updateTransformPreview();
+      }
+      
+      // Initialize after page load
+      document.addEventListener('DOMContentLoaded', function() {
+        if(document.getElementById('scale-x')) {
+          updateTransformPreview();
+          
+          // Add event listeners to all controls
+          document.getElementById('scale-x').addEventListener('input', updateTransformPreview);
+          document.getElementById('scale-y').addEventListener('input', updateTransformPreview);
+          document.getElementById('rotate').addEventListener('input', updateTransformPreview);
+          document.getElementById('translate-x').addEventListener('input', updateTransformPreview);
+          document.getElementById('translate-y').addEventListener('input', updateTransformPreview);
+          document.getElementById('skew-x').addEventListener('input', updateTransformPreview);
+          document.getElementById('skew-y').addEventListener('input', updateTransformPreview);
+          document.getElementById('duration').addEventListener('input', updateTransformPreview);
+          document.getElementById('timing').addEventListener('change', updateTransformPreview);
+          document.getElementById('reset-button').addEventListener('click', resetTransform);
+        }
+      });
+    </script>
   </head>
-  <body>
-    <!-- No Transition -->
-    <button
-      class="px-8 py-2 m-24 text-white bg-blue-500 rounded hover:bg-blue-700"
-    >
-      Click me
-    </button>
+  <body class="bg-gray-50 font-sans" style="font-family: 'Inter', sans-serif;">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="flex items-center gap-2 text-white hover:text-indigo-100 transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+            <span>Back to Main Documentation</span>
+          </a>
+          <a href="https://tailwindcss.com/docs/transform" target="_blank" class="flex items-center gap-1 text-indigo-100 hover:text-white transition-colors text-sm">
+            <span>Official Docs</span>
+            <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-magic"></i>
+          Tailwind CSS Transform & Transitions
+        </h1>
+        <p class="text-indigo-100 text-lg max-w-3xl">
+          Create dynamic and interactive UI elements with Tailwind's powerful transform and transition utilities
+        </p>
+      </div>
+    </header>
 
-    <!-- Transition -->
-    <button
-      class="px-8 py-2 m-24 text-white bg-blue-500 rounded transition-colors duration-700 hover:bg-blue-700"
-    >
-      Click me
-    </button>
+    <!-- Summary Section -->
+    <section class="max-w-4xl mx-auto px-6 mb-10">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">Summary</h2>
+      <p class="mb-4 text-gray-700">Tailwind CSS provides a set of utilities for applying CSS transforms and transitions, allowing you to easily animate and manipulate elements. Below are the key properties and examples for each, with brief explanations.</p>
+    </section>
 
-    <!-- Transition & Transform -->
-    <button
-      class="px-8 py-2 m-24 text-white bg-blue-500 rounded transition ease-in-out delay-150 duration-2000 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500"
-    >
-      Click me
-    </button>
+    <!-- Transition Property Example -->
+    <section class="max-w-4xl mx-auto px-6 mb-8">
+      <h3 class="text-xl font-semibold mb-2 text-secondary flex items-center">
+        <i class="fas fa-arrows-alt mr-2"></i>
+        Transition Property
+      </h3>
+      <p class="mb-4 text-gray-700">Control which properties transition when they change. Different transition properties apply to different CSS properties.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">transition-colors</h5>
+          <button class="w-full bg-primary text-white px-4 py-2 rounded transition-colors duration-300 hover:bg-secondary">Hover me</button>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-colors</pre>
+        </div>
+        
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">transition-opacity</h5>
+          <button class="w-full bg-primary text-white px-4 py-2 rounded transition-opacity duration-300 hover:opacity-50">Hover me</button>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-opacity</pre>
+        </div>
+        
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">transition-shadow</h5>
+          <button class="w-full bg-primary text-white px-4 py-2 rounded shadow-sm transition-shadow duration-300 hover:shadow-xl">Hover me</button>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-shadow</pre>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">transition-transform</h5>
+          <button class="w-full bg-primary text-white px-4 py-2 rounded transition-transform duration-300 hover:scale-110">Hover me</button>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-transform</pre>
+        </div>
+        
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">transition-all</h5>
+          <button class="w-full bg-primary text-white px-4 py-2 rounded transition-all duration-300 hover:bg-secondary hover:shadow-lg hover:scale-105">Hover me</button>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-all</pre>
+        </div>
+        
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">transition-none</h5>
+          <button class="w-full bg-primary text-white px-4 py-2 rounded transition-none hover:bg-secondary">Hover me</button>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-none</pre>
+        </div>
+      </div>
+    </section>
 
-    <!-- Transform & Transition -->
-    <img
-      src="../assets/img/img1.jpg"
-      alt=""
-      class="hover:transform hover:rotate-180 hover:scale-75 hover:skew-x-12 transition"
-    />
+    <!-- Timing Function Example -->
+    <section class="max-w-4xl mx-auto px-6 mb-8">
+      <h3 class="text-xl font-semibold mb-2 text-secondary flex items-center">
+        <i class="fas fa-tachometer-alt mr-2"></i>
+        Timing Function
+      </h3>
+      <p class="mb-4 text-gray-700">Control the speed curve of the transition with different timing functions. Each creates a different feel of movement.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">ease-linear</h5>
+          <div class="h-20 flex items-center justify-center">
+            <div class="w-16 h-16 bg-primary rounded-lg transition-transform duration-1000 ease-linear hover:translate-x-20"></div>
+          </div>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-transform ease-linear</pre>
+        </div>
+        
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">ease-in</h5>
+          <div class="h-20 flex items-center justify-center">
+            <div class="w-16 h-16 bg-primary rounded-lg transition-transform duration-1000 ease-in hover:translate-x-20"></div>
+          </div>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-transform ease-in</pre>
+        </div>
+        
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">ease-out</h5>
+          <div class="h-20 flex items-center justify-center">
+            <div class="w-16 h-16 bg-primary rounded-lg transition-transform duration-1000 ease-out hover:translate-x-20"></div>
+          </div>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-transform ease-out</pre>
+        </div>
+        
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h5 class="font-medium text-primary mb-2">ease-in-out</h5>
+          <div class="h-20 flex items-center justify-center">
+            <div class="w-16 h-16 bg-primary rounded-lg transition-transform duration-1000 ease-in-out hover:translate-x-20"></div>
+          </div>
+          <pre class="bg-gray-100 mt-2 rounded p-2 text-xs">transition-transform ease-in-out</pre>
+        </div>
+      </div>
+      
+      <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-2">
+        <h5 class="font-medium text-primary mb-2 flex items-center"><i class="fas fa-lightbulb mr-2 text-yellow-500"></i> Timing Function Combinations</h5>
+        <p class="text-sm text-gray-700">Combine timing functions with different properties for more nuanced animations:</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1 bg-white rounded-full shadow-sm border border-gray-200">ease-in + duration-700</span>
+          <span class="text-xs px-3 py-1 bg-white rounded-full shadow-sm border border-gray-200">ease-out + delay-150</span>
+          <span class="text-xs px-3 py-1 bg-white rounded-full shadow-sm border border-gray-200">ease-in-out + duration-1000</span>
+          <span class="text-xs px-3 py-1 bg-white rounded-full shadow-sm border border-gray-200">ease-linear + duration-500</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Delay Example -->
+    <section class="max-w-4xl mx-auto px-6 mb-8">
+      <h3 class="text-xl font-semibold mb-2 text-secondary flex items-center">
+        <i class="fas fa-clock mr-2"></i>
+        Delay
+      </h3>
+      <p class="mb-4 text-gray-700">Add a delay before the transition starts. This is useful for creating staggered animations or waiting for other actions to complete.</p>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h5 class="font-medium text-primary">Delay Comparison</h5>
+        </div>
+        <div class="p-4">
+          <div class="grid grid-cols-1 gap-4 mb-4">
+            <div class="delay-demo flex flex-col sm:flex-row items-center justify-center gap-4 p-4 bg-gray-50 rounded-lg">
+              <button class="bg-primary text-white px-4 py-2 rounded transition-all duration-500 delay-0 hover:bg-secondary hover:scale-110">No Delay</button>
+              <button class="bg-primary text-white px-4 py-2 rounded transition-all duration-500 delay-150 hover:bg-secondary hover:scale-110">delay-150</button>
+              <button class="bg-primary text-white px-4 py-2 rounded transition-all duration-500 delay-300 hover:bg-secondary hover:scale-110">delay-300</button>
+              <button class="bg-primary text-white px-4 py-2 rounded transition-all duration-500 delay-500 hover:bg-secondary hover:scale-110">delay-500</button>
+              <button class="bg-primary text-white px-4 py-2 rounded transition-all duration-500 delay-700 hover:bg-secondary hover:scale-110">delay-700</button>
+            </div>
+          </div>
+          
+          <h6 class="font-medium text-gray-700 mb-2">Staggered Animation Example</h6>
+          <div class="flex items-center justify-center gap-2 bg-gray-50 p-4 rounded-lg">
+            <div class="w-8 h-8 bg-primary rounded-full transition-transform duration-300 delay-0 hover:translate-y-2 group-hover:translate-y-2"></div>
+            <div class="w-8 h-8 bg-primary rounded-full transition-transform duration-300 delay-100 hover:translate-y-2 group-hover:translate-y-2"></div>
+            <div class="w-8 h-8 bg-primary rounded-full transition-transform duration-300 delay-200 hover:translate-y-2 group-hover:translate-y-2"></div>
+            <div class="w-8 h-8 bg-primary rounded-full transition-transform duration-300 delay-300 hover:translate-y-2 group-hover:translate-y-2"></div>
+            <div class="w-8 h-8 bg-primary rounded-full transition-transform duration-300 delay-400 hover:translate-y-2 group-hover:translate-y-2"></div>
+          </div>
+          <div class="text-xs text-gray-500 mt-2 text-center">Hover over each circle to see the staggered effect</div>
+        </div>
+      </div>
+      
+      <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mt-4">
+        <h5 class="font-medium text-primary mb-2">Available Delay Values</h5>
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
+          <span class="text-xs px-2 py-1 bg-white rounded shadow-sm text-center">delay-75</span>
+          <span class="text-xs px-2 py-1 bg-white rounded shadow-sm text-center">delay-100</span>
+          <span class="text-xs px-2 py-1 bg-white rounded shadow-sm text-center">delay-150</span>
+          <span class="text-xs px-2 py-1 bg-white rounded shadow-sm text-center">delay-200</span>
+          <span class="text-xs px-2 py-1 bg-white rounded shadow-sm text-center">delay-300</span>
+          <span class="text-xs px-2 py-1 bg-white rounded shadow-sm text-center">delay-500</span>
+          <span class="text-xs px-2 py-1 bg-white rounded shadow-sm text-center">delay-700</span>
+          <span class="text-xs px-2 py-1 bg-white rounded shadow-sm text-center">delay-1000</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Duration Example -->
+    <section class="max-w-4xl mx-auto px-6 mb-8">
+      <h3 class="text-xl font-semibold mb-2 text-secondary flex items-center">
+        <i class="fas fa-hourglass-half mr-2"></i>
+        Duration
+      </h3>
+      <p class="mb-4 text-gray-700">Set how long the transition takes. Shorter durations are good for subtle effects, while longer durations work well for more dramatic transformations.</p>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h5 class="font-medium text-primary">Duration Comparison</h5>
+        </div>
+        <div class="p-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h6 class="font-medium text-gray-700 mb-2 text-center">Quick Transitions</h6>
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-2">
+                  <div class="w-32 h-10 bg-primary rounded transition-all duration-75 hover:bg-secondary flex items-center justify-center text-white text-xs">duration-75</div>
+                  <span class="text-sm text-gray-500">75ms</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-32 h-10 bg-primary rounded transition-all duration-100 hover:bg-secondary flex items-center justify-center text-white text-xs">duration-100</div>
+                  <span class="text-sm text-gray-500">100ms</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-32 h-10 bg-primary rounded transition-all duration-150 hover:bg-secondary flex items-center justify-center text-white text-xs">duration-150</div>
+                  <span class="text-sm text-gray-500">150ms</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-32 h-10 bg-primary rounded transition-all duration-200 hover:bg-secondary flex items-center justify-center text-white text-xs">duration-200</div>
+                  <span class="text-sm text-gray-500">200ms</span>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h6 class="font-medium text-gray-700 mb-2 text-center">Slower Transitions</h6>
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-2">
+                  <div class="w-32 h-10 bg-primary rounded transition-all duration-300 hover:bg-secondary flex items-center justify-center text-white text-xs">duration-300</div>
+                  <span class="text-sm text-gray-500">300ms</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-32 h-10 bg-primary rounded transition-all duration-500 hover:bg-secondary flex items-center justify-center text-white text-xs">duration-500</div>
+                  <span class="text-sm text-gray-500">500ms</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-32 h-10 bg-primary rounded transition-all duration-700 hover:bg-secondary flex items-center justify-center text-white text-xs">duration-700</div>
+                  <span class="text-sm text-gray-500">700ms</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-32 h-10 bg-primary rounded transition-all duration-1000 hover:bg-secondary flex items-center justify-center text-white text-xs">duration-1000</div>
+                  <span class="text-sm text-gray-500">1000ms</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h5 class="font-medium text-primary">Duration with Transforms</h5>
+        </div>
+        <div class="p-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center">
+              <div class="w-20 h-20 bg-primary rounded transition-transform duration-300 hover:rotate-45 flex items-center justify-center text-white">Rotate</div>
+              <span class="text-xs text-gray-500 mt-2">duration-300</span>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center">
+              <div class="w-20 h-20 bg-primary rounded transition-transform duration-500 hover:scale-125 flex items-center justify-center text-white">Scale</div>
+              <span class="text-xs text-gray-500 mt-2">duration-500</span>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center">
+              <div class="w-20 h-20 bg-primary rounded transition-transform duration-700 hover:translate-y-4 flex items-center justify-center text-white">Translate</div>
+              <span class="text-xs text-gray-500 mt-2">duration-700</span>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center">
+              <div class="w-20 h-20 bg-primary rounded transition-transform duration-1000 hover:skew-x-12 flex items-center justify-center text-white">Skew</div>
+              <span class="text-xs text-gray-500 mt-2">duration-1000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transforms Section -->
+    <section class="max-w-4xl mx-auto px-6 mb-8">
+      <h2 class="text-2xl font-semibold mb-4 text-primary flex items-center">
+        <i class="fas fa-compress-arrows-alt mr-2"></i>
+        Transforms
+      </h2>
+      
+      <!-- Scale Transform -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h3 class="font-semibold text-secondary">Scale</h3>
+        </div>
+        <div class="p-4">
+          <p class="text-gray-700 mb-4">Use scale utilities to resize elements. Scale values range from 0 (completely collapsed) to 150 (50% larger).</p>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo scale-50">scale-50</div>
+              <span class="text-xs text-gray-500">50%</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo scale-75">scale-75</div>
+              <span class="text-xs text-gray-500">75%</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo scale-100">scale-100</div>
+              <span class="text-xs text-gray-500">100%</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo scale-125">scale-125</div>
+              <span class="text-xs text-gray-500">125%</span>
+            </div>
+          </div>
+          
+          <h4 class="font-medium text-gray-700 mb-2">Scaling in One Direction</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo scale-x-50">scale-x-50</div>
+              <span class="text-xs text-gray-500">X-axis only</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo scale-y-50">scale-y-50</div>
+              <span class="text-xs text-gray-500">Y-axis only</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo scale-x-150 scale-y-50">scale-x-150 scale-y-50</div>
+              <span class="text-xs text-gray-500">Different axes</span>
+            </div>
+          </div>
+          
+          <div class="bg-indigo-50 p-3 rounded-lg mt-4">
+            <h5 class="font-medium text-primary text-sm mb-1">Common Scale Classes</h5>
+            <div class="flex flex-wrap gap-1">
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-0</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-50</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-75</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-90</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-95</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-100</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-105</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-110</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-125</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">scale-150</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Rotate Transform -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h3 class="font-semibold text-secondary">Rotate</h3>
+        </div>
+        <div class="p-4">
+          <p class="text-gray-700 mb-4">Use rotate utilities to rotate elements by specific degree increments.</p>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-4">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo rotate-0">rotate-0</div>
+              <span class="text-xs text-gray-500">0°</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo rotate-45">rotate-45</div>
+              <span class="text-xs text-gray-500">45°</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo rotate-90">rotate-90</div>
+              <span class="text-xs text-gray-500">90°</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo rotate-180">rotate-180</div>
+              <span class="text-xs text-gray-500">180°</span>
+            </div>
+          </div>
+          
+          <h4 class="font-medium text-gray-700 mb-2">Subtle Rotations</h4>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-2">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo rotate-1">rotate-1</div>
+              <span class="text-xs text-gray-500">1°</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo rotate-2">rotate-2</div>
+              <span class="text-xs text-gray-500">2°</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo rotate-6">rotate-6</div>
+              <span class="text-xs text-gray-500">6°</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo rotate-12">rotate-12</div>
+              <span class="text-xs text-gray-500">12°</span>
+            </div>
+          </div>
+          
+          <div class="bg-indigo-50 p-3 rounded-lg mt-4">
+            <h5 class="font-medium text-primary text-sm mb-1">Available Rotate Classes</h5>
+            <div class="flex flex-wrap gap-1">
+              <span class="text-xs px-2 py-1 bg-white rounded">rotate-0</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">rotate-1</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">rotate-2</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">rotate-3</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">rotate-6</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">rotate-12</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">rotate-45</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">rotate-90</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">rotate-180</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Translate Transform -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h3 class="font-semibold text-secondary">Translate</h3>
+        </div>
+        <div class="p-4">
+          <p class="text-gray-700 mb-4">Use translate utilities to move elements along X and Y axes. Values can be pixels, rems, or percentages.</p>
+          
+          <div class="relative h-52 bg-gray-50 rounded-lg mb-4 p-4">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-dashed border-gray-300 rounded-lg p-2">Center (Origin)</div>
+            
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 translate-x-16 translate-y-0">
+              <div class="transform-demo">translate-x-16</div>
+            </div>
+            
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 translate-x-0 translate-y-16">
+              <div class="transform-demo">translate-y-16</div>
+            </div>
+            
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -translate-x-16 -translate-y-0">
+              <div class="transform-demo">-translate-x-16</div>
+            </div>
+            
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 translate-x-0 -translate-y-16">
+              <div class="transform-demo">-translate-y-16</div>
+            </div>
+          </div>
+          
+          <h4 class="font-medium text-gray-700 mb-2">Percentage-based Translation</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
+            <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg relative h-32">
+              <div class="transform-demo translate-x-1/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">translate-x-1/4</div>
+            </div>
+            <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg relative h-32">
+              <div class="transform-demo translate-y-1/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">translate-y-1/4</div>
+            </div>
+            <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg relative h-32">
+              <div class="transform-demo translate-x-1/2 translate-y-1/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">translate-x-1/2 translate-y-1/4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Skew Transform -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h3 class="font-semibold text-secondary">Skew</h3>
+        </div>
+        <div class="p-4">
+          <p class="text-gray-700 mb-4">Use skew utilities to distort elements along X and Y axes by specific degree increments.</p>
+          
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-4">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo skew-x-6">skew-x-6</div>
+              <span class="text-xs text-gray-500">X: 6 degrees</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo skew-y-6">skew-y-6</div>
+              <span class="text-xs text-gray-500">Y: 6 degrees</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo skew-x-6 skew-y-3">skew-x-6 skew-y-3</div>
+              <span class="text-xs text-gray-500">X: 6°, Y: 3°</span>
+            </div>
+          </div>
+          
+          <h4 class="font-medium text-gray-700 mb-2">More Extreme Skewing</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo skew-x-12">skew-x-12</div>
+              <span class="text-xs text-gray-500">X: 12 degrees</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo skew-y-12">skew-y-12</div>
+              <span class="text-xs text-gray-500">Y: 12 degrees</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo -skew-x-12">-skew-x-12</div>
+              <span class="text-xs text-gray-500">X: -12 degrees</span>
+            </div>
+          </div>
+          
+          <div class="bg-indigo-50 p-3 rounded-lg mt-4">
+            <h5 class="font-medium text-primary text-sm mb-1">Available Skew Classes</h5>
+            <div class="flex flex-wrap gap-1">
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-x-0</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-y-0</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-x-1</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-y-1</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-x-2</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-y-2</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-x-3</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-y-3</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-x-6</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-y-6</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-x-12</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">skew-y-12</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Transform Origin -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-4">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h3 class="font-semibold text-secondary">Transform Origin</h3>
+        </div>
+        <div class="p-4">
+          <p class="text-gray-700 mb-4">Use origin utilities to change the position that transforms are applied from. This dramatically changes how rotations, scales, and skews behave.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo origin-center rotate-45">origin-center</div>
+              <span class="text-xs text-gray-500">Default</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo origin-top-left rotate-45">origin-top-left</div>
+              <span class="text-xs text-gray-500">Top Left</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo origin-bottom-right rotate-45">origin-bottom-right</div>
+              <span class="text-xs text-gray-500">Bottom Right</span>
+            </div>
+          </div>
+          
+          <h4 class="font-medium text-gray-700 mb-2">Origin with Scale</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo origin-center scale-75">origin-center</div>
+              <span class="text-xs text-gray-500">With scale-75</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo origin-top scale-75">origin-top</div>
+              <span class="text-xs text-gray-500">With scale-75</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo origin-bottom-left scale-75">origin-bottom-left</div>
+              <span class="text-xs text-gray-500">With scale-75</span>
+            </div>
+          </div>
+          
+          <div class="bg-indigo-50 p-3 rounded-lg mt-4">
+            <h5 class="font-medium text-primary text-sm mb-1">All Transform Origin Options</h5>
+            <div class="flex flex-wrap gap-1">
+              <span class="text-xs px-2 py-1 bg-white rounded">origin-center</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">origin-top</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">origin-top-right</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">origin-right</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">origin-bottom-right</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">origin-bottom</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">origin-bottom-left</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">origin-left</span>
+              <span class="text-xs px-2 py-1 bg-white rounded">origin-top-left</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Transform Playground -->
+    <section class="max-w-4xl mx-auto px-6 mb-12">
+      <h2 class="text-2xl font-semibold mb-4 text-primary flex items-center">
+        <i class="fas fa-sliders-h mr-2"></i>
+        Interactive Transform Playground
+      </h2>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h3 class="font-semibold text-secondary">Create Your Own Transforms</h3>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-medium text-gray-700 mb-4">Adjust Transform Values</h4>
+              
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Scale X</label>
+                <input type="range" min="0" max="2" step="0.1" value="1" id="scale-x" class="w-full">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>0</span>
+                  <span>1</span>
+                  <span>2</span>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Scale Y</label>
+                <input type="range" min="0" max="2" step="0.1" value="1" id="scale-y" class="w-full">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>0</span>
+                  <span>1</span>
+                  <span>2</span>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Rotate (degrees)</label>
+                <input type="range" min="0" max="360" step="1" value="0" id="rotate" class="w-full">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>0°</span>
+                  <span>180°</span>
+                  <span>360°</span>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Translate X (px)</label>
+                <input type="range" min="-50" max="50" step="1" value="0" id="translate-x" class="w-full">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>-50px</span>
+                  <span>0px</span>
+                  <span>50px</span>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Translate Y (px)</label>
+                <input type="range" min="-50" max="50" step="1" value="0" id="translate-y" class="w-full">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>-50px</span>
+                  <span>0px</span>
+                  <span>50px</span>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Skew X (degrees)</label>
+                <input type="range" min="-45" max="45" step="1" value="0" id="skew-x" class="w-full">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>-45°</span>
+                  <span>0°</span>
+                  <span>45°</span>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Skew Y (degrees)</label>
+                <input type="range" min="-45" max="45" step="1" value="0" id="skew-y" class="w-full">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>-45°</span>
+                  <span>0°</span>
+                  <span>45°</span>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Duration (ms)</label>
+                <input type="range" min="0" max="2000" step="50" value="300" id="duration" class="w-full">
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>0ms</span>
+                  <span>1000ms</span>
+                  <span>2000ms</span>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Timing Function</label>
+                <select id="timing" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                  <option value="ease-linear">Linear</option>
+                  <option value="ease-in">Ease In</option>
+                  <option value="ease-out">Ease Out</option>
+                  <option value="ease-in-out">Ease In Out</option>
+                </select>
+              </div>
+              
+              <button id="reset-button" class="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Reset All Values
+              </button>
+            </div>
+            
+            <div>
+              <h4 class="font-medium text-gray-700 mb-4">Preview</h4>
+              <div class="bg-gray-50 rounded-lg p-8 mb-4 flex items-center justify-center h-64">
+                <div id="transform-preview" class="w-32 h-32 bg-primary rounded-lg flex items-center justify-center text-white font-bold transform-sample">
+                  Tailwind CSS
+                </div>
+              </div>
+              
+              <h4 class="font-medium text-gray-700 mb-2">Tailwind CSS Classes:</h4>
+              <div class="bg-gray-100 rounded-lg p-4 font-mono text-sm break-all">
+                <code id="transform-code">scale-[1] rotate-[0deg] translate-x-[0px] translate-y-[0px] skew-x-[0deg] skew-y-[0deg] duration-[300] ease-linear</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transform & Transition Combinations -->
+    <section class="max-w-4xl mx-auto px-6 mb-12">
+      <h2 class="text-2xl font-semibold mb-4 text-primary flex items-center">
+        <i class="fas fa-code-branch mr-2"></i>
+        Powerful Combinations
+      </h2>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h3 class="font-semibold text-secondary">Multiple Transforms</h3>
+        </div>
+        <div class="p-4">
+          <p class="text-gray-700 mb-4">Combine multiple transform utilities for complex effects. The order doesn't matter as Tailwind combines them into a single transform.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo scale-110 rotate-12">scale-110 rotate-12</div>
+              <span class="text-xs text-gray-500">Scale + Rotate</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo translate-x-4 skew-x-12">translate-x-4 skew-x-12</div>
+              <span class="text-xs text-gray-500">Translate + Skew</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo rotate-45 scale-75 -translate-y-2">rotate-45 scale-75 -translate-y-2</div>
+              <span class="text-xs text-gray-500">Rotate + Scale + Translate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h3 class="font-semibold text-secondary">Hover Combinations</h3>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-700 mb-4">Combine transition properties with hover effects for interactive elements.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gray-50 p-6 rounded-lg flex justify-center">
+              <button class="bg-primary text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out hover:bg-secondary hover:shadow-lg hover:scale-110">
+                Scale & Color
+              </button>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg flex justify-center">
+              <button class="bg-primary text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out hover:bg-secondary hover:rotate-6 hover:translate-y-1">
+                Rotate & Move
+              </button>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg flex justify-center">
+              <button class="bg-primary text-white py-2 px-4 rounded-lg transition-all duration-500 ease-in-out hover:bg-secondary hover:shadow-xl hover:-translate-y-1 hover:scale-105">
+                Complete Effect
+              </button>
+            </div>
+          </div>
+          
+          <div class="mt-6 bg-indigo-50 p-4 rounded-lg">
+            <h4 class="font-medium text-primary mb-2">Card Hover Effect</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105">
+                <div class="h-32 bg-primary"></div>
+                <div class="p-4">
+                  <h5 class="font-medium mb-2">Card Title</h5>
+                  <p class="text-sm text-gray-600">Hover over this card to see the effect</p>
+                </div>
+              </div>
+              
+              <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105">
+                <div class="h-32 bg-secondary"></div>
+                <div class="p-4">
+                  <h5 class="font-medium mb-2">Card Title</h5>
+                  <p class="text-sm text-gray-600">Hover over this card to see the effect</p>
+                </div>
+              </div>
+              
+              <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105">
+                <div class="h-32 bg-indigo-400"></div>
+                <div class="p-4">
+                  <h5 class="font-medium mb-2">Card Title</h5>
+                  <p class="text-sm text-gray-600">Hover over this card to see the effect</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+          <h3 class="font-semibold text-secondary">Animation Examples</h3>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-700 mb-4">These examples use CSS animations in combination with Tailwind's transform utilities.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="flex flex-col items-center">
+              <div class="transform-demo animate-pulse-transform">Pulse</div>
+              <span class="text-xs text-gray-500 mt-2">Scale Animation</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo animate-rotate">Rotate</div>
+              <span class="text-xs text-gray-500 mt-2">Rotation Animation</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo animate-translate">Translate</div>
+              <span class="text-xs text-gray-500 mt-2">Movement Animation</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="transform-demo animate-skew">Skew</div>
+              <span class="text-xs text-gray-500 mt-2">Skew Animation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Summary & Conclusion -->
+    <div class="bg-gradient-to-r from-indigo-700 to-purple-700 rounded-xl shadow-xl overflow-hidden mb-16 text-white max-w-4xl mx-auto px-6">
+      <div class="p-8">
+        <h2 class="text-3xl font-bold mb-6">Summary & Key Takeaways</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+          <div>
+            <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+              <i class="fas fa-star text-yellow-300"></i>
+              What We've Learned
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Transforms and transitions are powerful tools for creating interactive, engaging user interfaces</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Tailwind provides comprehensive utilities for controlling animations, including property, timing, duration, and delay</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Transform utilities let you manipulate elements through scale, rotate, translate, and skew operations</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Combining multiple transforms and transitions creates sophisticated effects without custom CSS</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+              <i class="fas fa-forward text-yellow-300"></i>
+              Next Steps
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                <span>Experiment with combining transform utilities to create unique visual effects</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                <span>Build interactive components using transitions for smoother user experiences</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                <span>Explore custom transform configurations in your Tailwind config file</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                <span>Check out the <a href="https://tailwindcss.com/docs/transform" class="underline hover:text-white">official Tailwind CSS documentation</a> for more details</span>
+              </li>
+            </ul>
+            
+            <div class="mt-6 pt-6 border-t border-indigo-500/30">
+              <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors">
+                <i class="fas fa-home mr-2"></i>
+                Back to Main Documentation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
   </body>
 </html>
-
-<!-- Transition Property
-  transition-none	            
-  transition-property: none;
-
-  transition-all	            
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-
-  transition	
-  transition-property: color, background-color, border-color, 
-  text-decoration-color, fill, stroke, opacity, box-shadow, 
-  transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-
-  transition-colors	
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-
-  transition-opacity	
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-
-  transition-shadow	
-  transition-property: box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-
-  transition-transform	transition-property: transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
--->
-
-<!-- 
-  Duration
-  duration-75	    transition-duration: 75ms;
-  duration-100	  transition-duration: 100ms;
-  duration-150	  transition-duration: 150ms;
-  duration-200	  transition-duration: 200ms;
-  duration-300	  transition-duration: 300ms;
-  duration-500	  transition-duration: 500ms;
-  duration-700	  transition-duration: 700ms;
-  duration-1000	  transition-duration: 1000ms;
- -->
-
-<!-- Timing Function
-  ease-linear	      transition-timing-function: linear;
-  ease-in	          transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-  ease-out	        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  ease-in-out	      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
--->
-
-<!-- Delay
-  delay-75	  transition-delay: 75ms;
-  delay-100	  transition-delay: 100ms;
-  delay-150	  transition-delay: 150ms;
-  delay-200	  transition-delay: 200ms;
-  delay-300	  transition-delay: 300ms;
-  delay-500	  transition-delay: 500ms;
-  delay-700	  transition-delay: 700ms;
-  delay-1000	transition-delay: 1000ms;
--->
-
-<!-- TRANSFORMS -->
-
-<!-- Scale
-  scale-0	    transform: scale(0);
-  scale-x-0	  transform: scaleX(0);
-  scale-y-0	  transform: scaleY(0);
-  scale-50	  transform: scale(.5);
-  scale-x-50	transform: scaleX(.5);
-  scale-y-50	transform: scaleY(.5);
-  scale-75	  transform: scale(.75);
-  scale-x-75	transform: scaleX(.75);
-  scale-y-75	transform: scaleY(.75);
-  scale-90	  transform: scale(.9);
-  scale-x-90	transform: scaleX(.9);
-  scale-y-90	transform: scaleY(.9);
-  scale-95	  transform: scale(.95);
-  scale-x-95	transform: scaleX(.95);
-  scale-y-95	transform: scaleY(.95);
-  scale-100	  transform: scale(1);
-  scale-x-100	transform: scaleX(1);
-  scale-y-100	transform: scaleY(1);
-  scale-105	  transform: scale(1.05);
-  scale-x-105	transform: scaleX(1.05);
-  scale-y-105	transform: scaleY(1.05);
-  scale-110	  transform: scale(1.1);
-  scale-x-110	transform: scaleX(1.1);
-  scale-y-110	transform: scaleY(1.1);
-  scale-125	  transform: scale(1.25);
-  scale-x-125	transform: scaleX(1.25);
-  scale-y-125	transform: scaleY(1.25);
-  scale-150	  transform: scale(1.5);
-  scale-x-150	transform: scaleX(1.5);
-  scale-y-150	transform: scaleY(1.5);
--->
-
-<!-- Rotate
-  rotate-0	  transform: rotate(0deg);
-  rotate-1	  transform: rotate(1deg);
-  rotate-2	  transform: rotate(2deg);
-  rotate-3	  transform: rotate(3deg);
-  rotate-6	  transform: rotate(6deg);
-  rotate-12	  transform: rotate(12deg);
-  rotate-45	  transform: rotate(45deg);
-  rotate-90	  transform: rotate(90deg);
-  rotate-180	transform: rotate(180deg);
--->
-
-<!-- Translate
-  translate-x-0	transform: translateX(0px);
-  translate-y-0	transform: translateY(0px);
-  translate-x-px	transform: translateX(1px);
-  translate-y-px	transform: translateY(1px);
-  translate-x-0.5	transform: translateX(0.125rem);
-  translate-y-0.5	transform: translateY(0.125rem);
-  translate-x-1	transform: translateX(0.25rem);
-  translate-y-1	transform: translateY(0.25rem);
-  translate-x-1.5	transform: translateX(0.375rem);
-  translate-y-1.5	transform: translateY(0.375rem);
-  translate-x-2	transform: translateX(0.5rem);
-  translate-y-2	transform: translateY(0.5rem);
-  translate-x-2.5	transform: translateX(0.625rem);
-  translate-y-2.5	transform: translateY(0.625rem);
-  translate-x-3	transform: translateX(0.75rem);
-  translate-y-3	transform: translateY(0.75rem);
-  translate-x-3.5	transform: translateX(0.875rem);
-  translate-y-3.5	transform: translateY(0.875rem);
-  translate-x-4	transform: translateX(1rem);
-  translate-y-4	transform: translateY(1rem);
-  translate-x-5	transform: translateX(1.25rem);
-  translate-y-5	transform: translateY(1.25rem);
-  translate-x-6	transform: translateX(1.5rem);
-  translate-y-6	transform: translateY(1.5rem);
-  translate-x-7	transform: translateX(1.75rem);
-  translate-y-7	transform: translateY(1.75rem);
-  translate-x-8	transform: translateX(2rem);
-  translate-y-8	transform: translateY(2rem);
-  translate-x-9	transform: translateX(2.25rem);
-  translate-y-9	transform: translateY(2.25rem);
-  translate-x-10	transform: translateX(2.5rem);
-  translate-y-10	transform: translateY(2.5rem);
-  translate-x-11	transform: translateX(2.75rem);
-  translate-y-11	transform: translateY(2.75rem);
-  translate-x-12	transform: translateX(3rem);
-  translate-y-12	transform: translateY(3rem);
-  translate-x-14	transform: translateX(3.5rem);
-  translate-y-14	transform: translateY(3.5rem);
-  translate-x-16	transform: translateX(4rem);
-  translate-y-16	transform: translateY(4rem);
-  translate-x-20	transform: translateX(5rem);
-  translate-y-20	transform: translateY(5rem);
-  translate-x-24	transform: translateX(6rem);
-  translate-y-24	transform: translateY(6rem);
-  translate-x-28	transform: translateX(7rem);
-  translate-y-28	transform: translateY(7rem);
-  translate-x-32	transform: translateX(8rem);
-  translate-y-32	transform: translateY(8rem);
-  translate-x-36	transform: translateX(9rem);
-  translate-y-36	transform: translateY(9rem);
-  translate-x-40	transform: translateX(10rem);
-  translate-y-40	transform: translateY(10rem);
-  translate-x-44	transform: translateX(11rem);
-  translate-y-44	transform: translateY(11rem);
-  translate-x-48	transform: translateX(12rem);
-  translate-y-48	transform: translateY(12rem);
-  translate-x-52	transform: translateX(13rem);
-  translate-y-52	transform: translateY(13rem);
-  translate-x-56	transform: translateX(14rem);
-  translate-y-56	transform: translateY(14rem);
-  translate-x-60	transform: translateX(15rem);
-  translate-y-60	transform: translateY(15rem);
-  translate-x-64	transform: translateX(16rem);
-  translate-y-64	transform: translateY(16rem);
-  translate-x-72	transform: translateX(18rem);
-  translate-y-72	transform: translateY(18rem);
-  translate-x-80	transform: translateX(20rem);
-  translate-y-80	transform: translateY(20rem);
-  translate-x-96	transform: translateX(24rem);
-  translate-y-96	transform: translateY(24rem);
-  translate-x-1/2	transform: translateX(50%);
-  translate-x-1/3	transform: translateX(33.333333%);
-  translate-x-2/3	transform: translateX(66.666667%);
-  translate-x-1/4	transform: translateX(25%);
-  translate-x-2/4	transform: translateX(50%);
-  translate-x-3/4	transform: translateX(75%);
-  translate-x-full	transform: translateX(100%);
-  translate-y-1/2	transform: translateY(50%);
-  translate-y-1/3	transform: translateY(33.333333%);
-  translate-y-2/3	transform: translateY(66.666667%);
-  translate-y-1/4	transform: translateY(25%);
-  translate-y-2/4	transform: translateY(50%);
-  translate-y-3/4	transform: translateY(75%);
-  translate-y-full	transform: translateY(100%);
--->
-
-<!-- Skew
-  skew-x-0	transform: skewX(0deg);
-  skew-y-0	transform: skewY(0deg);
-  skew-x-1	transform: skewX(1deg);
-  skew-y-1	transform: skewY(1deg);
-  skew-x-2	transform: skewX(2deg);
-  skew-y-2	transform: skewY(2deg);
-  skew-x-3	transform: skewX(3deg);
-  skew-y-3	transform: skewY(3deg);
-  skew-x-6	transform: skewX(6deg);
-  skew-y-6	transform: skewY(6deg);
-  skew-x-12	transform: skewX(12deg);
-  skew-y-12	transform: skewY(12deg);
--->
-
-<!-- Transform Origin
-  origin-center	transform-origin: center;
-  origin-top	transform-origin: top;
-  origin-top-right	transform-origin: top right;
-  origin-right	transform-origin: right;
-  origin-bottom-right	transform-origin: bottom right;
-  origin-bottom	transform-origin: bottom;
-  origin-bottom-left	transform-origin: bottom left;
-  origin-left	transform-origin: left;
-  origin-top-left	transform-origin: top left;
--->

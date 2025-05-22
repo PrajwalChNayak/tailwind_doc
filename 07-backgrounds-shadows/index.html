@@ -4,58 +4,560 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS backgrounds and shadows - learn to create stunning visual effects with background images, gradients, and shadows" />
+    <meta name="author" content="Tailwind Documentation" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M17 8H7c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H7V10h10v10zM6 5c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v1h2V5c0-2.21-1.79-4-4-4H8C5.79 1 4 2.79 4 5v1h2V5z'/%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Backgrounds & Shadows</title>
-  </head>
-  <body class="bg-gray-50">
-    <div class="max-w-5xl mx-auto p-6">
-      <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Tailwind CSS: Background & Shadow Examples</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tailwind CSS Backgrounds & Shadows | Interactive Documentation</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4F46E5',
+              secondary: '#8B5CF6'
+            },
+            boxShadow: {
+              'glow': '0 0 15px rgba(79, 70, 229, 0.5)',
+              'sharp': '6px 6px 0 rgba(0, 0, 0, 0.2)',
+              'inner-color': 'inset 0 2px 4px 0 rgba(79, 70, 229, 0.3)'
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @keyframes shadow-pulse {
+        0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7); }
+        70% { box-shadow: 0 0 10px 10px rgba(79, 70, 229, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+      }
       
-      <!-- Background Classes - With better presentation -->
-      <section class="mb-12">
-        <h2 class="text-xl font-semibold mb-4 border-b pb-2">Background Images</h2>
-        <div class="flex flex-wrap gap-6">
-          <div>
-            <div
-              class="h-64 w-72 bg-blue-500 bg-cover bg-no-repeat bg-center rounded-lg shadow-md transform hover:scale-105 transition-transform"
-              style="background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&h=300&fit=crop')"
-            ></div>
-            <p class="text-sm text-gray-600 mt-2">bg-cover bg-no-repeat bg-center</p>
+      .shadow-pulse {
+        animation: shadow-pulse 2s infinite;
+      }
+      
+      @keyframes gradient-shift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      .animated-gradient {
+        background-size: 200% 200%;
+        animation: gradient-shift 5s ease infinite;
+      }
+      
+      .demo-card {
+        transition: all 0.3s ease;
+      }
+      
+      .demo-card:hover {
+        transform: translateY(-5px);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans" style="font-family: 'Inter', sans-serif;">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="flex items-center gap-2 text-white hover:text-indigo-100 transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+            <span>Back to Main Documentation</span>
+          </a>
+          <a href="https://tailwindcss.com/docs/background-color" target="_blank" class="flex items-center gap-1 text-indigo-100 hover:text-white transition-colors text-sm">
+            <span>Official Docs</span>
+            <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-fill-drip"></i>
+          Tailwind CSS Backgrounds & Shadows
+        </h1>
+        <p class="text-indigo-100 text-lg max-w-3xl">
+          Create depth, dimension, and visual interest in your designs using Tailwind's powerful background and shadow utilities
+        </p>
+      </div>
+    </header>
+
+    <!-- Documentation Section -->
+    <div class="max-w-5xl mx-auto px-6 mb-12">
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-t-4 border-indigo-600">
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-indigo-600"></i>
+              What are Backgrounds & Shadows?
+            </h2>
+            <p class="text-lg text-gray-700 mb-6">
+              Backgrounds and shadows are fundamental visual elements that create depth, establish hierarchy, and enhance the aesthetics of your web designs. In Tailwind CSS, these properties are implemented through intuitive utility classes that allow you to quickly apply sophisticated visual effects.
+            </p>
+            <p class="text-md text-gray-600 mb-4">
+              <span class="font-medium text-indigo-700">Backgrounds</span> can be solid colors, gradients, or images, and can be customized with properties like size, position, and attachment. They set the visual foundation for your elements and help establish your brand identity.
+            </p>
+            <p class="text-md text-gray-600">
+              <span class="font-medium text-indigo-700">Shadows</span> create the illusion of elevation and depth, helping users understand the relationship between different interface elements. Shadows can vary in size, intensity, color, and can be applied to the outside or inside of elements.
+            </p>
+          </div>
+          <div class="md:w-1/3">
+            <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-100">
+              <h3 class="font-semibold text-indigo-800 mb-3 flex items-center gap-2">
+                <i class="fas fa-lightbulb text-indigo-600"></i>
+                Key Concept
+              </h3>
+              <p class="text-sm text-indigo-700">
+                Backgrounds and shadows work together to create a visual language in your UI. Shadows convey <em>elevation</em> (how far an element is from the surface), while backgrounds define the <em>surface</em> itself.
+              </p>
+            </div>
+            
+            <div class="mt-5 bg-gradient-to-r from-purple-50 to-indigo-50 p-5 rounded-xl border border-indigo-100 shadow-sm">
+              <h3 class="font-semibold text-indigo-800 mb-2 text-sm">Material Design Principles</h3>
+              <ul class="text-xs text-indigo-700 space-y-2">
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">•</span>
+                  <span>Higher shadows = higher elevation</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">•</span>
+                  <span>Interactive elements should use shadows to indicate their state</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">•</span>
+                  <span>Consistent background & shadow usage creates a cohesive user experience</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-100 pt-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-lg border border-blue-100">
+              <h3 class="font-semibold text-gray-800 mb-3 flex items-center">
+                <i class="fas fa-palette text-blue-500 mr-2"></i>
+                Background Properties
+              </h3>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start">
+                  <span class="text-blue-500 mr-2">•</span>
+                  <div>
+                    <span class="font-medium text-gray-700">Color & Gradients</span>
+                    <p class="text-gray-600 text-xs mt-0.5">Solid colors and multi-color gradients</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-blue-500 mr-2">•</span>
+                  <div>
+                    <span class="font-medium text-gray-700">Images & Positioning</span>
+                    <p class="text-gray-600 text-xs mt-0.5">Control the size, position, and repeat behavior</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-blue-500 mr-2">•</span>
+                  <div>
+                    <span class="font-medium text-gray-700">Attachment</span>
+                    <p class="text-gray-600 text-xs mt-0.5">Fixed, local, or scrolling behavior</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-blue-500 mr-2">•</span>
+                  <div>
+                    <span class="font-medium text-gray-700">Blend Modes</span>
+                    <p class="text-gray-600 text-xs mt-0.5">Control how backgrounds blend with content</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-5 rounded-lg border border-purple-100">
+              <h3 class="font-semibold text-gray-800 mb-3 flex items-center">
+                <i class="fas fa-layer-group text-purple-500 mr-2"></i>
+                Shadow Properties
+              </h3>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start">
+                  <span class="text-purple-500 mr-2">•</span>
+                  <div>
+                    <span class="font-medium text-gray-700">Size & Intensity</span>
+                    <p class="text-gray-600 text-xs mt-0.5">From subtle to dramatic elevation effects</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-purple-500 mr-2">•</span>
+                  <div>
+                    <span class="font-medium text-gray-700">Direction</span>
+                    <p class="text-gray-600 text-xs mt-0.5">Outer or inner shadows</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-purple-500 mr-2">•</span>
+                  <div>
+                    <span class="font-medium text-gray-700">Color</span>
+                    <p class="text-gray-600 text-xs mt-0.5">Custom colors and opacity control</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-purple-500 mr-2">•</span>
+                  <div>
+                    <span class="font-medium text-gray-700">Interactive States</span>
+                    <p class="text-gray-600 text-xs mt-0.5">Shadows that respond to user interactions</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Visual Example -->
+          <div class="mt-6 flex flex-wrap gap-4 justify-center">
+            <div class="bg-white p-4 shadow-md rounded-lg demo-card">
+              <div class="w-24 h-24 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-lg"></div>
+              <p class="text-xs text-center mt-2 text-gray-500">Basic</p>
+            </div>
+            <div class="bg-white p-4 shadow-lg rounded-lg demo-card relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-indigo-500/10"></div>
+              <div class="relative w-24 h-24 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-lg"></div>
+              <p class="text-xs text-center mt-2 text-gray-500">Layered</p>
+            </div>
+            <div class="bg-white p-4 shadow-xl rounded-lg demo-card">
+              <div class="w-24 h-24 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-lg shadow-inner"></div>
+              <p class="text-xs text-center mt-2 text-gray-500">Inner Shadow</p>
+            </div>
+            <div class="bg-white p-4 shadow-2xl rounded-lg demo-card">
+              <div class="w-24 h-24 bg-cover bg-center rounded-lg"
+                   style="background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&h=300&fit=crop')">
+              </div>
+              <p class="text-xs text-center mt-2 text-gray-500">Image</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Examples Section -->
+    <div class="max-w-5xl mx-auto px-6 mb-12">
+      <h2 class="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Practical Examples</h2>
+      
+      <!-- Background Images Section -->
+      <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6 flex flex-wrap items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-images text-indigo-600"></i>
+              Background Images
+            </h3>
+            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Essential</span>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <p class="text-gray-700 mb-4">Background images in Tailwind CSS come with a variety of utilities to control their size, position, and behavior.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div
+                class="h-64 bg-blue-500 bg-cover bg-no-repeat bg-center rounded-lg shadow-md transform hover:scale-105 transition-transform"
+                style="background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&h=300&fit=crop')"
+              ></div>
+              <div class="mt-2 flex justify-between items-center">
+                <code class="text-xs bg-gray-100 px-2 py-1 rounded inline-block">bg-cover bg-no-repeat bg-center</code>
+                <span class="text-xs text-gray-500">Hover me</span>
+              </div>
+            </div>
+            
+            <div>
+              <div class="h-64 relative rounded-lg shadow-md overflow-hidden group">
+                <div 
+                  class="absolute inset-0 bg-cover bg-center"
+                  style="background-image: url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&h=300&fit=crop')">
+                </div>
+                <div class="absolute inset-0 bg-indigo-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p class="text-white font-bold text-xl">Hover Overlay</p>
+                </div>
+              </div>
+              <div class="mt-2 flex justify-between items-center">
+                <code class="text-xs bg-gray-100 px-2 py-1 rounded inline-block">bg-cover + overlay with opacity transition</code>
+                <span class="text-xs text-gray-500">Hover me</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-50 p-4 rounded-lg mb-6">
+            <h4 class="font-medium text-gray-800 mb-2">Background Image Properties</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <h5 class="font-medium text-indigo-700">Size</h5>
+                <ul class="text-gray-600 space-y-1 ml-4 list-disc">
+                  <li>bg-auto</li>
+                  <li>bg-cover</li>
+                  <li>bg-contain</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-medium text-indigo-700">Position</h5>
+                <ul class="text-gray-600 space-y-1 ml-4 list-disc">
+                  <li>bg-bottom</li>
+                  <li>bg-center</li>
+                  <li>bg-left</li>
+                  <li>bg-right</li>
+                  <li>bg-top</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-medium text-indigo-700">Repeat</h5>
+                <ul class="text-gray-600 space-y-1 ml-4 list-disc">
+                  <li>bg-repeat</li>
+                  <li>bg-no-repeat</li>
+                  <li>bg-repeat-x</li>
+                  <li>bg-repeat-y</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-800 text-gray-300 p-4 rounded-lg text-sm overflow-auto">
+            <pre><code>&lt;div 
+  class="h-64 bg-cover bg-center bg-no-repeat rounded-lg" 
+  style="background-image: url('/path/to/image.jpg')"
+&gt;
+  &lt;!-- Content overlaid on the background image --&gt;
+  &lt;div class="p-6 text-white"&gt;
+    &lt;h2 class="text-2xl font-bold"&gt;Hero Title&lt;/h2&gt;
+    &lt;p&gt;Supporting text goes here&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
           </div>
         </div>
       </section>
 
-      <!-- Gradients - With better presentation -->
-      <section class="mb-12">
-        <h2 class="text-xl font-semibold mb-4 border-b pb-2">Gradient Backgrounds</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <div class="h-24 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg"></div>
-            <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">bg-gradient-to-r from-cyan-500 to-blue-500</code>
+      <!-- Gradients Section - Enhanced -->
+      <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6 flex flex-wrap items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-palette text-indigo-600"></i>
+              Gradient Backgrounds
+            </h3>
+            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Popular</span>
           </div>
-          <div>
-            <div class="h-24 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg"></div>
-            <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500</code>
+        </div>
+        
+        <div class="p-6">
+          <p class="text-gray-700 mb-6">Tailwind CSS makes it easy to create beautiful gradient backgrounds with simple utility classes. Gradients can add depth, visual interest, and guide the user's attention.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 class="font-medium text-gray-800 mb-3">Direction Variants</h4>
+              <div class="space-y-4">
+                <div>
+                  <div class="h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg"></div>
+                  <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">bg-gradient-to-r</code>
+                </div>
+                <div>
+                  <div class="h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg"></div>
+                  <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">bg-gradient-to-br</code>
+                </div>
+                <div>
+                  <div class="h-16 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-lg"></div>
+                  <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">bg-gradient-to-b</code>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium text-gray-800 mb-3">Multi-Color Gradients</h4>
+              <div class="space-y-4">
+                <div>
+                  <div class="h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg"></div>
+                  <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">from-indigo-500 to-purple-500</code>
+                </div>
+                <div>
+                  <div class="h-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg"></div>
+                  <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">from-indigo-500 via-purple-500 to-pink-500</code>
+                </div>
+                <div>
+                  <div class="h-16 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 rounded-lg"></div>
+                  <code class="text-xs bg-gray-100 px-2 py-1 mt-2 rounded inline-block">from-yellow-400 via-red-500 to-pink-500</code>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-50 p-5 rounded-lg mb-6">
+            <h4 class="font-medium text-gray-800 mb-3">Gradient Applications</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="rounded-lg overflow-hidden">
+                <div class="h-24 bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center">
+                  <h5 class="text-white font-bold text-lg">Page Header</h5>
+                </div>
+                <div class="bg-white p-3 text-xs text-gray-600">
+                  Create eye-catching headers and hero sections
+                </div>
+              </div>
+              
+              <div class="rounded-lg overflow-hidden">
+                <div class="h-24 flex items-center justify-center">
+                  <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold rounded-full shadow-md hover:from-purple-600 hover:to-indigo-600 transition-all">
+                    Sign Up Now
+                  </button>
+                </div>
+                <div class="bg-white p-3 text-xs text-gray-600">
+                  Attention-grabbing buttons & CTAs
+                </div>
+              </div>
+              
+              <div class="rounded-lg overflow-hidden">
+                <div class="h-24 p-4 bg-gradient-to-tr from-gray-50 to-gray-100 flex items-center justify-center">
+                  <h3 class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                    Gradient Text
+                  </h3>
+                </div>
+                <div class="bg-white p-3 text-xs text-gray-600">
+                  Create eye-catching text with bg-clip-text
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-800 text-gray-300 p-4 rounded-lg text-sm overflow-auto">
+            <pre><code>&lt;!-- Basic gradient --&gt;
+&lt;div class="bg-gradient-to-r from-cyan-500 to-blue-500"&gt;&lt;/div&gt;
+
+&lt;!-- Three-color gradient --&gt;
+&lt;div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"&gt;&lt;/div&gt;
+
+&lt;!-- Gradient text --&gt;
+&lt;h2 class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600"&gt;
+  Gradient Text
+&lt;/h2&gt;</code></pre>
           </div>
         </div>
       </section>
 
-      <!-- Shadows - With better presentation -->
-      <section class="mb-12">
-        <h2 class="text-xl font-semibold mb-4 border-b pb-2">Shadow Examples</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Shadow Examples with labels -->
-          <div class="bg-white p-4 shadow-sm rounded-lg">
-            <p class="font-medium mb-2">Shadow SM</p>
-            <code class="bg-gray-100 text-sm p-1 rounded">shadow-sm</code>
+      <!-- Shadows Section - Enhanced -->
+      <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6 flex flex-wrap items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-layer-group text-indigo-600"></i>
+              Shadow Effects
+            </h3>
+            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">UI Essential</span>
           </div>
-          <div class="bg-white p-4 shadow rounded-lg">
-            <p class="font-medium mb-2">Shadow (Default)</p>
-            <code class="bg-gray-100 text-sm p-1 rounded">shadow</code>
+        </div>
+        
+        <div class="p-6">
+          <p class="text-gray-700 mb-6">Shadows in Tailwind CSS help create the illusion of elevation and depth. Different shadow sizes convey different levels of elevation from the surface.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-white p-4 shadow-sm rounded-lg hover:shadow transition-all duration-300">
+              <div class="flex items-center justify-between mb-3">
+                <p class="font-medium">Shadow SM</p>
+                <span class="text-xs text-gray-500">Hover me</span>
+              </div>
+              <div class="h-16 bg-gray-50 rounded border border-gray-100 flex items-center justify-center text-gray-400">
+                <i class="fas fa-arrow-up text-xs"></i>
+              </div>
+              <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded text-center">shadow-sm</code>
+            </div>
+            
+            <div class="bg-white p-4 shadow-md rounded-lg hover:shadow-lg transition-all duration-300">
+              <div class="flex items-center justify-between mb-3">
+                <p class="font-medium">Shadow MD</p>
+                <span class="text-xs text-gray-500">Hover me</span>
+              </div>
+              <div class="h-16 bg-gray-50 rounded border border-gray-100 flex items-center justify-center text-gray-400">
+                <i class="fas fa-arrow-up text-sm"></i>
+              </div>
+              <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded text-center">shadow-md</code>
+            </div>
+            
+            <div class="bg-white p-4 shadow-xl rounded-lg hover:shadow-2xl transition-all duration-300">
+              <div class="flex items-center justify-between mb-3">
+                <p class="font-medium">Shadow XL</p>
+                <span class="text-xs text-gray-500">Hover me</span>
+              </div>
+              <div class="h-16 bg-gray-50 rounded border border-gray-100 flex items-center justify-center text-gray-400">
+                <i class="fas fa-arrow-up text-base"></i>
+              </div>
+              <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded text-center">shadow-xl</code>
+            </div>
           </div>
-          <div class="bg-white p-4 shadow-md rounded-lg">
-            <p class="font-medium mb-2">Shadow MD</p>
-            <code class="bg-gray-100 text-sm p-1 rounded">shadow-md</code>
+          
+          <div class="bg-gray-50 p-5 rounded-lg mb-6">
+            <h4 class="font-medium text-gray-800 mb-3">Shadow Variations</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="text-sm font-medium text-indigo-700 mb-3">Inner Shadows</h5>
+                <div class="bg-white p-4 shadow-inner rounded-lg">
+                  <p class="text-center text-gray-500 my-4">Inset shadow effect</p>
+                  <code class="block text-xs bg-gray-100 px-2 py-1 rounded text-center">shadow-inner</code>
+                </div>
+              </div>
+              
+              <div>
+                <h5 class="text-sm font-medium text-indigo-700 mb-3">Colored Shadows</h5>
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="bg-white p-2 shadow-lg shadow-blue-500/50 rounded-lg">
+                    <code class="block text-xs bg-gray-100 px-2 py-1 rounded text-center">shadow-blue-500/50</code>
+                  </div>
+                  <div class="bg-white p-2 shadow-lg shadow-pink-500/50 rounded-lg">
+                    <code class="block text-xs bg-gray-100 px-2 py-1 rounded text-center">shadow-pink-500/50</code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <h4 class="font-medium text-gray-800 mb-3">Interactive Shadow Effects</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <button class="px-4 py-3 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-indigo-600 font-medium border border-gray-100">
+                Hover Effect Button
+              </button>
+              
+              <div class="group cursor-pointer">
+                <div class="p-4 bg-white rounded-lg shadow-md group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+                  <p class="font-medium text-gray-800">Group Hover</p>
+                  <p class="text-xs text-gray-500 mt-1">Using group utilities</p>
+                </div>
+              </div>
+              
+              <div class="p-4 bg-white rounded-lg shadow-lg shadow-indigo-300/50 border border-indigo-100">
+                <p class="font-medium text-indigo-800">Colored Shadow</p>
+                <p class="text-xs text-gray-500 mt-1">Matching brand colors</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-800 text-gray-300 p-4 rounded-lg text-sm overflow-auto">
+            <pre><code>&lt;!-- Basic shadow with hover effect --&gt;
+&lt;div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-all"&gt;
+  Content here
+&lt;/div&gt;
+
+&lt;!-- Colored shadow --&gt;
+&lt;div class="bg-white rounded-lg shadow-lg shadow-blue-500/50"&gt;
+  Content with blue shadow
+&lt;/div&gt;
+
+&lt;!-- Interactive card with group hover --&gt;
+&lt;div class="group"&gt;
+  &lt;div class="bg-white rounded-lg shadow-md 
+              group-hover:shadow-xl 
+              group-hover:-translate-y-1 
+              transition-all"&gt;
+    Card content here
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
           </div>
           <div class="bg-white p-4 shadow-lg rounded-lg">
             <p class="font-medium mb-2">Shadow LG</p>
@@ -90,148 +592,527 @@
         </div>
       </section>
 
-      <!-- Mix Blend Section -->
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">Mix Blend Modes</h2>
-        <p class="mb-4 text-gray-700">Mix blend modes determine how elements blend with what's behind them. They can create interesting visual effects when elements overlap.</p>
-        
-        <div class="p-8 bg-gray-100 rounded-lg">
-          <div class="flex justify-center -space-x-24">
-            <div class="mix-blend-multiply bg-blue-400 p-8 rounded-lg">
-              <p class="font-medium">Mix Blend Multiply</p>
-              <code class="bg-white text-sm p-1 rounded mt-2 inline-block">mix-blend-multiply</code>
-            </div>
-            <div class="mix-blend-multiply bg-pink-400 p-8 rounded-lg">
-              <p class="font-medium">Mix Blend Multiply</p>
-              <code class="bg-white text-sm p-1 rounded mt-2 inline-block">mix-blend-multiply</code>
-            </div>
+      <!-- Mix Blend Mode Section - Enhanced -->
+      <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6 flex flex-wrap items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-object-group text-indigo-600"></i>
+              Mix Blend Modes
+            </h3>
+            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Advanced</span>
           </div>
         </div>
-      </section>
-
-      <!-- Use Cases Section -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">Common Use Cases & Best Practices</h2>
         
-        <div class="mb-10">
-          <h3 class="text-xl font-medium mb-3 text-gray-800">Cards & Containers</h3>
-          <p class="text-gray-700 mb-4">Use shadow utilities to create card-like elements that appear to float above the surface. Stronger shadows indicate higher elevation.</p>
+        <div class="p-6">
+          <p class="text-gray-700 mb-6">Mix blend modes determine how elements blend with layers below them. They can create unique visual effects when colors and images overlap.</p>
           
-          <!-- Interactive card examples -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div class="p-5 bg-white shadow-md rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-              <div class="h-24 bg-blue-500 -m-5 mb-4 rounded-t-lg flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                </svg>
-              </div>
-              <h4 class="font-bold">Interactive Card</h4>
-              <p class="text-sm text-gray-600 mt-2">Uses shadow-md and transforms on hover for a more interactive feel</p>
-              <code class="text-xs bg-gray-100 px-2 py-1 mt-3 rounded inline-block">hover:shadow-xl hover:-translate-y-1</code>
-            </div>
-            
-            <div class="p-5 bg-white shadow-lg rounded-lg border border-gray-100 relative overflow-hidden">
-              <div class="absolute -right-4 -top-4 bg-yellow-300 w-16 h-16 rounded-full opacity-30"></div>
-              <div class="relative">
-                <h4 class="font-bold">Card with Multiple Effects</h4>
-                <p class="text-sm text-gray-600 mt-2">Combines medium shadow with subtle border and background elements</p>
-                <div class="mt-4 flex gap-2">
-                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Design</span>
-                  <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">UI</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="bg-gray-100 rounded-lg p-4 h-64 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-pink-400 to-transparent mix-blend-multiply"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                  <h4 class="text-white font-bold text-2xl mb-2 drop-shadow-lg">Multiply</h4>
+                  <code class="bg-white/80 px-2 py-1 rounded text-xs">mix-blend-multiply</code>
                 </div>
               </div>
             </div>
             
-            <div class="p-5 bg-gradient-to-br from-white to-gray-100 shadow-md rounded-lg border-t-4 border-indigo-500">
-              <h4 class="font-bold">Gradient Card with Accent</h4>
-              <p class="text-sm text-gray-600 mt-2">Combines shadow with gradient background and colored accent border</p>
-              <div class="mt-4 h-2 bg-gray-200 rounded-full">
-                <div class="h-2 bg-indigo-500 rounded-full w-3/4"></div>
+            <div>
+              <div class="bg-gray-100 rounded-lg p-4 h-64 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-yellow-400 to-transparent mix-blend-screen"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                  <h4 class="text-gray-800 font-bold text-2xl mb-2 drop-shadow-sm">Screen</h4>
+                  <code class="bg-black/80 px-2 py-1 rounded text-xs text-white">mix-blend-screen</code>
+                </div>
               </div>
-              <p class="text-xs text-right mt-1 text-gray-500">75% Complete</p>
             </div>
           </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div>
+              <div class="bg-blue-500 p-4 h-32 flex items-center justify-center rounded-lg relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-24 h-24 bg-yellow-400 rounded-full"></div>
+                </div>
+                <p class="relative font-bold text-xl text-white mix-blend-overlay">Overlay</p>
+              </div>
+              <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded text-center">mix-blend-overlay</code>
+            </div>
+            
+            <div>
+              <div class="bg-green-500 p-4 h-32 flex items-center justify-center rounded-lg relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-24 h-24 bg-pink-400 rounded-full"></div>
+                </div>
+                <p class="relative font-bold text-xl text-white mix-blend-difference">Difference</p>
+              </div>
+              <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded text-center">mix-blend-difference</code>
+            </div>
+            
+            <div>
+              <div class="bg-purple-500 p-4 h-32 flex items-center justify-center rounded-lg relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-24 h-24 bg-yellow-400 rounded-full"></div>
+                </div>
+                <p class="relative font-bold text-xl text-white mix-blend-color-dodge">Color Dodge</p>
+              </div>
+              <code class="block mt-2 text-xs bg-gray-100 px-2 py-1 rounded text-center">mix-blend-color-dodge</code>
+            </div>
+          </div>
+          
+          <div class="bg-gray-50 p-5 rounded-lg mb-6">
+            <h4 class="font-medium text-gray-800 mb-3">Common Blend Mode Applications</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="text-sm font-medium text-indigo-700 mb-2">Photo Effects</h5>
+                <div class="relative rounded-lg overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1511300636408-a63a89df3482?w=600&h=400&fit=crop" alt="City photo" class="w-full h-48 object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 mix-blend-overlay"></div>
+                </div>
+                <p class="text-xs text-gray-600 mt-2">Using mix-blend-overlay to create color effects on photos</p>
+              </div>
+              
+              <div>
+                <h5 class="text-sm font-medium text-indigo-700 mb-2">Text Interactions</h5>
+                <div class="bg-gradient-to-r from-blue-500 to-purple-500 p-6 rounded-lg">
+                  <h3 class="text-3xl font-extrabold text-white mix-blend-difference">CREATIVE TEXT</h3>
+                </div>
+                <p class="text-xs text-gray-600 mt-2">Using mix-blend-difference for creative text effects</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-800 text-gray-300 p-4 rounded-lg text-sm overflow-auto">
+            <pre><code>&lt;!-- Basic mix-blend effect --&gt;
+&lt;div class="relative"&gt;
+  &lt;div class="bg-blue-500"&gt;&lt;/div&gt;
+  &lt;div class="absolute inset-0 bg-red-500 mix-blend-multiply"&gt;&lt;/div&gt;
+&lt;/div&gt;
 
-          <!-- Card implementation examples -->
-          <div class="bg-gray-800 text-gray-300 p-4 rounded-lg mb-2 mt-6 overflow-auto">
-            <pre><code>&lt;div class="p-5 bg-white shadow-md rounded-lg hover:shadow-xl transition-all duration-300"&gt;
-  &lt;h4 class="font-bold"&gt;Card Title&lt;/h4&gt;
-  &lt;p class="text-gray-600"&gt;Card content goes here...&lt;/p&gt;
+&lt;!-- Text with blend mode --&gt;
+&lt;div class="bg-gradient-to-r from-blue-500 to-purple-500"&gt;
+  &lt;h2 class="text-white mix-blend-difference"&gt;Blended Text&lt;/h2&gt;
 &lt;/div&gt;</code></pre>
           </div>
-          <p class="text-sm text-gray-600 mb-4">This basic card pattern can be customized with different shadows, borders, and background effects.</p>
-          
-          <!-- More advanced card examples -->
-          <h4 class="font-medium text-lg mt-6 mb-3">Layer Effects for Depth</h4>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="p-6 bg-white rounded-lg shadow-lg relative">
-              <div class="absolute inset-x-4 top-0 h-1 bg-gradient-to-r from-green-400 to-blue-500 transform -translate-y-1/2 rounded-full"></div>
-              <h4 class="font-medium mb-1">Layered Shadows</h4>
-              <p class="text-sm text-gray-500">Combines multiple effects for greater depth perception</p>
-              <div class="flex items-center justify-between mt-4">
-                <button class="text-sm px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded transition-colors">Details</button>
-                <span class="text-sm text-green-600">Active</span>
+        </div>
+      </section>
+
+      <!-- Use Cases & Best Practices Section -->
+      <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6 flex flex-wrap items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-lightbulb text-indigo-600"></i>
+              Use Cases & Best Practices
+            </h3>
+            <span class="bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Recommended</span>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h4 class="font-bold text-lg mb-4 text-gray-800 border-b border-gray-100 pb-2">Cards & UI Components</h4>
+              <p class="text-gray-700 mb-4">Use shadows to create hierarchy and indicate interactivity, with stronger shadows for more elevated elements.</p>
+              
+              <div class="space-y-4">
+                <div class="p-5 bg-white shadow-md rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer border border-gray-100">
+                  <h5 class="font-medium text-gray-800">Interactive Card</h5>
+                  <p class="text-sm text-gray-600 mt-2">Combines shadow with hover transition</p>
+                </div>
+                
+                <div class="p-5 bg-white shadow-lg rounded-lg border-t-4 border-indigo-500">
+                  <h5 class="font-medium text-gray-800">Accented Card</h5>
+                  <p class="text-sm text-gray-600 mt-2">Combines shadow with colored border</p>
+                </div>
               </div>
             </div>
             
-            <div class="group">
-              <div class="p-6 bg-white rounded-lg shadow-md group-hover:shadow-xl transition-all duration-300 relative">
-                <div class="absolute -right-2 -top-2 w-8 h-8 bg-red-500 group-hover:bg-red-600 rounded-full flex items-center justify-center text-white text-xs transition-colors">New</div>
-                <h4 class="font-medium mb-1">Interactive Group Hover</h4>
-                <p class="text-sm text-gray-500">Using group hover to affect multiple elements</p>
-                <div class="mt-4 flex justify-end">
-                  <button class="text-sm px-3 py-1 bg-gray-100 text-gray-600 group-hover:bg-blue-500 group-hover:text-white rounded transition-all">View</button>
+            <div>
+              <h4 class="font-bold text-lg mb-4 text-gray-800 border-b border-gray-100 pb-2">Buttons & Interactive Elements</h4>
+              <p class="text-gray-700 mb-4">Gradient backgrounds and shadows can make buttons more engaging and provide clearer feedback on interaction.</p>
+              
+              <div class="space-y-4">
+                <div class="flex gap-4">
+                  <button class="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:shadow-lg transition-all">
+                    Primary
+                  </button>
+                  <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow hover:shadow-md transition-all">
+                    Secondary
+                  </button>
+                </div>
+                
+                <div class="p-4 bg-white rounded-lg shadow-md">
+                  <div class="relative">
+                    <input type="text" placeholder="Email address" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-300 focus:border-indigo-500 transition-all">
+                    <button class="absolute right-1 top-1 px-3 py-1 bg-indigo-500 text-white text-sm rounded">
+                      Subscribe
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="text-xl font-medium mb-2 text-gray-800">Buttons & Interactive Elements</h3>
-          <p class="text-gray-700 mb-4">Gradients and shadows can enhance buttons and interactive elements, providing visual feedback and emphasizing their function.</p>
-          <div class="flex flex-wrap gap-4">
-            <button class="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:shadow-lg transition-all">
-              Gradient Button
-            </button>
-            <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow hover:shadow-md transition-all">
-              Light Button
-            </button>
-            <button class="px-4 py-2 bg-gray-800 text-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
-              Dark Elevated Button
-            </button>
-          </div>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="text-xl font-medium mb-2 text-gray-800">Page Sections & Headers</h3>
-          <p class="text-gray-700 mb-4">Use background images, gradients, and shadows to create visually distinct page sections.</p>
-          <div class="rounded-lg overflow-hidden shadow-md mb-4">
-            <div class="h-32 bg-gradient-to-r from-purple-600 to-blue-500 flex items-end">
-              <div class="p-4 text-white">
-                <p class="font-bold text-xl">Gradient Header</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+            <div>
+              <h4 class="font-bold text-lg mb-4 text-gray-800 border-b border-gray-100 pb-2">Page Sections & Layouts</h4>
+              
+              <div class="rounded-lg overflow-hidden shadow-md mb-4">
+                <div class="h-20 bg-gradient-to-r from-purple-600 to-blue-500 flex items-center px-6">
+                  <h3 class="text-white font-bold">Header Section</h3>
+                </div>
+                <div class="bg-white p-4">
+                  <p class="text-gray-700 text-sm">Use background gradients for visual distinction between page sections</p>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-2 gap-2">
+                <div class="p-4 bg-indigo-50 rounded-lg shadow-sm">
+                  <h6 class="font-medium text-indigo-800 text-sm">Sidebar</h6>
+                </div>
+                <div class="p-4 bg-white rounded-lg shadow-sm">
+                  <h6 class="font-medium text-gray-800 text-sm">Content</h6>
+                </div>
               </div>
             </div>
-            <div class="bg-white p-4">
-              <p class="text-gray-700">Content area with white background</p>
+            
+            <div>
+              <h4 class="font-bold text-lg mb-4 text-gray-800 border-b border-gray-100 pb-2">Visual Effects & Graphics</h4>
+              
+              <div class="space-y-4">
+                <div class="relative h-32 rounded-lg overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-yellow-500"></div>
+                  <div class="absolute inset-0 bg-gradient-to-b from-blue-500 to-transparent mix-blend-multiply"></div>
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <p class="text-white font-bold drop-shadow-lg">Creative Overlays</p>
+                  </div>
+                </div>
+                
+                <div class="h-32 bg-white rounded-lg shadow-lg p-4 flex items-center justify-center">
+                  <div class="w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-lg shadow-indigo-300/50 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          
+          <div class="bg-indigo-50 p-5 rounded-lg">
+            <h4 class="font-medium text-indigo-800 mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Performance Considerations
+            </h4>
+            <ul class="space-y-2 text-indigo-800">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>Box-shadows can affect performance, especially on elements that animate or frequently repaint</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>Gradient backgrounds are generally more performant than complex background images</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>Avoid too many mix-blend-mode overlays in the same view for better rendering performance</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
-      <!-- Performance Tips -->
-      <section class="bg-gray-100 p-6 rounded-lg">
-        <h2 class="text-2xl font-semibold mb-3 text-gray-800">Performance Tips</h2>
-        <ul class="list-disc pl-5 space-y-2 text-gray-700">
-          <li>Use box-shadows sparingly, especially on elements that animate, as they can affect performance</li>
-          <li>Gradient backgrounds are generally more performant than background images</li>
-          <li>Consider using smaller, optimized images when background images are necessary</li>
-          <li>For complex shadows, consider using pre-rendered images instead of CSS shadows</li>
-        </ul>
+      <!-- Reference Guide Section -->
+      <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6 flex flex-wrap items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-book text-indigo-600"></i>
+              Quick Reference Guide
+            </h3>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div>
+              <h4 class="font-bold text-lg mb-3 text-gray-800">Background Utilities</h4>
+              
+              <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                <h5 class="font-medium text-gray-800 mb-2 text-sm">Background Size</h5>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                  <div class="bg-gray-100 p-2 rounded">bg-auto</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-cover</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-contain</div>
+                </div>
+              </div>
+              
+              <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                <h5 class="font-medium text-gray-800 mb-2 text-sm">Background Position</h5>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                  <div class="bg-gray-100 p-2 rounded">bg-bottom</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-center</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-left</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-right</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-top</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-left-top</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-right-top</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-left-bottom</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-right-bottom</div>
+                </div>
+              </div>
+              
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h5 class="font-medium text-gray-800 mb-2 text-sm">Background Attachment</h5>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                  <div class="bg-gray-100 p-2 rounded">bg-fixed</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-local</div>
+                  <div class="bg-gray-100 p-2 rounded">bg-scroll</div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-bold text-lg mb-3 text-gray-800">Shadow Utilities</h4>
+              
+              <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                <h5 class="font-medium text-gray-800 mb-2 text-sm">Shadow Sizes</h5>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                  <div class="bg-gray-100 p-2 rounded">shadow-sm</div>
+                  <div class="bg-gray-100 p-2 rounded">shadow</div>
+                  <div class="bg-gray-100 p-2 rounded">shadow-md</div>
+                  <div class="bg-gray-100 p-2 rounded">shadow-lg</div>
+                  <div class="bg-gray-100 p-2 rounded">shadow-xl</div>
+                  <div class="bg-gray-100 p-2 rounded">shadow-2xl</div>
+                  <div class="bg-gray-100 p-2 rounded">shadow-inner</div>
+                  <div class="bg-gray-100 p-2 rounded">shadow-none</div>
+                </div>
+              </div>
+              
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h5 class="font-medium text-gray-800 mb-2 text-sm">Mix Blend Modes</h5>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-normal</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-multiply</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-screen</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-overlay</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-darken</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-lighten</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-color-dodge</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-color-burn</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-hard-light</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-soft-light</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-difference</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-exclusion</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-hue</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-saturation</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-color</div>
+                  <div class="bg-gray-100 p-2 rounded">mix-blend-luminosity</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-800 text-gray-300 p-4 rounded-lg mb-6">
+            <h5 class="font-medium text-gray-100 mb-3">Tailwind Config Example</h5>
+            <pre class="text-sm overflow-x-auto"><code>module.exports = {
+  theme: {
+    extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/img/hero-pattern.svg')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      },
+      boxShadow: {
+        'custom': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'glow': '0 0 15px rgba(79, 70, 229, 0.5)',
+      }
+    }
+  }
+}</code></pre>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-indigo-50 p-4 rounded-lg">
+              <h5 class="font-medium text-indigo-800 mb-2">Official Documentation</h5>
+              <ul class="space-y-1">
+                <li class="text-sm">
+                  <a href="https://tailwindcss.com/docs/background-color" class="text-indigo-600 hover:underline flex items-center" target="_blank">
+                    <span>Background Color</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li class="text-sm">
+                  <a href="https://tailwindcss.com/docs/background-image" class="text-indigo-600 hover:underline flex items-center" target="_blank">
+                    <span>Background Image</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li class="text-sm">
+                  <a href="https://tailwindcss.com/docs/gradient-color-stops" class="text-indigo-600 hover:underline flex items-center" target="_blank">
+                    <span>Gradient Color Stops</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li class="text-sm">
+                  <a href="https://tailwindcss.com/docs/box-shadow" class="text-indigo-600 hover:underline flex items-center" target="_blank">
+                    <span>Box Shadow</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li class="text-sm">
+                  <a href="https://tailwindcss.com/docs/mix-blend-mode" class="text-indigo-600 hover:underline flex items-center" target="_blank">
+                    <span>Mix Blend Mode</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-amber-50 p-4 rounded-lg">
+              <h5 class="font-medium text-amber-800 mb-2">External Resources</h5>
+              <ul class="space-y-1">
+                <li class="text-sm">
+                  <a href="https://css-tricks.com/almanac/properties/b/background-image/" class="text-amber-700 hover:underline flex items-center" target="_blank">
+                    <span>CSS Tricks: Background Image</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li class="text-sm">
+                  <a href="https://css-tricks.com/almanac/properties/b/box-shadow/" class="text-amber-700 hover:underline flex items-center" target="_blank">
+                    <span>CSS Tricks: Box Shadow</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li class="text-sm">
+                  <a href="https://www.joshwcomeau.com/css/color-for-developers/" class="text-amber-700 hover:underline flex items-center" target="_blank">
+                    <span>Josh W Comeau: Color for Developers</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li class="text-sm">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background" class="text-amber-700 hover:underline flex items-center" target="_blank">
+                    <span>MDN: Background Property</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li class="text-sm">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow" class="text-amber-700 hover:underline flex items-center" target="_blank">
+                    <span>MDN: Box Shadow Property</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
-  </body>
-</html>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-12">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Backgrounds & Shadows</h3>
+            <p class="text-gray-600 text-sm">Master the visual aesthetics of your UI components with Tailwind's intuitive background and shadow utilities.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Next Steps</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="../08-borders/index.html" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  <span>Borders & Outlines</span>
+                </a>
+              </li>
+              <li>
+                <a href="../09-filters/index.html" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  <span>Filters & Effects</span>
+                </a>
+              </li>
+              <li>
+                <a href="../05-sizing/index.html" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  <span>Sizing & Spacing</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Resources</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="https://tailwindcss.com/docs" class="text-indigo-600 hover:text-indigo-800 flex items-center" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Tailwind CSS Documentation</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://tailwindui.com/" class="text-indigo-600 hover:text-indigo-800 flex items-center" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Tailwind UI Components</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://play.tailwindcss.com/" class="text-indigo-600 hover:text-indigo-800 flex items-center" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Tailwind CSS Playground</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-200 pt-6 text-center">
+          <p class="text-gray-500 text-sm">Created with Tailwind CSS • Learn more at <a href="https://tailwindcss.com" class="text-indigo-500 hover:text-indigo-700">tailwindcss.com</a></p>
+        </div>
+      </div>
+    </footer>
 
 <!-- Background Size
   bg-auto	    background-size: auto;
@@ -716,7 +1597,9 @@ shadow-green-500/100 <span class="text-gray-500">// Green shadow at 100% opacity
             </svg>
             <span>Use colored shadows to match your brand colors or create special effects</span>
           </li>
+          
         </ul>
+        
       </div>
     </div>
     
@@ -762,8 +1645,6 @@ shadow-green-500/100 <span class="text-gray-500">// Green shadow at 100% opacity
     </div>
 
     <!-- Footer -->
-    <div class="mt-12 text-center text-gray-500 text-sm">
-      <p>Created with Tailwind CSS • Learn more at <a href="https://tailwindcss.com" class="text-blue-500 hover:underline">tailwindcss.com</a></p>
-    </div>
+   
   </div>
 </div>

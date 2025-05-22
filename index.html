@@ -5,71 +5,183 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
     <title>Tailwind CSS Sandbox</title>
   </head>
-  <body class="bg-blue-800">
-    <div class="container bg-gray-50 h-full p-6 max-w-lg">
-      <h1 class="text-3xl text-blue-800">Tailwind CSS Sandbox</h1>
-      <ul class="mt-6">
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="01-utility-first/index.html">Utility First Example</a>
+  <body class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 min-h-screen font-sans">
+    <div class="container mx-auto max-w-3xl px-4 py-12">
+      <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-8">
+          <h1 class="text-4xl font-bold text-white tracking-tight">Tailwind CSS Sandbox</h1>
+          <p class="text-blue-100 mt-2">Interactive examples to learn and explore Tailwind CSS</p>
+        </div>
+        <div class="p-6">
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="01-utility-first/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-tools"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Utility First Example</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="02-colors/index.html">Colors</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="02-colors/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-palette"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Colors</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="03-container-spacing/index.html">Container & Spacing</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="03-container-spacing/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-expand"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Container & Spacing</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="04-typography/index.html">Typography</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="04-typography/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-font"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Typography</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="05-sizing/index.html">Sizing</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="05-sizing/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-ruler"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Sizing</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="06-layout-position/index.html">Layout & Position</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="06-layout-position/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-object-group"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Layout & Position</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="07-backgrounds-shadows/index.html">Backgrounds & Shadows</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="07-backgrounds-shadows/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-fill-drip"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Backgrounds & Shadows</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="08-borders/index.html">Borders & Border Radius</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="08-borders/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-border-all"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Borders & Border Radius</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="09-filters/index.html">Filters</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="09-filters/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-photo-film"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Filters</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="10-interactivity/index.html">Interactivity</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="10-interactivity/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-hand-pointer"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Interactivity</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="11-breakpoints/index.html">Breakpoints</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="11-breakpoints/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-mobile-screen"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Breakpoints</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="12-columns/index.html">Column Layouts</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="12-columns/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-table-columns"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Column Layouts</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="13-flex/index.html">Flexbox</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="13-flex/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-boxes-stacked"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Flexbox</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="14-grid/index.html">Grid</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="14-grid/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-grip"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Grid</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="15-transform-transition/index.html">Transform & Transitions</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="15-transform-transition/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-arrows-rotate"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Transform & Transitions</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="16-animation/index.html">Animation</a>
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="16-animation/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-film"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Animation</span>
+          </a>
         </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="17-customization/index.html">Customization & Config</a>
-        </li>
-        <li class="text-lg border border-blue-200 p-2 my-4">
-          <a class="text-blue-500 hover:text-blue-300" href="18-dark-mode/index.html">Dark Mode</a>
+     
+        <li class="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300 hover:border-blue-300 hover:bg-blue-50">
+          <a href="18-dark-mode/index.html" class="flex items-center p-4 space-x-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fas fa-moon"></i>
+            </span>
+            <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Dark Mode</span>
+          </a>
         </li>
       </ul>
-      <p class="text-sm text-gray-700 mt-6">
-        Created by
-        <a href="https://github.com/PrajwalChNayak" target="_blank" class="text-blue-500 hover:text-blue-300">Prajwal Chandra Nayak</a>
-      </p>
+          
+      <div class="mt-8 pt-6 border-t border-gray-200 flex items-center justify-between">
+        <p class="flex items-center space-x-2">
+          <span class="text-sm text-gray-600">Created with</span>
+          <span class="text-blue-500">
+            <i class="fas fa-code"></i>
+          </span>
+          <span class="text-sm text-gray-600">by</span>
+          <a href="https://github.com/PrajwalChNayak" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300 flex items-center">
+            <i class="fab fa-github mr-1"></i>
+            Prajwal Chandra Nayak
+          </a>
+        </p>
+        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full font-medium">v1.0</span>
+      </div>
     </div>
+  </div>
   </body>
 </html>

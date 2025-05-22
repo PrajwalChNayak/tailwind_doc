@@ -17,6 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'%3E%3Cpath d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'%3E%3C/path%3E%3C/svg%3E" />
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'%3E%3Cpath d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'%3E%3C/path%3E%3C/svg%3E" />
@@ -102,45 +105,78 @@
     
     <title>Tailwind CSS Typography Documentation</title>
   </head>
-  <body class="p-8 bg-gradient-to-br from-gray-50 to-gray-100">
-    <!-- Documentation Header -->
-    <header class="mb-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 shadow-lg animate-gradient bg-[length:200%_200%]">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl font-extrabold text-white mb-4 tracking-tight">
-          <span class="inline-block transform hover:scale-105 transition-transform duration-300">Tailwind CSS</span>
-          <span class="block text-yellow-300 mt-2">Typography</span>
-        </h1>
-        <p class="text-xl text-blue-100 max-w-2xl mx-auto">
-          A comprehensive guide to Tailwind CSS typography utilities for creating visually appealing and readable text content.
-        </p>
-        <div class="mt-6 flex justify-center space-x-4">
-          <a href="#examples" class="px-6 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 rounded-full text-white font-medium backdrop-blur-sm">View Examples</a>
-          <a href="#practices" class="px-6 py-2 bg-white bg-opacity-10 hover:bg-opacity-20 transition-all duration-300 rounded-full text-white font-medium backdrop-blur-sm">Best Practices</a>
+  <body class="bg-gray-50 font-sans" style="font-family: 'Inter', sans-serif;">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-blue-700 via-blue-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="flex items-center gap-2 text-white hover:text-blue-100 transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+            <span>Back to Main Documentation</span>
+          </a>
+          <a href="https://tailwindcss.com/docs/font-family" target="_blank" class="flex items-center gap-1 text-blue-100 hover:text-white transition-colors text-sm">
+            <span>Official Docs</span>
+            <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
         </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-font"></i>
+          Tailwind CSS Typography
+        </h1>
+        <p class="text-blue-100 text-lg max-w-3xl">
+          Master the art of creating beautiful and readable text layouts with Tailwind's utility-first approach
+        </p>
       </div>
     </header>
 
-    <!-- Technical Documentation -->
-    <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-xl mb-10 border border-gray-100">
-      <h2 class="text-3xl font-bold text-gray-800 mb-6 pb-3 border-b border-gray-200 flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-        Introduction
-      </h2>
-      <p class="mb-4 text-gray-700 leading-relaxed">
-        Typography is a fundamental aspect of web design that affects readability, accessibility, and overall user experience. 
-        Tailwind CSS provides a wide range of utility classes to control text appearance without writing custom CSS.
-      </p>
-      <p class="mb-8 text-gray-700 leading-relaxed">
-        This documentation demonstrates the key typography features in Tailwind CSS and how they can be applied to create 
-        professional and consistent text styles across your projects.
-      </p>
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r-md">
-        <p class="text-blue-700">
-          <strong>Pro Tip:</strong> Combine typography utilities with responsive prefixes (like <code class="bg-blue-100 px-1 py-0.5 rounded">md:text-lg</code>) to create designs that adapt perfectly to different screen sizes.
-        </p>
-      </div>
+    <!-- Documentation Section -->
+    <div class="max-w-5xl mx-auto px-6 mb-12">
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-t-4 border-blue-600">
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-blue-600"></i>
+              What is Tailwind CSS Typography?
+            </h2>
+            <p class="text-lg text-gray-700 mb-6">
+              Typography in Tailwind CSS provides a comprehensive set of utilities for styling text content, enabling you to create visually appealing and readable layouts with minimal effort. These utilities control font families, sizes, weights, line heights, colors, and more.
+            </p>
+            <p class="text-md text-gray-600">
+              Tailwind makes it easy to apply consistent typography styles across your project, improving readability and visual hierarchy - key components of effective UI design.
+            </p>
+          </div>
+          <div class="md:w-1/3 bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+              <i class="fas fa-lightbulb text-yellow-500"></i>
+              Key Features
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center gap-2">
+                <i class="fas fa-check text-blue-500"></i>
+                <span>Font family, size and weight</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-check text-blue-500"></i>
+                <span>Text colors and alignment</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-check text-blue-500"></i>
+                <span>Line height and letter spacing</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-check text-blue-500"></i>
+                <span>Text decoration and transformation</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r-md">
+          <p class="text-blue-700 flex items-start">
+            <i class="fas fa-lightbulb text-blue-600 mr-2 mt-1"></i>
+            <span><strong>Pro Tip:</strong> Combine typography utilities with responsive prefixes (like <code class="bg-blue-100 px-1 py-0.5 rounded">md:text-lg</code>) to create designs that adapt perfectly to different screen sizes.</span>
+          </p>
+        </div>
 
       <!-- Font Family Section -->
       <section class="mb-10">
@@ -296,102 +332,248 @@
       </div>
     </div>
 
-    <!-- Original Examples Below -->
-    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Typography Examples</h2>
+    <!-- Interactive Typography Examples -->
+    <div class="max-w-5xl mx-auto px-6 mb-16">
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-t-4 border-blue-600 overflow-hidden">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+          <i class="fas fa-palette text-blue-600"></i>
+          Typography Examples
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Left Column -->
+          <div class="space-y-8">
+            <!-- Font Family -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-100">
+              <h3 class="text-xl font-bold text-blue-700 mb-4 flex items-center gap-2">
+                <i class="fas fa-font text-blue-500"></i>
+                Font Family
+              </h3>
+              <div class="space-y-3">
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="font-sans text-lg">The quick brown fox (font-sans)</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">font-sans</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="font-serif text-lg">The quick brown fox (font-serif)</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">font-serif</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="font-mono text-lg">The quick brown fox (font-mono)</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">font-mono</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Font Weight -->
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-100">
+              <h3 class="text-xl font-bold text-purple-700 mb-4 flex items-center gap-2">
+                <i class="fas fa-bold text-purple-500"></i>
+                Font Weight
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="font-light">Font Light</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">font-light</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="font-normal">Font Normal</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">font-normal</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="font-medium">Font Medium</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">font-medium</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="font-semibold">Font Semibold</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">font-semibold</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow col-span-2">
+                  <p class="font-bold">Font Bold</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">font-bold</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Text Alignment -->
+            <div class="bg-gradient-to-r from-green-50 to-teal-50 p-6 rounded-lg border border-green-100">
+              <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center gap-2">
+                <i class="fas fa-align-left text-green-500"></i>
+                Text Alignment
+              </h3>
+              <div class="space-y-3">
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="text-left">This text is left-aligned.</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">text-left</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="text-center">This text is center-aligned.</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">text-center</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="text-right">This text is right-aligned.</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">text-right</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right Column -->
+          <div class="space-y-8">
+            <!-- Font Size -->
+            <div class="bg-gradient-to-r from-amber-50 to-yellow-50 p-6 rounded-lg border border-amber-100">
+              <h3 class="text-xl font-bold text-amber-700 mb-4 flex items-center gap-2">
+                <i class="fas fa-text-height text-amber-500"></i>
+                Font Size
+              </h3>
+              <div class="space-y-1 p-3 bg-white rounded shadow">
+                <p class="text-xs">text-xs: Small text</p>
+                <p class="text-sm">text-sm: Slightly small text</p>
+                <p class="text-base">text-base: Base text size</p>
+                <p class="text-lg">text-lg: Larger text</p>
+                <p class="text-xl">text-xl: Extra large</p>
+                <p class="text-2xl">text-2xl: 2xl size</p>
+                <p class="text-3xl">text-3xl: 3xl size</p>
+              </div>
+            </div>
+            
+            <!-- Text Decoration -->
+            <div class="bg-gradient-to-r from-red-50 to-rose-50 p-6 rounded-lg border border-red-100">
+              <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center gap-2">
+                <i class="fas fa-underline text-red-500"></i>
+                Text Decoration
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="underline decoration-2">Underlined</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">underline</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="line-through">Strikethrough</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">line-through</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="underline decoration-dotted">Dotted</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">decoration-dotted</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="underline decoration-dashed">Dashed</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">decoration-dashed</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="underline decoration-wavy">Wavy</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">decoration-wavy</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="underline underline-offset-4">Offset</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">underline-offset-4</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Text Transform -->
+            <div class="bg-gradient-to-r from-sky-50 to-cyan-50 p-6 rounded-lg border border-sky-100">
+              <h3 class="text-xl font-bold text-sky-700 mb-4 flex items-center gap-2">
+                <i class="fas fa-font text-sky-500"></i>
+                Text Transform
+              </h3>
+              <div class="space-y-3">
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="uppercase">This text is uppercase.</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">uppercase</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="lowercase">THIS TEXT IS LOWERCASE.</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">lowercase</div>
+                </div>
+                <div class="p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow">
+                  <p class="capitalize">this text is capitalized.</p>
+                  <div class="mt-1 text-xs text-gray-500 font-mono">capitalize</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <!-- Font Family -->
-      <h3 class="text-lg font-medium text-gray-700 mb-2">Font Family</h3>
-      <div class="mb-6">
-        <p class="font-sans mb-1">Tailwind is awesome (font-sans)</p>
-        <p class="font-serif mb-1">Tailwind is awesome (font-serif)</p>
-        <p class="font-mono">Tailwind is awesome (font-mono)</p>
-      </div>
-
-      <!-- Font Size -->
-      <h3 class="text-lg font-medium text-gray-700 mb-2">Font Size</h3>
-      <div class="mb-6">
-        <p class="text-xs">Tailwind is awesome</p>
-        <p class="text-sm">Tailwind is awesome</p>
-        <p class="text-base">Tailwind is awesome</p>
-        <p class="text-lg">Tailwind is awesome</p>
-        <p class="text-xl">Tailwind is awesome</p>
-        <p class="text-2xl">Tailwind is awesome</p>
-        <p class="text-3xl">Tailwind is awesome</p>
-        <p class="text-4xl">Tailwind is awesome</p>
-        <p class="text-5xl">Tailwind is awesome</p>
-        <p class="text-6xl">Tailwind is awesome</p>
-        <p class="text-7xl">Tailwind is awesome</p>
-        <p class="text-8xl">Tailwind is awesome</p>
-        <p class="text-9xl">Tailwind is awesome</p>
-      </div>
-
-      <!-- Font Weight -->
-      <h3 class="text-lg font-medium text-gray-700 mb-2">Font Weight</h3>
-      <div class="mb-6">
-        <p class="font-light">Tailwind is awesome</p>
-        <p class="font-normal">Tailwind is awesome</p>
-        <p class="font-medium">Tailwind is awesome</p>
-        <p class="font-semibold">Tailwind is awesome</p>
-        <p class="font-bold">Tailwind is awesome</p>
-      </div>
-
-      <!-- Letter Spacing -->
-      <h3 class="text-lg font-medium text-gray-700 mb-2">Letter Spacing</h3>
-      <div class="mb-6">
-        <p class="tracking-tight">Tailwind is awesome</p>
-        <p class="tracking-normal">Tailwind is awesome</p>
-        <p class="tracking-wide">Tailwind is awesome</p>
-      </div>
-
-      <!-- Text Alignment -->
-      <h3 class="text-lg font-medium text-gray-700 mb-2">Text Alignment</h3>
-      <div class="mb-6">
-        <p class="text-left">Tailwind is awesome</p>
-        <p class="text-center">Tailwind is awesome</p>
-        <p class="text-right">Tailwind is awesome</p>
-      </div>
-
-      <!-- Text Decoration -->
-      <h3 class="text-lg font-medium text-gray-700 mb-2">Text Decoration</h3>
-      <div class="mb-6">
-        <p class="underline decoration-4">Tailwind is awesome</p>
-        <p class="line-through">Tailwind is awesome</p>
-        <p class="overline">Tailwind is awesome</p>
-        <p class="no-underline">Tailwind is awesome</p>
-      </div>
-
-      <!-- Decoration Style -->
-      <h3 class="text-lg font-medium text-gray-700 mb-2">Decoration Style</h3>
-      <div class="mb-6">
-        <p class="underline decoration-solid">Tailwind is awesome</p>
-        <p class="underline decoration-double">Tailwind is awesome</p>
-        <p class="underline decoration-dotted">Tailwind is awesome</p>
-        <p class="underline decoration-dashed">Tailwind is awesome</p>
-        <p class="underline decoration-wavy">Tailwind is awesome</p>
-      </div>
-
-      <!-- Decoration Offset -->
-      <h3 class="text-lg font-medium text-gray-700 mb-2">Decoration Offset</h3>
-      <div class="mb-6">
-        <p class="underline underline-offset-1">Tailwind is awesome</p>
-        <p class="underline underline-offset-2">Tailwind is awesome</p>
-        <p class="underline underline-offset-4">Tailwind is awesome</p>
-        <p class="underline underline-offset-8">Tailwind is awesome</p>
-      </div>
-
-      <!-- Text Transform -->
-      <h3 class="text-lg font-medium text-gray-700 mb-2">Text Transform</h3>
-      <div class="mb-6">
-        <p class="normal-case">Tailwind is awesome</p>
-        <p class="uppercase">Tailwind is awesome</p>
-        <p class="lowercase">Tailwind is awesome</p>
-        <p class="capitalize">Tailwind is awesome</p>
+      <!-- Summary & Conclusion -->
+      <div class="bg-gradient-to-r from-blue-700 to-purple-700 rounded-xl shadow-xl overflow-hidden mb-16 text-white">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold mb-6">Summary & Key Takeaways</h2>
+          
+          <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+            <div>
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <i class="fas fa-star text-yellow-300"></i>
+                What We've Learned
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-blue-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Typography is a crucial element for creating visually appealing and readable interfaces</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-blue-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Tailwind provides utilities for font families, sizes, weights, spacing and more</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-blue-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Using consistent typography creates visual harmony in your design system</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-blue-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Responsive typography utilities help create adaptive text layouts</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <i class="fas fa-forward text-yellow-300"></i>
+                Next Steps
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-blue-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Create a typography system with consistent sizing and spacing ratios</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-blue-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Experiment with combining typography utilities for unique text styles</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-blue-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Use responsive prefixes to adapt your typography to different screen sizes</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-blue-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Check out the <a href="https://tailwindcss.com/docs/font-family" class="underline hover:text-white">official Tailwind CSS documentation</a> for more details</span>
+                </li>
+              </ul>
+              
+              <div class="mt-6 pt-6 border-t border-blue-500/30">
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors">
+                  <i class="fas fa-home mr-2"></i>
+                  Back to Main Documentation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <footer class="max-w-4xl mx-auto mt-8 text-center text-gray-600 text-sm">
+    <footer class="max-w-5xl mx-auto px-6 pb-8 text-center text-gray-600 text-sm">
       <p>This documentation showcases Tailwind CSS typography utilities for frontend developers.</p>
+      <p class="mt-2">© 2025 Tailwind CSS Documentation</p>
     </footer>
   </body>
 </html>

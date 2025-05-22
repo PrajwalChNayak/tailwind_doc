@@ -4,70 +4,237 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS animation utilities - learn about built-in animations, custom animations, and keyframes with interactive examples" />
+    <meta name="author" content="Tailwind Documentation" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M4.86222,13.5602 C4.78442,13.399 4.60752,13.3059 4.43934,13.3324 C4.27168,13.3584 4.12998,13.4979 4.0964,13.6641 C3.8994,14.4343 3.6624,15.1917 3.3852,15.9348 C3.3119,16.1326 3.3948,16.3521 3.5639,16.4615 C3.7329,16.5704 3.9639,16.5376 4.0914,16.3815 C4.6218,15.7245 4.9104,14.9395 4.9399,14.1221 C4.9564,13.6479 4.9233,13.1727 4.8412,12.7074 C4.8115,12.5524 4.6821,12.4334 4.5249,12.4154 C4.3677,12.3969 4.2161,12.4819 4.1506,12.6283 C3.8049,13.4824 3.4179,14.3201 2.9898,15.1379 C2.8949,15.3216 2.9528,15.5506 3.1222,15.6659 C3.2922,15.7807 3.5218,15.7566 3.6632,15.6095 C4.0602,15.1945 4.3889,14.7271 4.6434,14.221 C4.7239,14.069 4.773,13.9025 4.7983,13.7323 C4.8084,13.6661 4.8128,13.6129 4.8628,13.5654 C4.8628,13.5644 4.86384,13.5613 4.86222,13.5602 L4.86222,13.5602 Z M19.8234,8.4366 C19.5084,8.1226 19.1644,7.8369 18.7914,7.5846 C18.5854,7.4466 18.3244,7.4936 18.1764,7.6906 C18.0284,7.8876 18.0564,8.1526 18.2394,8.3166 C18.7674,8.7956 19.2074,9.3516 19.5704,9.9466 C19.6404,10.0556 19.7144,10.1516 19.7854,10.1516 C19.8844,10.1506 19.9704,10.0756 20.0164,9.9876 C20.0664,9.8896 20.0564,9.7756 19.9904,9.6886 C19.8264,9.4606 19.6564,9.2416 19.4704,9.0376 C19.2724,8.8216 19.0594,8.6206 18.8364,8.4316 C18.7564,8.3616 18.7654,8.2476 18.8544,8.1866 C18.9484,8.1236 19.0664,8.1466 19.1234,8.2376 C19.5474,8.8826 20.1614,9.4236 20.8844,9.7916 C21.0314,9.8676 21.2094,9.8316 21.3144,9.7016 C21.4174,9.5736 21.4114,9.3866 21.2994,9.2656 C20.8044,8.7276 20.3414,8.1616 19.8234,8.4366 L19.8234,8.4366 Z' /%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tailwind CSS Animation | Interactive Documentation</title>
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            colors: {
+              primary: '#4F46E5',
+              secondary: '#8B5CF6'
+            },
             animation: {
               'spin-slow': 'spin 3s linear infinite',
+              'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'bounce-gentle': 'bounce 2s ease-in-out infinite',
               wiggle: 'wiggle 1s ease-in-out infinite',
+              float: 'float 3s ease-in-out infinite',
+              tadaa: 'tadaa 1s ease-in-out',
+              slideIn: 'slideIn 1s ease-out',
+              fadeIn: 'fadeIn 1.5s ease-out',
             },
             keyframes: {
               wiggle: {
                 '0%, 100%': { transform: 'rotate(-12deg)' },
                 '50%': { transform: 'rotate(12deg)' },
               },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              tadaa: {
+                '0%': { transform: 'scale(0)', opacity: '0' },
+                '80%': { transform: 'scale(1.2)' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              slideIn: {
+                '0%': { transform: 'translateX(-100%)', opacity: '0' },
+                '100%': { transform: 'translateX(0)', opacity: '1' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
             },
           },
         },
       }
     </script>
-    <title>Animation</title>
+    <style>
+      /* CSS animations that are part of Tailwind by default */
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      @keyframes ping {
+        75%, 100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: .5;
+        }
+      }
+      
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(-25%);
+          animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+          transform: translateY(0);
+          animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+      }
+      
+      /* Animation demo styles */
+      .animation-demo {
+        width: 100px;
+        height: 100px;
+        background-color: #4F46E5;
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+      }
+      
+      .demo-section {
+        background-color: #f9fafb;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      
+      .code-block {
+        background-color: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875rem;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+      }
+      
+      .property-item {
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      
+      .property-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    </style>
   </head>
-  <body>
-    <div class="flex items-center justify-center min-h-screen bg-slate-900">
-      <svg
-        class="animate-wiggle w-48 text-white"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <circle
-          class="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          stroke-width="4"
-        ></circle>
-        <path
-          class="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-        ></path>
-      </svg>
-    </div>
-  </body>
-</html>
+  <body class="bg-gray-50 font-sans" style="font-family: 'Inter', sans-serif;">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="flex items-center gap-2 text-white hover:text-indigo-100 transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+            <span>Back to Main Documentation</span>
+          </a>
+          <a href="https://tailwindcss.com/docs/animation" target="_blank" class="flex items-center gap-1 text-indigo-100 hover:text-white transition-colors text-sm">
+            <span>Official Docs</span>
+            <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-film"></i>
+          Tailwind CSS Animation
+        </h1>
+        <p class="text-indigo-100 text-lg max-w-3xl">
+          Add life and interactivity to your UI with Tailwind's powerful animation utilities
+        </p>
+      </div>
+    </header>
 
-<!-- Animate
-animate-none	animation: none;
+    <!-- Summary Section -->
+    <section class="max-w-4xl mx-auto px-6 mb-10">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">Summary</h2>
+      <p class="mb-4 text-gray-700">Animations add life to your web applications, making interactions more engaging and intuitive. Tailwind CSS provides simple utilities to implement common animations and a framework for creating custom ones. Below are the key animation types and examples for each, with brief explanations.</p>
+    </section>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm text-blue-700">
+                <strong>Note:</strong> Animation utilities in Tailwind are enabled by default. Unlike transform and transition utilities which require the appropriate classes to enable them, animation utilities work right out of the box.
+              </p>
+            </div>
+          </div>
+        </div>    </section>
 
-animate-spin	animation: spin 1s linear infinite;
-
+    <!-- Built-in Animations -->
+    <section id="built-in-animations" class="max-w-4xl mx-auto px-6 mb-12">
+      <h3 class="text-xl font-semibold mb-2 text-secondary flex items-center">
+        <i class="fas fa-play-circle mr-2"></i>
+        Built-in Animation Utilities
+      </h3>
+      <p class="mb-4 text-gray-700">Tailwind comes with several pre-defined animations that you can use immediately in your projects. These animations are perfect for common UI patterns like loading indicators, notifications, and hover effects.</p>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+          <!-- Spin Animation -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Spin Animation</h3>
+            <p class="text-gray-600 mb-4">Perfect for loading indicators and spinners. Makes an element rotate continuously.</p>
+            
+            <div class="flex justify-center mb-4">
+              <div class="flex flex-col items-center">
+                <div class="animation-demo animate-spin">Spin</div>
+                <code class="mt-2 px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-spin</code>
+              </div>
+            </div>
+            
+            <div class="code-block">
+              <pre><code>/* CSS Definition */
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-
-animate-ping	animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-
+.animate-spin {
+  animation: spin 1s linear infinite;
+}</code></pre>
+            </div>
+            
+            <div class="flex justify-between mt-4">
+              <a href="#" class="text-primary hover:text-indigo-600 text-sm font-medium">View spin examples</a>
+              <div class="text-gray-500 text-sm">1s duration, linear timing</div>
+            </div>
+          </div>
+          
+          <!-- Ping Animation -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Ping Animation</h3>
+            <p class="text-gray-600 mb-4">Useful for notifications and attention-grabbers. Creates a quick scale and fade effect.</p>
+            
+            <div class="flex justify-center mb-4">
+              <div class="flex flex-col items-center">
+                <div class="animation-demo animate-ping">Ping</div>
+                <code class="mt-2 px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-ping</code>
+              </div>
+            </div>
+            
+            <div class="code-block">
+              <pre><code>/* CSS Definition */
 @keyframes ping {
   75%, 100% {
     transform: scale(2);
@@ -75,9 +242,31 @@ animate-ping	animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
 }
 
-
-animate-pulse	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}</code></pre>
+            </div>
+            
+            <div class="flex justify-between mt-4">
+              <a href="#" class="text-primary hover:text-indigo-600 text-sm font-medium">View ping examples</a>
+              <div class="text-gray-500 text-sm">1s duration, ease-out timing</div>
+            </div>
+          </div>
+          
+          <!-- Pulse Animation -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Pulse Animation</h3>
+            <p class="text-gray-600 mb-4">Great for subtle loading states and drawing attention. Creates a gentle fading effect.</p>
+            
+            <div class="flex justify-center mb-4">
+              <div class="flex flex-col items-center">
+                <div class="animation-demo animate-pulse">Pulse</div>
+                <code class="mt-2 px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-pulse</code>
+              </div>
+            </div>
+            
+            <div class="code-block">
+              <pre><code>/* CSS Definition */
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -87,9 +276,31 @@ animate-pulse	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
 
-
-animate-bounce	animation: bounce 1s infinite;
-
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}</code></pre>
+            </div>
+            
+            <div class="flex justify-between mt-4">
+              <a href="#" class="text-primary hover:text-indigo-600 text-sm font-medium">View pulse examples</a>
+              <div class="text-gray-500 text-sm">2s duration, ease-in-out timing</div>
+            </div>
+          </div>
+          
+          <!-- Bounce Animation -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Bounce Animation</h3>
+            <p class="text-gray-600 mb-4">Perfect for buttons and interactive elements. Creates a playful bouncing effect.</p>
+            
+            <div class="flex justify-center mb-4">
+              <div class="flex flex-col items-center">
+                <div class="animation-demo animate-bounce">Bounce</div>
+                <code class="mt-2 px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-bounce</code>
+              </div>
+            </div>
+            
+            <div class="code-block">
+              <pre><code>/* CSS Definition */
 @keyframes bounce {
   0%, 100% {
     transform: translateY(-25%);
@@ -100,4 +311,636 @@ animate-bounce	animation: bounce 1s infinite;
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
--->
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}</code></pre>
+            </div>
+            
+            <div class="flex justify-between mt-4">
+              <a href="#" class="text-primary hover:text-indigo-600 text-sm font-medium">View bounce examples</a>
+              <div class="text-gray-500 text-sm">1s duration, special timing</div>
+            </div>
+          </div>
+          
+          <!-- None Animation -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Disable Animations</h3>
+            <p class="text-gray-600 mb-4">You can disable animations using the <code>animate-none</code> utility. This is useful for accessibility reasons or to stop animations conditionally.</p>
+            
+            <div class="flex justify-center mb-4">
+              <div class="flex flex-col items-center">
+                <div class="animation-demo">No Animation</div>
+                <code class="mt-2 px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-none</code>
+              </div>
+            </div>
+            
+            <div class="code-block">
+              <pre><code>/* CSS Definition */
+.animate-none {
+  animation: none;
+}</code></pre>
+            </div>
+            
+            <div class="flex justify-between mt-4">
+              <a href="#" class="text-primary hover:text-indigo-600 text-sm font-medium">Accessibility considerations</a>
+              <div class="text-gray-500 text-sm">Disables all animations</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Custom Animations -->
+      <section id="custom-animations" class="max-w-4xl mx-auto px-6 mb-12">
+        <h3 class="text-xl font-semibold mb-2 text-secondary flex items-center">
+          <i class="fas fa-cog mr-2"></i>
+          Custom Animation Utilities
+        </h3>
+        <p class="mb-4 text-gray-700">You can define your own animations by extending the Tailwind configuration. This allows you to create animations specific to your project needs.</p>
+        
+        <div class="bg-gray-100 rounded-lg p-6 mb-8">
+          <h3 class="text-lg font-medium mb-3 text-gray-800">Extending the Configuration</h3>
+          <p class="text-gray-700 mb-4">To add custom animations, you need to extend the <code>animation</code> and <code>keyframes</code> sections in your Tailwind config:</p>
+          
+          <div class="code-block">
+            <pre><code>// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        wiggle: 'wiggle 1s ease-in-out infinite',
+        float: 'float 3s ease-in-out infinite',
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-12deg)' },
+          '50%': { transform: 'rotate(12deg)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        }
+      }
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <!-- Wiggle Animation -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Wiggle Animation</h3>
+            <p class="text-gray-600 mb-4">A playful wiggle effect that rotates an element back and forth.</p>
+            
+            <div class="flex justify-center mb-4">
+              <div class="flex flex-col items-center">
+                <div class="animation-demo animate-wiggle">Wiggle</div>
+                <code class="mt-2 px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-wiggle</code>
+              </div>
+            </div>
+            
+            <div class="code-block">
+              <pre><code>@keyframes wiggle {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(12deg); }
+}</code></pre>
+            </div>
+          </div>
+          
+          <!-- Float Animation -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Float Animation</h3>
+            <p class="text-gray-600 mb-4">A gentle floating effect that moves an element up and down.</p>
+            
+            <div class="flex justify-center mb-4">
+              <div class="flex flex-col items-center">
+                <div class="animation-demo animate-float">Float</div>
+                <code class="mt-2 px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-float</code>
+              </div>
+            </div>
+            
+            <div class="code-block">
+              <pre><code>@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-indigo-50 border border-indigo-100 rounded-lg p-6">
+          <h3 class="text-lg font-medium mb-3 text-indigo-700">Animation Properties</h3>
+          <p class="text-gray-700 mb-4">When defining custom animations, you can specify several properties in addition to the keyframes:</p>
+          
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start">
+              <span class="text-indigo-600 mr-2">•</span>
+              <span><strong>Duration:</strong> How long the animation takes to complete one cycle</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-indigo-600 mr-2">•</span>
+              <span><strong>Timing Function:</strong> The acceleration curve of the animation (linear, ease-in, etc.)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-indigo-600 mr-2">•</span>
+              <span><strong>Delay:</strong> Time before the animation starts</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-indigo-600 mr-2">•</span>
+              <span><strong>Iteration Count:</strong> How many times the animation should repeat (or infinite)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-indigo-600 mr-2">•</span>
+              <span><strong>Direction:</strong> Whether the animation plays forward, backward, or alternates</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-indigo-600 mr-2">•</span>
+              <span><strong>Fill Mode:</strong> How the element is styled before and after the animation</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      
+      <!-- Animation Examples -->
+      <section id="animation-examples" class="max-w-4xl mx-auto px-6 mb-12">
+        <h3 class="text-xl font-semibold mb-2 text-secondary flex items-center">
+          <i class="fas fa-lightbulb mr-2"></i>
+          Practical Animation Examples
+        </h3>
+        <p class="mb-4 text-gray-700">Here are some real-world examples of how animations can be used to enhance the user experience.</p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <!-- Loading Spinner -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Loading Spinner</h3>
+            <div class="bg-white p-6 rounded-lg shadow-md flex justify-center items-center h-56">
+              <svg class="animate-spin -ml-1 mr-3 h-10 w-10 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span class="text-gray-700 text-lg">Loading...</span>
+            </div>
+            <div class="mt-4">
+              <code class="px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-spin</code>
+              <p class="text-gray-600 mt-2">A simple loading spinner using the spin animation on an SVG.</p>
+            </div>
+            <div class="code-block mt-4">
+              <pre><code>&lt;!-- Loading Spinner with Tailwind CSS --&gt;
+&lt;div class="flex items-center"&gt;
+  &lt;svg class="animate-spin h-10 w-10 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"&gt;
+    &lt;circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"&gt;&lt;/circle&gt;
+    &lt;path class="opacity-75" fill="currentColor" 
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"&gt;
+    &lt;/path&gt;
+  &lt;/svg&gt;
+  &lt;span class="ml-3 text-gray-700 text-lg"&gt;Loading...&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          
+          <!-- Notification Bell -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Notification Bell</h3>
+            <div class="bg-white p-6 rounded-lg shadow-md flex justify-center items-center h-56">
+              <div class="relative">
+                <svg class="h-12 w-12 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+                <span class="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full animate-ping"></span>
+                <span class="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full"></span>
+              </div>
+            </div>
+            <div class="mt-4">
+              <code class="px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-ping</code>
+              <p class="text-gray-600 mt-2">A notification bell with a ping animation to indicate new notifications.</p>
+            </div>
+            <div class="code-block mt-4">
+              <pre><code>&lt;!-- Notification Bell with Ping Animation --&gt;
+&lt;div class="relative"&gt;
+  &lt;!-- Bell Icon --&gt;
+  &lt;svg class="h-12 w-12 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" 
+       viewBox="0 0 24 24" stroke="currentColor"&gt;
+    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /&gt;
+  &lt;/svg&gt;
+  
+  &lt;!-- Animated Ping Notification Dot --&gt;
+  &lt;span class="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full animate-ping"&gt;&lt;/span&gt;
+  
+  &lt;!-- Static Dot (provides a solid background under the ping animation) --&gt;
+  &lt;span class="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          
+          <!-- Button with Hover Effect -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Interactive Button</h3>
+            <div class="bg-white p-6 rounded-lg shadow-md flex justify-center items-center h-56">
+              <button class="bg-primary hover:animate-pulse text-white font-bold py-3 px-6 rounded-lg text-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105">
+                Hover Me
+              </button>
+            </div>
+            <div class="mt-4">
+              <code class="px-2 py-1 bg-gray-100 rounded text-sm font-mono">hover:animate-pulse</code>
+              <p class="text-gray-600 mt-2">A button that pulses when hovered, combined with scale transform for a richer effect.</p>
+            </div>
+            <div class="code-block mt-4">
+              <pre><code>&lt;!-- Interactive Button with Hover Animation --&gt;
+&lt;button class="bg-primary hover:animate-pulse text-white font-bold py-3 px-6 
+               rounded-lg text-lg transition-all duration-300 hover:shadow-lg 
+               transform hover:scale-105"&gt;
+  Hover Me
+&lt;/button&gt;
+
+&lt;!-- 
+This button combines multiple hover effects:
+1. hover:animate-pulse - Adds the pulse animation when hovered
+2. transition-all duration-300 - Makes all transitions smooth with 300ms duration
+3. hover:shadow-lg - Increases the shadow when hovered
+4. transform hover:scale-105 - Slightly scales up the button when hovered
+--&gt;</code></pre>
+            </div>
+          </div>
+          
+          <!-- Success Message -->
+          <div class="demo-section">
+            <h3 class="text-xl font-medium mb-4 text-gray-800">Success Message</h3>
+            <div class="bg-white p-6 rounded-lg shadow-md flex justify-center items-center h-56">
+              <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 relative animate-tadaa">
+                <div class="flex">
+                  <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="ml-3">
+                    <p class="text-sm">Your changes have been successfully saved!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <code class="px-2 py-1 bg-gray-100 rounded text-sm font-mono">animate-tadaa</code>
+              <p class="text-gray-600 mt-2">A custom animation for success messages that scales in with a slight bounce.</p>
+            </div>
+            <div class="code-block mt-4">
+              <pre><code>&lt;!-- Success Message with Custom Animation --&gt;
+&lt;!-- First, define the custom animation in your Tailwind config --&gt;
+&lt;script&gt;
+tailwind.config = {
+  theme: {
+    extend: {
+      animation: {
+        tadaa: 'tadaa 1s ease-in-out',
+      },
+      keyframes: {
+        tadaa: {
+          '0%': { transform: 'scale(0)', opacity: '0' },
+          '80%': { transform: 'scale(1.2)' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+      },
+    },
+  },
+}
+&lt;/script&gt;
+
+&lt;!-- Then use the animation class --&gt;
+&lt;div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 relative animate-tadaa"&gt;
+  &lt;div class="flex"&gt;
+    &lt;div class="flex-shrink-0"&gt;
+      &lt;svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor"&gt;
+        &lt;path fill-rule="evenodd" 
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
+              clip-rule="evenodd" /&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div class="ml-3"&gt;
+      &lt;p class="text-sm"&gt;Your changes have been successfully saved!&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Complex Example -->
+        <div class="demo-section">
+          <h3 class="text-xl font-medium mb-4 text-gray-800">Card Hover Animations</h3>
+          <p class="text-gray-600 mb-6">Combining multiple animations and transitions can create rich interactive experiences.</p>
+          
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+              <div class="h-48 bg-blue-500 flex items-center justify-center overflow-hidden">
+                <img src="../assets/img/img1.jpg" alt="Mountain" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h4 class="font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors">Mountain View</h4>
+                <p class="text-gray-600 text-sm">Beautiful mountain scenery with amazing views.</p>
+                <button class="mt-4 px-4 py-2 bg-primary text-white rounded group-hover:animate-pulse">Explore</button>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+              <div class="h-48 bg-green-500 flex items-center justify-center overflow-hidden">
+                <img src="../assets/img/img2.jpg" alt="Forest" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h4 class="font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors">Forest Retreat</h4>
+                <p class="text-gray-600 text-sm">Serene forest environment for the perfect getaway.</p>
+                <button class="mt-4 px-4 py-2 bg-primary text-white rounded group-hover:animate-pulse">Explore</button>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+              <div class="h-48 bg-yellow-500 flex items-center justify-center overflow-hidden">
+                <img src="../assets/img/img3.jpg" alt="Beach" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h4 class="font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors">Beach Paradise</h4>
+                <p class="text-gray-600 text-sm">Crystal clear waters and golden sands await.</p>
+                <button class="mt-4 px-4 py-2 bg-primary text-white rounded group-hover:animate-pulse">Explore</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6 text-gray-600">
+            <p>This example combines several animation techniques:</p>
+            <ul class="list-disc pl-6 mt-2 space-y-1">
+              <li>Image scale transition on hover</li>
+              <li>Text color transitions</li>
+              <li>Shadow transitions</li>
+              <li>Button pulse animation on parent hover</li>
+            </ul>
+          </div>
+          
+          <div class="code-block mt-6">
+            <pre><code>&lt;!-- Interactive Card with Multiple Hover Animations --&gt;
+&lt;div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl 
+            transition-shadow duration-300 group"&gt;
+  &lt;!-- Image container with overflow hidden to contain the scaling image --&gt;
+  &lt;div class="h-48 flex items-center justify-center overflow-hidden"&gt;
+    &lt;!-- Image with scale effect on group hover --&gt;
+    &lt;img src="image.jpg" alt="Mountain" 
+         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="p-6"&gt;
+    &lt;!-- Heading with color transition on group hover --&gt;
+    &lt;h4 class="font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors"&gt;
+      Mountain View
+    &lt;/h4&gt;
+    
+    &lt;p class="text-gray-600 text-sm"&gt;Beautiful mountain scenery with amazing views.&lt;/p&gt;
+    
+    &lt;!-- Button with pulse animation on group hover --&gt;
+    &lt;button class="mt-4 px-4 py-2 bg-primary text-white rounded group-hover:animate-pulse"&gt;
+      Explore
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 
+Key Techniques Used:
+1. Group hover - Using the 'group' class on the parent and 'group-hover:' prefix on children
+2. Transitions - Adding transition-* classes for smooth effects
+3. Transform - Using scale for image zoom effect
+4. Animation - Adding animate-pulse to the button only when the card is hovered
+5. Shadow - Enhancing the shadow on hover for a "lifting" effect
+--&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Animation Accessibility -->
+      <section class="max-w-4xl mx-auto px-6 mb-12">
+        <h3 class="text-xl font-semibold mb-2 text-secondary flex items-center">
+          <i class="fas fa-universal-access mr-2"></i>
+          Accessibility Considerations
+        </h3>
+        <p class="mb-4 text-gray-700">While animations can enhance the user experience, they can also cause problems for some users. Here are some important considerations:</p>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-6">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-lg font-medium text-yellow-800">Animation Can Cause Motion Sickness</h3>
+              <div class="mt-2 text-yellow-700">
+                <p>Some users experience discomfort, dizziness, or nausea from animated content, especially those with vestibular disorders.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow border border-gray-200">
+            <h3 class="font-medium text-lg mb-3">Respecting User Preferences</h3>
+            <p class="text-gray-700 mb-4">Users can specify that they prefer reduced motion through their operating system settings. Tailwind provides a way to respect this preference:</p>
+            
+            <div class="code-block">
+              <pre><code>/* Only animate when the user hasn't specified a preference */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-safe-spin {
+    animation: spin 1s linear infinite;
+  }
+}</code></pre>
+            </div>
+            
+            <p class="text-gray-600 mt-4">You can create variants in your Tailwind config to make this easier:</p>
+            
+            <div class="code-block">
+              <pre><code>// tailwind.config.js
+module.exports = {
+  theme: {
+    /* ... */
+  },
+  variants: {
+    animation: ['responsive', 'motion-safe', 'motion-reduce']
+  }
+}</code></pre>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow border border-gray-200">
+            <h3 class="font-medium text-lg mb-3">Best Practices</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Provide controls to pause or stop animations whenever possible</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Keep animations subtle and purposeful—avoid excessive motion</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Respect the prefers-reduced-motion media query</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Avoid animations that flash or pulse rapidly (can trigger seizures)</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Use animations to provide feedback and enhance usability, not just for decoration</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Summary & Conclusion -->
+      <div class="bg-gradient-to-r from-indigo-700 to-purple-700 rounded-xl shadow-xl overflow-hidden mb-16 text-white max-w-4xl mx-auto px-6">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold mb-6">Summary & Key Takeaways</h2>
+          
+          <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+            <div>
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <i class="fas fa-star text-yellow-300"></i>
+                What We've Learned
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Tailwind provides several built-in animation utilities ready to use in your projects</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Custom animations can be defined by extending the Tailwind configuration</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Combining animations with other Tailwind utilities creates rich, interactive interfaces</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Accessibility considerations are important when using animations in your designs</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <i class="fas fa-forward text-yellow-300"></i>
+                Next Steps
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Experiment with creating your own keyframes for project-specific animations</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Combine animations with transforms and transitions for more complex effects</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Implement responsive animations that adapt to different screen sizes</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Check out the <a href="https://tailwindcss.com/docs/animation" class="underline hover:text-white">official Tailwind CSS documentation</a> for more details</span>
+                </li>
+              </ul>
+              
+              <div class="mt-6 pt-6 border-t border-indigo-500/30">
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors">
+                  <i class="fas fa-home mr-2"></i>
+                  Back to Main Documentation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer Navigation -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Animation Utilities</h3>
+            <ul class="space-y-2">
+              <li><a href="#built-in-animations" class="text-indigo-300 hover:text-white transition-colors">Built-in Animations</a></li>
+              <li><a href="#" class="text-indigo-300 hover:text-white transition-colors">Spin</a></li>
+              <li><a href="#" class="text-indigo-300 hover:text-white transition-colors">Ping</a></li>
+              <li><a href="#" class="text-indigo-300 hover:text-white transition-colors">Pulse</a></li>
+              <li><a href="#" class="text-indigo-300 hover:text-white transition-colors">Bounce</a></li>
+              <li><a href="#custom-animations" class="text-indigo-300 hover:text-white transition-colors">Custom Animations</a></li>
+              <li><a href="#animation-examples" class="text-indigo-300 hover:text-white transition-colors">Practical Examples</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Navigation</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="../15-transform-transition/index.html" class="flex items-center group">
+                  <i class="fas fa-arrow-left mr-2 text-indigo-400 group-hover:text-indigo-300 transition-colors"></i>
+                  <span class="text-indigo-300 group-hover:text-white transition-colors">Previous: Transform & Transition</span>
+                </a>
+              </li>
+              <li>
+                <a href="../17-customization/index.html" class="flex items-center group">
+                  <span class="text-indigo-300 group-hover:text-white transition-colors">Next: Customization</span>
+                  <i class="fas fa-arrow-right ml-2 text-indigo-400 group-hover:text-indigo-300 transition-colors"></i>
+                </a>
+              </li>
+              <li class="pt-4">
+                <a href="../index.html" class="flex items-center group">
+                  <i class="fas fa-home mr-2 text-indigo-400 group-hover:text-indigo-300 transition-colors"></i>
+                  <span class="text-indigo-300 group-hover:text-white transition-colors">Back to Main Documentation</span>
+                </a>
+              </li>
+            </ul>
+            
+            <h3 class="text-xl font-semibold mt-8 mb-4">Resources</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="https://tailwindcss.com/docs/animation" target="_blank" class="flex items-center group">
+                  <span class="text-indigo-300 group-hover:text-white transition-colors">Official Animation Documentation</span>
+                  <i class="fas fa-external-link-alt ml-2 text-indigo-400 group-hover:text-indigo-300 transition-colors text-xs"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation" target="_blank" class="flex items-center group">
+                  <span class="text-indigo-300 group-hover:text-white transition-colors">MDN CSS Animation Reference</span>
+                  <i class="fas fa-external-link-alt ml-2 text-indigo-400 group-hover:text-indigo-300 transition-colors text-xs"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+          <p>Created with Tailwind CSS. This interactive documentation is for educational purposes.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

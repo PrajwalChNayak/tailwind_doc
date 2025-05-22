@@ -4,16 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Tailwind CSS sizing utilities - learn about width, height, max-width, min-height and responsive dimensions with interactive examples" />
+    <meta name="author" content="Tailwind Documentation" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M4 6h16M4 12h16m-7 6h7'/%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Tailwind CSS Sizing Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tailwind CSS Sizing | Interactive Documentation</title>
     <style>
       body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'Inter', sans-serif;
         line-height: 1.6;
         color: #333;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
       }
       
       h1, h2, h3, h4 {
@@ -55,50 +59,68 @@
       }
     </style>
   </head>
-  <body>
-    <header class="mb-8">
-      <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent bg-clip-text">Tailwind CSS Sizing Utilities</h1>
-      <p class="text-xl text-gray-600 relative pl-4 border-l-4 border-indigo-500">
-        A comprehensive guide to controlling element dimensions with Tailwind CSS
-        <span class="absolute -left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500"></span>
-      </p>
-    </header>
-
-    <section id="overview" class="doc-section">
-      <h2 class="text-2xl font-bold mb-3 text-indigo-700">Overview</h2>
-      <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-4 rounded-lg mb-4">
-        <p class="mb-4">
-          Tailwind CSS provides a comprehensive set of sizing utilities that enable you to precisely control the width and height of elements.
-          These utilities help create consistent spacing and proportions throughout your design with minimal custom CSS.
+  <body class="bg-gray-50">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="flex items-center gap-2 text-white hover:text-indigo-100 transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+            <span>Back to Main Documentation</span>
+          </a>
+          <a href="https://tailwindcss.com/docs/width" target="_blank" class="flex items-center gap-1 text-indigo-100 hover:text-white transition-colors text-sm">
+            <span>Official Docs</span>
+            <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-arrows-alt-h"></i>
+          Tailwind CSS Sizing Utilities
+        </h1>
+        <p class="text-indigo-100 text-lg max-w-3xl">
+          Master the art of controlling element dimensions with Tailwind's utility-first approach
         </p>
       </div>
-      
-      <div class="use-case bg-gradient-to-r from-emerald-50 to-teal-50 border-l-4 border-emerald-500">
-        <h3 class="font-bold text-emerald-700">Real-world applications:</h3>
-        <ul class="list-disc pl-5 mt-2 space-y-1">
-          <li class="flex items-center"><span class="inline-block w-2 h-2 mr-2 bg-emerald-500 rounded-full"></span> Creating consistent UI elements (buttons, cards, icons)</li>
-          <li class="flex items-center"><span class="inline-block w-2 h-2 mr-2 bg-emerald-500 rounded-full"></span> Controlling layout dimensions for responsive designs</li>
-          <li class="flex items-center"><span class="inline-block w-2 h-2 mr-2 bg-emerald-500 rounded-full"></span> Setting precise image and media dimensions</li>
-          <li class="flex items-center"><span class="inline-block w-2 h-2 mr-2 bg-emerald-500 rounded-full"></span> Building complex grid systems with predictable sizing</li>
-        </ul>
-      </div>
+    </header>
 
-      <div class="mt-6 flex p-4 bg-amber-50 rounded-lg">
-        <div class="text-amber-600 mr-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        </div>
-        <div>
-          <p class="font-semibold text-amber-800">Why Tailwind sizing matters:</p>
-          <p class="text-amber-700 mt-1">Consistent sizing creates visual harmony and improves user experience by establishing predictable patterns throughout your interface.</p>
+    <div class="max-w-5xl mx-auto px-6 mb-12">
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-t-4 border-indigo-600">
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-indigo-600"></i>
+              What are Tailwind CSS Sizing Utilities?
+            </h2>
+            <p class="text-lg text-gray-700 mb-6">
+              Sizing utilities in Tailwind CSS provide a flexible way to control the width and height of elements in your designs. They're essential for creating responsive layouts, consistent UI components, and properly proportioned elements across your website.
+            </p>
+            <p class="text-md text-gray-600">
+              Tailwind makes it easy to apply precise dimensions with straightforward utility classes, allowing for rapid development and predictable designs across different screen sizes.
+            </p>
+          </div>
+          <div class="md:w-1/3 bg-indigo-50 p-4 rounded-lg">
+            <h3 class="font-medium text-indigo-800 mb-2">Key Categories:</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2">
+                <i class="fas fa-ruler-horizontal text-indigo-500"></i>
+                <span>Width utilities</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-ruler-vertical text-indigo-500"></i>
+                <span>Height utilities</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-expand-alt text-indigo-500"></i>
+                <span>Min/Max dimensions</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-mobile-alt text-indigo-500"></i>
+                <span>Responsive sizing</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </section>
-
-    <section id="width-utilities" class="doc-section">
-      <h2 class="text-2xl font-bold mb-3 text-indigo-700">Width Utilities</h2>
-      <div class="flex items-center mb-4 bg-indigo-50 p-3 rounded-lg">
         <div class="text-indigo-500 mr-3">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
@@ -345,6 +367,80 @@
     <footer class="mt-12 pt-6 border-t border-gray-200 text-center text-gray-600">
       <p>For complete documentation on Tailwind CSS sizing utilities, visit the <a href="https://tailwindcss.com/docs/width" class="text-blue-600 hover:underline">official Tailwind CSS documentation</a>.</p>
     </footer>
+    
+    <!-- Summary & Conclusion -->
+    <div class="bg-gradient-to-r from-indigo-700 to-purple-700 rounded-xl shadow-xl overflow-hidden mb-16 text-white max-w-5xl mx-auto mt-12 px-6">
+      <div class="p-8">
+        <h2 class="text-3xl font-bold mb-6">Summary & Key Takeaways</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+          <div>
+            <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+              <i class="fas fa-star text-yellow-300"></i>
+              What We've Learned
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Tailwind provides a comprehensive set of sizing utilities for precise control</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Width and height utilities come in fixed, percentage, viewport, and arbitrary values</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Min/max utilities help create flexible layouts that adapt to content size</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Responsive prefixes make it easy to create adaptive designs across different screen sizes</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+              <i class="fas fa-forward text-yellow-300"></i>
+              Next Steps
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                <span>Experiment with combining sizing utilities to create complex, responsive layouts</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                <span>Create a consistent design system with standardized sizing across your UI</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                <span>Explore extending Tailwind's sizing scale for your project's specific needs</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                <span>Check out the <a href="https://tailwindcss.com/docs/width" class="underline hover:text-white">official Tailwind CSS documentation</a> for more details</span>
+              </li>
+            </ul>
+            
+            <div class="mt-6 pt-6 border-t border-indigo-500/30">
+              <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors">
+                <i class="fas fa-home mr-2"></i>
+                Back to Main Documentation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Original examples preserved below as reference -->
     <!-- 
@@ -566,3 +662,5 @@
     max-h-max	      max-height: max-content;
     max-h-fit	      max-height: fit-content;
   -->
+  </body>
+</html>

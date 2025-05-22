@@ -8,6 +8,10 @@
     <meta name="author" content="Tailwind Documentation" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M6 5H18V19H6V5ZM4 3V21H20V3H4Z'/%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Tailwind CSS Borders | Interactive Documentation</title>
     <script>
       tailwind.config = {
@@ -157,15 +161,67 @@
       });
     </script>
   </head>
-  <body class="bg-gray-50 p-8 font-sans">
-    <!-- Documentation Section -->
-    <div class="max-w-5xl mx-auto mb-12">
-      <h1 class="text-4xl font-bold text-gray-800 mb-6">Tailwind CSS Borders</h1>
-      
-      <div class="bg-white p-8 rounded-lg shadow-md mb-10">
-        <p class="text-lg text-gray-700 mb-6">
-          Borders in Tailwind CSS provide a flexible way to define edges around elements, improving visual hierarchy and separation in your UI. They're essential for creating cards, buttons, inputs, and other components that need clear boundaries.
+  <body class="bg-gray-50 font-sans" style="font-family: 'Inter', sans-serif;">
+    <!-- Header with Navigation -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white py-8 shadow-lg mb-8">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-4">
+          <a href="../index.html" class="flex items-center gap-2 text-white hover:text-indigo-100 transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+            <span>Back to Main Documentation</span>
+          </a>
+          <a href="https://tailwindcss.com/docs/border-width" target="_blank" class="flex items-center gap-1 text-indigo-100 hover:text-white transition-colors text-sm">
+            <span>Official Docs</span>
+            <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
+          <i class="fas fa-border-all"></i>
+          Tailwind CSS Borders
+        </h1>
+        <p class="text-indigo-100 text-lg max-w-3xl">
+          Master the art of creating beautiful and responsive borders with Tailwind's utility-first approach
         </p>
+      </div>
+    </header>
+
+    <!-- Documentation Section -->
+    <div class="max-w-5xl mx-auto px-6 mb-12">
+      <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-t-4 border-indigo-600">
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-indigo-600"></i>
+              What are Tailwind CSS Borders?
+            </h2>
+            <p class="text-lg text-gray-700 mb-6">
+              Borders in Tailwind CSS provide a flexible way to define edges around elements, improving visual hierarchy and separation in your UI. They're essential for creating cards, buttons, inputs, and other components that need clear boundaries.
+            </p>
+            <p class="text-md text-gray-600">
+              Tailwind makes it easy to apply borders of different widths, colors, and styles to any element with simple utility classes. This allows for rapid prototyping and consistent design across your project.
+            </p>
+          </div>
+          <div class="md:w-1/3 bg-indigo-50 p-5 rounded-lg border border-indigo-100">
+            <h3 class="font-bold text-indigo-800 mb-3 flex items-center gap-2">
+              <i class="fas fa-lightbulb text-indigo-600"></i>
+              Quick Reference
+            </h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center gap-2">
+                <code class="bg-white px-2 py-1 rounded border border-indigo-100 text-indigo-700">border-{width}</code>
+                <span class="text-gray-600">Set border width</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <code class="bg-white px-2 py-1 rounded border border-indigo-100 text-indigo-700">border-{color}</code>
+                <span class="text-gray-600">Set border color</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <code class="bg-white px-2 py-1 rounded border border-indigo-100 text-indigo-700">rounded-{size}</code>
+                <span class="text-gray-600">Set border radius</span>
+              </li>
+            </ul>
+          </div>
+        </div>
         
         <h2 class="text-2xl font-bold text-gray-800 mb-4">Border Properties</h2>
         <div class="grid md:grid-cols-2 gap-8 mb-8">
@@ -391,177 +447,334 @@
       </div>
     </div>
 
-    
-    <!-- Interactive Border Playground -->
+    <!-- Practical Usage Examples -->
     <div class="max-w-5xl mx-auto mb-16">
-      <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded-lg shadow-lg">
-        <div class="bg-white p-8 rounded-lg">
-          <h2 class="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Interactive Border Playground</h2>
-          
-          <div class="grid lg:grid-cols-2 gap-8 mb-8">
-            <!-- Controls -->
-            <div class="space-y-6">
-              <div>
-                <label for="border-width" class="block font-medium text-gray-700 mb-2">Border Width</label>
-                <input type="range" id="border-width" min="0" max="16" value="4" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                <div class="flex justify-between text-xs text-gray-500">
-                  <span>0px</span>
-                  <span>8px</span>
-                  <span>16px</span>
+      <h2 class="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Practical Usage Examples</h2>
+      
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6 flex flex-wrap items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-800">Real-World Components with Borders</h3>
+            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Beginner-friendly</span>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Cards Example -->
+            <div>
+              <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+                <i class="fas fa-credit-card text-indigo-600"></i>
+                Cards
+              </h4>
+              
+              <div class="mb-6">
+                <div class="border border-gray-200 rounded-lg p-5 hover:border-indigo-300 hover:shadow-md transition-all duration-300">
+                  <h5 class="font-bold text-lg mb-2">Card Title</h5>
+                  <p class="text-gray-600 text-sm mb-4">Cards often use borders to define their boundaries. The subtle border here creates a clean, defined edge.</p>
+                  <div class="flex justify-end">
+                    <button class="px-4 py-2 bg-indigo-600 text-white text-sm rounded hover:bg-indigo-700 transition-colors">Learn More</button>
+                  </div>
                 </div>
               </div>
               
-              <div>
-                <label for="border-style" class="block font-medium text-gray-700 mb-2">Border Style</label>
-                <select id="border-style" class="w-full p-2 border border-gray-300 rounded-md">
-                  <option value="solid">solid</option>
-                  <option value="dashed">dashed</option>
-                  <option value="dotted">dotted</option>
-                  <option value="double">double</option>
-                  <option value="groove">groove</option>
-                  <option value="ridge">ridge</option>
-                  <option value="inset">inset</option>
-                  <option value="outset">outset</option>
-                </select>
-              </div>
-              
-              <div>
-                <label for="border-color" class="block font-medium text-gray-700 mb-2">Border Color</label>
-                <input type="color" id="border-color" value="#4F46E5" class="w-full h-10 rounded-md">
-              </div>
-              
-              <div>
-                <label for="border-radius" class="block font-medium text-gray-700 mb-2">Border Radius</label>
-                <input type="range" id="border-radius" min="0" max="32" value="8" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                <div class="flex justify-between text-xs text-gray-500">
-                  <span>0px</span>
-                  <span>16px</span>
-                  <span>32px</span>
-                </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-sm font-medium text-gray-700 mb-2">Code Example:</p>
+                <pre class="text-xs bg-gray-100 p-3 rounded overflow-x-auto"><code>&lt;div class="border border-gray-200 rounded-lg p-5 
+  hover:border-indigo-300 hover:shadow-md 
+  transition-all duration-300"&gt;
+  &lt;!-- Card content here --&gt;
+&lt;/div&gt;</code></pre>
               </div>
             </div>
             
-            <!-- Preview -->
-            <div class="flex flex-col items-center justify-center bg-gray-50 p-6 rounded-lg h-full">
-              <div id="border-preview" class="w-64 h-64 bg-white flex items-center justify-center text-gray-500 mb-6">
-                Border Preview
+            <!-- Form Elements Example -->
+            <div>
+              <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+                <i class="fas fa-keyboard text-indigo-600"></i>
+                Form Elements
+              </h4>
+              
+              <div class="mb-6 space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Default Input</label>
+                  <input type="text" placeholder="Enter your name" class="border border-gray-300 rounded-md w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Error State</label>
+                  <input type="text" placeholder="Invalid input" class="border-2 border-red-500 rounded-md w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                  <p class="mt-1 text-xs text-red-600">Border color can indicate validation state</p>
+                </div>
               </div>
-              <div class="text-center">
-                <p class="font-medium mb-2">Tailwind CSS class:</p>
-                <code id="border-code" class="bg-gray-100 px-4 py-2 rounded-md text-indigo-600 font-mono"></code>
+              
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-sm font-medium text-gray-700 mb-2">Code Example:</p>
+                <pre class="text-xs bg-gray-100 p-3 rounded overflow-x-auto"><code>&lt;input type="text" 
+  class="border border-gray-300 rounded-md w-full px-3 py-2 
+  focus:outline-none focus:ring-2 focus:ring-indigo-500
+  focus:border-indigo-500 transition-all"&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-10">
+            <h4 class="font-bold text-lg mb-4 text-gray-700 flex items-center gap-2">
+              <i class="fas fa-table text-indigo-600"></i>
+              Data Tables
+            </h4>
+            
+            <div class="overflow-hidden border border-gray-200 rounded-lg mb-6">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">Name</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">Title</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">Status</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap border-r">Jane Doe</td>
+                    <td class="px-6 py-4 whitespace-nowrap border-r">Frontend Developer</td>
+                    <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Active</span></td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap border-r">John Smith</td>
+                    <td class="px-6 py-4 whitespace-nowrap border-r">UI Designer</td>
+                    <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">Pending</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-4">
+              <p class="text-sm font-medium text-gray-700 mb-2">Table Borders:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li><code class="text-xs bg-white px-1 py-0.5 rounded border border-gray-200">border</code> for the entire table container</li>
+                <li><code class="text-xs bg-white px-1 py-0.5 rounded border border-gray-200">divide-y</code> for horizontal dividers between rows</li>
+                <li><code class="text-xs bg-white px-1 py-0.5 rounded border border-gray-200">border-r</code> for vertical cell dividers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Responsive Borders -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6">
+            <h3 class="text-xl font-bold text-gray-800">Responsive Border Utilities</h3>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <p class="text-gray-700 mb-6">
+            Tailwind's borders can be responsive by using breakpoint prefixes. This allows you to show or hide borders at different screen sizes.
+          </p>
+          
+          <div class="bg-gray-100 p-6 rounded-lg mb-6">
+            <h4 class="font-bold text-lg mb-4 text-gray-700">Example: Responsive Borders</h4>
+            
+            <div class="border-0 sm:border md:border-2 lg:border-4 p-4 bg-white rounded-lg text-center">
+              <p class="text-sm font-medium">This element has different border widths on different screen sizes</p>
+              <ul class="text-xs text-gray-500 space-y-1 mt-2">
+                <li>Mobile: No border</li>
+                <li>Small (sm): 1px border</li>
+                <li>Medium (md): 2px border</li>
+                <li>Large (lg): 4px border</li>
+              </ul>
+            </div>
+            
+            <div class="mt-4 bg-gray-50 p-4 rounded">
+              <pre class="text-xs overflow-x-auto"><code>&lt;div class="border-0 sm:border md:border-2 lg:border-4"&gt;
+  Responsive borders
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          
+          <div class="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500">
+            <h4 class="font-bold text-lg mb-2 text-indigo-900">Intermediate Tip</h4>
+            <p class="text-indigo-800">
+              When designing responsive layouts, consider using <code class="bg-white px-1 py-0.5 rounded">border-0</code> to hide borders on mobile 
+              and adding them back with <code class="bg-white px-1 py-0.5 rounded">sm:border</code> on larger screens. This creates a cleaner 
+              mobile experience with fewer visual elements.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Best Practices -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-16">
+        <div class="border-b border-gray-200">
+          <div class="p-4 sm:p-6">
+            <h3 class="text-xl font-bold text-gray-800">Border Best Practices</h3>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-green-50 p-5 rounded-lg border-l-4 border-green-500">
+              <h4 class="font-bold text-green-900 mb-2">Do</h4>
+              <ul class="space-y-3 text-green-800">
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Use subtle borders (1px) for most UI elements</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Match border colors with your overall color scheme</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Use thicker borders (2-4px) to create visual emphasis</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Consider how borders will look in dark mode</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-red-50 p-5 rounded-lg border-l-4 border-red-500">
+              <h4 class="font-bold text-red-900 mb-2">Don't</h4>
+              <ul class="space-y-3 text-red-800">
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  <span>Overuse borders – they add visual weight to your UI</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  <span>Use borders when shadows or spacing could work better</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  <span>Mix too many different border styles in one component</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  <span>Forget to add hover/focus states for interactive elements</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-8 bg-blue-50 rounded-lg p-5 border border-blue-100">
+            <h4 class="font-bold text-blue-800 mb-2 flex items-center">
+              <i class="fas fa-graduation-cap mr-2"></i>
+              From Beginner to Pro
+            </h4>
+            <p class="text-blue-700 mb-3">
+              As you advance in your Tailwind CSS journey, consider creating custom border utilities in your tailwind.config.js file.
+              This allows you to establish a consistent border system across your entire project.
+            </p>
+            <pre class="bg-white p-3 rounded text-xs overflow-x-auto"><code>// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      borderWidth: {
+        '3': '3px',
+        '6': '6px',
+      },
+      borderRadius: {
+        'special': '0.375rem 1.5rem 0.375rem 1.5rem',
+      }
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Summary & Conclusion -->
+      <div class="bg-gradient-to-r from-indigo-700 to-purple-700 rounded-xl shadow-xl overflow-hidden mb-16 text-white">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold mb-6">Summary & Key Takeaways</h2>
+          
+          <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+            <div>
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <i class="fas fa-star text-yellow-300"></i>
+                What We've Learned
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Borders are essential for creating visual hierarchy and separation in UI components</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Tailwind provides utilities for width, color, style, radius and more</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>You can target specific sides of an element for more refined control</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="h-5 w-5 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Advanced techniques like gradients and animations can enhance user experience</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <i class="fas fa-forward text-yellow-300"></i>
+                Next Steps
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Experiment with combining border utilities with other Tailwind classes</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Create a design system with consistent border usage across your UI</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Explore custom border configurations in your Tailwind config file</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-right text-indigo-300 mr-2 mt-1 flex-shrink-0"></i>
+                  <span>Check out the <a href="https://tailwindcss.com/docs/border-width" class="underline hover:text-white">official Tailwind CSS documentation</a> for more details</span>
+                </li>
+              </ul>
+              
+              <div class="mt-6 pt-6 border-t border-indigo-500/30">
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors">
+                  <i class="fas fa-home mr-2"></i>
+                  Back to Main Documentation
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Advanced Border Techniques -->
-    <div class="max-w-5xl mx-auto mb-16">
-      <h2 class="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Advanced Border Techniques</h2>
-      
-      <!-- Gallery -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Animated Border -->
-        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-          <div class="h-48 flex items-center justify-center p-6 overflow-hidden relative">
-            <div class="border-4 absolute inset-3 border-pulse rounded-lg"></div>
-            <div class="z-10 text-gray-800 font-medium text-center p-6">
-              Pulsing Border Animation
-            </div>
-          </div>
-          <div class="p-6 bg-gray-50">
-            <h3 class="font-bold text-lg mb-2 text-gray-800">Animated Pulse</h3>
-            <p class="text-sm text-gray-600 mb-4">Border that pulses using CSS animation</p>
-            <code class="text-xs bg-gray-100 p-2 rounded block overflow-x-auto whitespace-nowrap">
-              .border-pulse { animation: border-pulse 2s infinite ease-in-out; }
-            </code>
-          </div>
-        </div>
-        
-        <!-- Gradient Border -->
-        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-          <div class="h-48 flex items-center justify-center p-6 overflow-hidden">
-            <div class="border-gradient-rainbow w-full h-full rounded-lg flex items-center justify-center">
-              <div class="bg-white m-4 p-4 rounded-lg flex-1 h-full flex items-center justify-center">
-                <span class="text-gray-800 font-medium text-center">Rainbow Gradient Border</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-6 bg-gray-50 relative overflow-hidden">
-            <div class="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-50 opacity-50"></div>
-            <div class="relative z-10">
-              <h3 class="font-bold text-lg mb-2 text-gray-800">Gradient Borders</h3>
-              <p class="text-sm text-gray-600 mb-4">Colorful borders using CSS gradient</p>
-              <code class="text-xs bg-gray-100 p-2 rounded block overflow-x-auto whitespace-nowrap">
-                border-image: linear-gradient(...) 1;
-              </code>
-              <div class="mt-4">
-                <button class="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center transition-colors" 
-                  onclick="navigator.clipboard.writeText('.border-gradient { border-width: 4px; border-style: solid; border-image: linear-gradient(to right, #4F46E5, #8B5CF6) 1; }')">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                  </svg>
-                  Copy CSS
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Border with Image -->
-        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-          <div class="h-48 flex items-center justify-center p-6 overflow-hidden relative">
-            <div class="absolute inset-3 border-4 border-double rounded-lg flex items-center justify-center" style="background-image: url('data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234F46E5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E'); background-clip: border-box;">
-              <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300"></div>
-              <div class="hidden group-hover:block absolute -bottom-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-80">
-                Hover to see pattern details
-              </div>
-            </div>
-            <div class="z-10 text-gray-800 font-medium text-center p-6 bg-white rounded-lg border border-gray-100 shadow-sm transform transition-transform group-hover:scale-95 group-hover:shadow">
-              Patterned Border
-            </div>
-          </div>
-          <div class="p-6 bg-gray-50 relative overflow-hidden">
-            <div class="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-gradient-to-r from-purple-100 to-indigo-50 opacity-50"></div>
-            <div class="relative z-10">
-              <h3 class="font-bold text-lg mb-2 text-gray-800 flex items-center gap-2">
-                Image Patterns
-                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-0.5 rounded">Interactive</span>
-              </h3>
-              <p class="text-sm text-gray-600 mb-4">Using SVG patterns for unique borders</p>
-              <code class="text-xs bg-gray-100 p-2 rounded block overflow-x-auto whitespace-nowrap">
-                background-image: url('svg-pattern.svg');
-              </code>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Rotating Border -->
-        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-          <div class="h-48 flex items-center justify-center p-6 overflow-hidden">
-            <div class="border-rotate w-full h-full rounded-lg flex items-center justify-center">
-              <div class="bg-white m-4 p-4 rounded-lg flex-1 h-full flex items-center justify-center">
-                <span class="text-gray-800 font-medium text-center">Rotating Gradient Border</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-6 bg-gray-50">
-            <h3 class="font-bold text-lg mb-2 text-gray-800">Rotating Borders</h3>
-            <p class="text-sm text-gray-600 mb-4">Animated rotating gradient effect</p>
-            <code class="text-xs bg-gray-100 p-2 rounded block overflow-x-auto whitespace-nowrap">
-              @keyframes border-rotate { ... }
-            </code>
-          </div>
-        </div>
-        
-        <!-- Custom Shape -->
-        <div class="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-          <div class="h-48 flex items-center justify-center p-6 overflow-hidden">
-            <div class="rounded-diagonal border-3 border-indigo-500 w-full h-full flex items-center justify-center">
-              <span class="text-gray-800 font-medium text-center">Custom Border Radius</span>
-            </div>
-          </div>
-          <div class="p-6 bg-gray-50">
-            <h3 class="font-bold text-lg mb-2 text-gray-800">Custom Shapes</h3>
-            <p class
+  </body>
+</html>
